@@ -1,5 +1,7 @@
 # REOS (Real Estate Operating System) front end
 
+**Live demo:** https://portfolio-project1-six.vercel.app/ · **Case study:** [CASE-STUDY.md](CASE-STUDY.md)
+
 Plain HTML, CSS and JavaScript. No build step: open `index.html` (Live Server works).
 Every file starts with a header comment: `File`, `Role`, `Dependencies`.
 
