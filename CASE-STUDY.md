@@ -49,7 +49,7 @@ I talked to my team throughout the design. They kept describing the same frustra
 
 ## Process
 
-The redesign took about **two months**. I designed every screen in **Figma first**, then built it.
+The redesign took about **two months**. I designed every screen in **Figma first** and built clickable **Figma prototypes** to test the flows (navigation, drawers, dialogs) before writing any code. Then I worked through the CSS myself, adjusting spacing, colours, typography and component states until the built app matched my Figma designs exactly.
 
 The first version was generated almost entirely by AI. It worked, but:
 - the code had no real structure
@@ -57,7 +57,7 @@ The first version was generated almost entirely by AI. It worked, but:
 - nearly everything was clickable, so nothing stood out
 - it wasn't pleasant to use
 
-For the redesign I kept AI (Claude) as a coding assistant but took ownership of the product: I decided what each page is for, cut what didn't serve that purpose, designed the hierarchy in Figma, and defined the code structure the AI had to follow.
+For the redesign I kept AI (Claude) as a coding assistant but took ownership of the product: I decided what each page is for, cut what didn't serve that purpose, designed and prototyped the hierarchy in Figma, defined the code structure the AI had to follow, and tuned the CSS by hand to match the design.
 
 ## Key decisions
 
