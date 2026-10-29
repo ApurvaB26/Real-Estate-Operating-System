@@ -11,7 +11,7 @@
 
 ## The problem
 
-I work as an MEP Design Lead on large residential developments. Before REOS, our coordination ran mostly on memory and paper.
+I'm an MEP engineer with 3.2 years of experience on large residential developments; I joined as a graduate engineer trainee. Working day to day inside the design team, I saw that our coordination ran mostly on memory and paper.
 
 - **Tasks weren't really tracked.** People wrote them in personal diaries.
 - **Deliverables lived in Excel**, but updating the sheet was manual, so it often didn't happen. Due dates ended up on sticky notes in diaries or stuck to desks.

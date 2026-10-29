@@ -16,7 +16,7 @@ const teamGroups = [
 ];
 
 const teamMembers = [
-  { name: "Apurva Bhadange", role: "MEP Design Lead", org: "Halden", discipline: "MEP", group: "mep", tasks: 6 },
+  { name: "Apurva Bhadange", role: "MEP Engineer", org: "Halden", discipline: "MEP", group: "mep", tasks: 6 },
   { name: "Riya Shah", role: "MEP Designer", org: "Halden", discipline: "Plumbing", group: "mep", tasks: 7 },
   {
     name: "Fatima Khan",
