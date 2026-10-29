@@ -1,0 +1,133 @@
+
+.hf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: -4px -8px;
+  padding: 4px 8px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+}
+
+.hf-btn:hover,
+.hf-btn[aria-expanded="true"] {
+  background: rgba(100, 66, 53, 0.1);
+}
+
+.hf-btn:focus-visible {
+  outline: 3px solid var(--primary-action-muted);
+  outline-offset: 1px;
+}
+
+.hf-dot {
+  display: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--secondary-actions);
+}
+
+.hf-active .hf-dot {
+  display: inline-block;
+}
+
+tr.hf-hidden {
+  display: none;
+}
+
+.hf-pop {
+  position: fixed;
+  z-index: 60;
+  display: flex;
+  min-width: 200px;
+  max-width: 300px;
+  flex-direction: column;
+  padding: 6px 0;
+  border: 1px solid var(--stroke);
+  border-radius: 12px;
+  background: var(--white);
+  box-shadow: 0 12px 30px -8px var(--black-shadow);
+  font-family: var(--font-body);
+}
+
+.hf-pop[hidden] {
+  display: none;
+}
+
+.hf-title {
+  flex: none;
+  padding: 8px 14px 6px;
+  color: #a98c7e;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.hf-list {
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow-y: auto;
+}
+
+.hf-option {
+  display: flex;
+  min-height: 40px;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px;
+  color: var(--medium-black);
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+  cursor: pointer;
+}
+
+.hf-option:hover {
+  background: var(--main-bg);
+}
+
+.hf-option input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--secondary-actions);
+}
+
+.hf-option input:focus-visible {
+  outline: 3px solid var(--primary-action-muted);
+  outline-offset: 2px;
+}
+
+.hf-empty {
+  padding: 8px 14px;
+  color: var(--grey);
+  font-size: 14px;
+}
+
+.hf-all {
+  flex: none;
+  display: block;
+  width: calc(100% - 20px);
+  margin: 6px 10px 4px;
+  padding: 9px 12px;
+  border: 1px solid var(--stroke);
+  border-radius: 9px;
+  background: var(--white);
+  color: var(--dark-brown);
+  font: 600 14px var(--font-body);
+  cursor: pointer;
+}
+
+.hf-all:hover {
+  background: var(--main-bg);
+}
+
+.hf-all:focus-visible {
+  outline: 3px solid var(--primary-action-muted);
+  outline-offset: 2px;
+}

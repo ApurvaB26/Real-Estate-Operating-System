@@ -1,0 +1,101 @@
+/**
+ * File: css/pages/site-portal.css
+ * Role: Site Team role in the shared layout: sidebar entries, library tabs, site page grid, drawing actions and QR title block. Also two small rules for the project page.
+ * Dependencies: Loaded by index.html as stylesheet 43 of 45. Reads colours, fonts and spacing from css/base/tokens.css (var(--...)). Cascade order matters: it overrides stylesheets listed before it.
+ */
+
+/* Site Team uses the normal app layout; these rules limit what it shows */
+.nav-bar .site-nav { display: none; }
+
+body.site-mode .nav-bar .site-nav { display: flex; }
+
+body.site-mode .nav-bar a:not(.site-nav):not([data-view-target="library"]) { display: none; }
+
+/* The Library page shows only MAS Library for the site role, so its tab row is hidden */
+body.site-mode #library-view .library-tabs { display: none; }
+
+/* Shown only while the site role is active (the Upload Non - Standard MAS button in the Library header) */
+.site-only { display: none; }
+
+body.site-mode .site-only { display: inline-flex; }
+
+/* Site pages stack their cards with a 16px gap; the intro keeps 8px so the first card is still 24px below it */
+.site-page {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+}
+
+.site-page > .page-intro {
+  margin-bottom: 8px;
+}
+
+/* Open and Request hard copy sit on one line; they wrap only when the column is too narrow */
+.site-row-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Drawing title block: QR code on the left, drawing number and revision next to it */
+.site-sheet {
+  display: grid;
+  gap: 12px;
+}
+
+.site-sheet-meta {
+  display: grid;
+  gap: 2px;
+  color: var(--medium-black);
+  font-size: 14px;
+}
+
+.site-sheet-meta strong {
+  color: var(--dark-brown);
+  font-size: 16px;
+}
+
+.site-sheet-title-block {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid var(--stroke);
+  border-radius: 12px;
+  background: var(--white);
+  color: var(--black);
+}
+
+.site-qr {
+  display: flex;
+  flex: none;
+  width: 96px;
+  height: 96px;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.site-sheet-id {
+  display: grid;
+  gap: 2px;
+}
+
+.site-sheet-id span,
+.site-sheet-id small {
+  color: var(--medium-black);
+  font-size: 12px;
+}
+
+.site-sheet-id strong {
+  color: var(--dark-brown);
+  font-size: 16px;
+}
+/* Project page: the tab row scrolls sideways instead of wrapping, and the 3D card or context bar can be hidden */
+.project-nav-tabs { overflow-x: auto; }
+
+.cx-context[hidden],
+.m3d-card[hidden] { display: none !important; }
+/* Raise RFI is not available yet: muted, not clickable */
+.cx-primary.is-muted,
+.cx-primary.is-muted:hover { background: var(--main-bg); border-color: var(--stroke); color: var(--grey); cursor: not-allowed; filter: none; }

@@ -1,0 +1,216 @@
+/**
+ * File: css/components/daily-list.css
+ * Role: Dashboard daily task list and the Quick Task Entry panel.
+ * Dependencies: Loaded by index.html as stylesheet 30 of 45. Reads colours, fonts and spacing from css/base/tokens.css (var(--...)). Cascade order matters: it overrides stylesheets listed before it.
+ */
+
+/* Dashboard: daily task list */
+.daily-open-btn, .daily-dialog input, .daily-dialog button { 
+  font-family: var(--font-body); 
+}
+
+.daily-open-btn { 
+  margin-left: auto; 
+  display: inline-flex; 
+  align-items: center; 
+  gap: 8px; 
+  font-size: 16px; 
+  font-weight: 600; 
+  color: var(--white); 
+  background: var(--primary-actions); 
+  border: 0; 
+  border-radius: 10px; 
+  padding: 16px 24px; 
+  cursor: pointer; 
+  flex-shrink: 0; 
+  display: inline-flex;
+  border: 1px solid var(--white-80);
+}
+
+.daily-open-btn:hover { 
+ box-shadow: 0 4px 4px 0 rgba(255, 255, 255, 0.30);
+}
+
+.daily-dialog { 
+  width: min(560px, 100%); 
+  max-height: calc(100vh - 20px); 
+  overflow: auto; 
+  border-radius: 20px; 
+  background: var(--white); 
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24); 
+  font-family: var(--font-body); 
+  padding: 24px 28px; 
+}
+
+.daily-header { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: flex-start; 
+  gap: 16px; }
+
+.daily-header h2 { 
+  margin: 0 0 4px; 
+  font-size: 24px; 
+  color: var(--dark-brown); 
+}
+
+.daily-header p { 
+  margin: 0; 
+  font-size: 14px; 
+  color: var(--medium-black); 
+}
+
+.daily-dialog { 
+  width: min(640px, 100%); 
+}
+
+.daily-bar { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  gap: 12px; 
+  margin-top: 16px; 
+}
+
+.daily-bar-actions { 
+  display: flex; 
+  gap: 10px; 
+}
+
+.daily-selectall { 
+  display: inline-flex; 
+  align-items: center; 
+  gap: 10px; 
+  font-size: 14px; 
+  color: var(--black); 
+  cursor: pointer; 
+}
+
+.daily-selectall input { 
+  width: 20px; 
+  height: 20px; 
+}
+
+.daily-add { 
+  display: flex; 
+  gap: 10px; 
+  margin-top: 14px; 
+}
+
+.daily-move-btn { 
+  font: inherit; 
+  font-size: 14px; 
+  font-weight: 600; 
+  color: var(--primary-actions); 
+  background: #fff; 
+  border: 1px solid var(--primary-actions); 
+  border-radius: 10px; 
+  padding: 10px 16px; 
+  min-height: 40px; 
+  cursor: pointer; 
+  white-space: nowrap; 
+}
+
+.daily-hint { 
+  margin: 8px 0 0; 
+  font-size: 14px; 
+  color: var(--medium-black); 
+}
+
+.daily-item { 
+  display: flex; 
+  align-items: center; 
+  gap: 10px; 
+  padding: 12px 14px; 
+}
+
+.daily-item + .daily-item { 
+  border-top: 1px solid var(--stroke); 
+}
+
+.daily-check { 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; flex: 1; 
+  font-size: 15px; 
+  color: var(--black); 
+  cursor: pointer; 
+}
+
+.daily-check input { 
+  width: 20px; 
+  height: 20px; 
+  flex-shrink: 0; 
+}
+
+.daily-check small { 
+  display: block; 
+  font-size: 14px; 
+  color: var(--medium-black); 
+  margin-top: 2px; 
+}
+
+.daily-remove { 
+  font-size: 22px; 
+  line-height: 1; 
+  background: none; 
+  border: 0; 
+  color: var(--medium-black); 
+  cursor: pointer; 
+  padding: 6px 8px; 
+}
+
+.daily-footer { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  gap: 12px; 
+  margin-top: 18px; 
+  padding-top: 14px; 
+  border-top: 1px solid var(--stroke); 
+}
+
+.daily-photo-btn { 
+  font: inherit; 
+  font-size: 14px; 
+  color: var(--medium-black); 
+  background: var(--main-bg); 
+  border: 1px dashed var(--stroke); 
+  border-radius: 8px; 
+  padding: 8px 12px; 
+  cursor: not-allowed; 
+}
+
+.daily-clear { 
+  font: inherit; 
+  font-size: 15px; 
+  font-weight: 600; 
+  color: var(--medium-black); 
+  background: none; 
+  border: 0; 
+  cursor: pointer; 
+  padding: 8px; 
+}
+
+/* QUICK TASK ENTRY: matches the Figma frames 715, 718, 719 */
+.daily-dialog { width: min(600px, 100%); border-radius: 24px; padding: 28px 32px; }
+
+.daily-header h2 { font-size: 20px; font-weight: 700; margin: 0 0 6px; }
+
+.daily-header p { font-size: 13px; }
+
+.daily-hint { margin: 12px 0 0; font-size: 15px; color: var(--medium-black); }
+
+.daily-selectall { font-size: 14px; color: var(--medium-black); gap: 14px; }
+
+.daily-move-btn { border-radius: 8px; min-height: 40px; }
+
+.daily-item { padding: 14px 16px; gap: 12px; }
+
+.daily-item + .daily-item { border-top: 1px solid #F0DFD5; }
+
+.daily-check { gap: 14px; }
+
+.daily-footer { margin-top: 20px; padding-top: 18px; border-top: 1px solid #F0DFD5; }
+
+.daily-photo-btn { font-size: 18px; font-weight: 500; padding: 14px 20px; border-radius: 10px; color: #A9A6A6; background: #F6F0EC; border: 1px dashed #E8CFC4; }

@@ -1,0 +1,587 @@
+/**
+ * File: css/layout/topbar.css
+ * Role: Top bar: search, sync status, icon buttons, user + role menu, profile card, mail and notifications.
+ * Dependencies: Loaded by index.html as stylesheet 5 of 45. Reads colours, fonts and spacing from css/base/tokens.css (var(--...)). Cascade order matters: it overrides stylesheets listed before it.
+ */
+
+/*TOPBAR*/
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  flex: 1 0 0;
+  height: 72px;
+  padding: 16px 24px;
+  background: var(--white);
+  border-bottom: 1px solid var(--stroke);
+}
+
+.topbar-actions {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ flex: 1 0 0;
+ align-self: stretch;
+}
+
+/*Searchbar*/
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  gap: 8px;
+  width: 640px;
+  max-width: 100%;
+  padding: 8px 16px;
+  height: 40px;
+  border: 1px solid var(--stroke);
+  border-radius: 12px;
+  background: var(--main-bg);
+}
+
+.search input {
+  flex: 1 0 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--light-black);
+}
+
+.search-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: var(--light-black);
+}
+
+.search-key {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 8px;
+  background: var(--white);
+  border: 1px solid var(--stroke);
+  color: var(--light-black);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.topbar-right {
+  display: flex;
+justify-content: center;
+align-items: center;
+gap: 16px;
+}
+
+/*Sync Indicator*/
+.sync {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--light-black);
+}
+
+.sync-dot {
+ width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 8px 4px rgba(58, 154, 74, 0.3);
+}
+
+/*Top Navigation Buttons*/
+.icon-set {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.icon-btn {
+  display: flex;
+  padding: 8px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  border: 1px solid var(--stroke);
+  background: var(--main-bg);
+  color: var(--light-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.icon-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+.icon-btn:hover {
+  background: var(--secondary-actions);
+  color: var(--white);
+}
+
+/*User Info*/
+.user {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #E2CCC3 0%, #D1A391 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  color: var(--black);
+}
+
+/* Avatar is now the profile card trigger (a <button>) */
+.user-avatar.profile-trigger {
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+}
+
+.user-avatar.profile-trigger:focus-visible {
+  outline: 2px solid var(--primary-action-muted);
+  outline-offset: 2px;
+}
+
+.user-info {
+  display: flex;
+  min-width: 0;
+  width: 174px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  font-family: var(--font-body);
+}
+
+/* Name is now plain text */
+.user-info .user-name {
+  align-self: stretch;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  color: var(--black);
+  white-space: nowrap;
+}
+
+/* Role switcher (unchanged) */
+.user-info .user-role {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--light-black);
+  white-space: nowrap;
+}
+
+.user-role svg {
+  width: 16px;
+  height: 16px;
+}
+
+/*PROFILE MENU*/
+.user {
+  cursor: pointer;
+}
+
+.user-menu {
+  position: relative;
+  z-index: 40;
+}
+
+.role-switch-wrap {
+  position: relative;
+}
+
+.role-switch-trigger {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.role-switch-trigger:hover {
+  color: var(--dark-brown);
+}
+
+.role-switch-menu {
+  position: absolute;
+  z-index: 60;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 190px;
+  padding: 6px;
+  border: 1px solid var(--stroke);
+  border-radius: 10px;
+  background: var(--white);
+  box-shadow: 0 12px 30px rgba(28, 27, 27, 0.16);
+}
+
+.role-switch-menu[hidden] {
+  display: none;
+}
+
+.role-switch-heading {
+  display: block;
+  padding: 8px 10px;
+  color: var(--grey);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.role-switch-menu button {
+  display: flex;
+  width: 100%;
+  min-height: 34px;
+  align-items: center;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--medium-black);
+  font: 500 13px var(--font-body);
+  text-align: left;
+  cursor: pointer;
+}
+
+.role-switch-menu button:hover,
+.role-switch-menu button[aria-checked="true"] {
+  background: var(--main-bg);
+  color: var(--dark-brown);
+}
+
+.role-switch-menu button[aria-checked="true"]::after {
+  margin-left: auto;
+  color: var(--success);
+  content: "✓";
+}
+
+.profile-card {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 332px;
+  overflow: hidden;
+  border: 1px solid var(--stroke);
+  border-radius: 16px;
+  background: var(--white);
+  box-shadow: 0 12px 30px rgba(28, 27, 27, 0.15);
+  font-family: var(--font-body);
+}
+
+.profile-card[hidden] {
+  display: none;
+}
+
+.profile-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  border-bottom: 1px solid var(--stroke);
+  background: #fdf8f6;
+}
+
+.profile-avatar {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  flex: 0 0 56px;
+  border-radius: 50%;
+  background: var(--logo-bg);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.profile-role {
+  display: block;
+  margin: 2px 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dark-brown);
+}
+
+.profile-email {
+  font-size: 12px;
+  color: var(--light-black);
+}
+
+.profile-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 16px 20px;
+  border: 0;
+  background: var(--white);
+  color: var(--black);
+  font: 600 15px var(--font-body);
+  text-align: left;
+  cursor: pointer;
+}
+
+.theme-toggle {
+  display: flex;
+  flex: 0 0 auto;
+  margin-left: auto;
+  padding: 3px;
+  border: 1px solid var(--stroke);
+  border-radius: 8px;
+  background: var(--main-bg);
+}
+
+.theme-option {
+  display: grid;
+  width: 34px;
+  height: 32px;
+  flex: 0 0 34px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--medium-black);
+  cursor: pointer;
+}
+
+.profile-logout-wrap {
+  padding: 12px 16px 16px;
+  border-top: 2px solid var(--stroke);
+}
+
+.profile-logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 48px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--error-light);
+  color: var(--error);
+  font: 700 15px var(--font-body);
+  cursor: pointer;
+}
+
+/*EMAIL OVERLAY*/
+.mail-menu {
+  position: relative;
+}
+
+.mail-overlay {
+  position: absolute;
+  z-index: 60;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 460px;
+  max-height: calc(100vh / var(--app-zoom) - 110px);
+  overflow-y: auto;
+  padding: 24px 24px 8px;
+  border: 1px solid var(--stroke);
+  border-radius: 16px;
+  background: var(--white);
+  box-shadow: 0 16px 40px rgba(28, 27, 27, 0.18);
+  font-family: var(--font-body);
+}
+
+.mail-overlay[hidden] {
+  display: none;
+}
+
+.mail-overlay-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mail-eyebrow {
+  color: var(--dark-brown);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.mail-inbox-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--dark-brown);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.mail-inbox-link:hover {
+  color: var(--primary-actions);
+}
+
+.mail-overlay-title {
+  margin: 16px 0 12px;
+  color: var(--black);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.mail-item {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  column-gap: 12px;
+  row-gap: 8px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--stroke);
+}
+
+.mail-avatar {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border-radius: 50%;
+  background: #ead9d0;
+  color: var(--dark-brown);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.mail-item-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mail-sender {
+  color: var(--black);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.mail-time {
+  color: var(--secondary-actions);
+  font-size: 12px;
+}
+
+.mail-item-body {
+  grid-column: 2;
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.mail-subject {
+  color: var(--black);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.mail-preview {
+  overflow: hidden;
+  color: var(--dark-brown);
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mail-project {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: var(--main-bg);
+  color: var(--dark-brown);
+  font-size: 12px;
+}
+
+/*NOTIFICATIONS*/
+.notif-trigger {
+  position: relative;
+}
+
+.notif-badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 9px;
+  height: 9px;
+  border: 2px solid var(--main-bg);
+  border-radius: 50%;
+  background: var(--error);
+}
+
+.notif-badge[hidden] {
+  display: none;
+}
+
+.notif-mark-read {
+  border: 0;
+  background: transparent;
+  font-family: var(--font-body);
+}
+
+.notif-item {
+  margin-inline: -8px;
+  padding-inline: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.notif-item:hover {
+  background: var(--main-bg);
+}
+
+.notif-item.is-unread .mail-sender::after {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-left: 8px;
+  border-radius: 50%;
+  background: var(--error);
+  content: "";
+  vertical-align: middle;
+}
+
+.notif-item .mail-preview {
+  white-space: normal;
+}

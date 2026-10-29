@@ -1,0 +1,11 @@
+/**
+ * File: css/pages/project-files-team.css
+ * Role: Files and Team pages: the JUST ADDED badge and tighter card grids.
+ * Dependencies: Loaded by index.html as stylesheet 40 of 45. Reads colours, fonts and spacing from css/base/tokens.css (var(--...)). Cascade order matters: it overrides stylesheets listed before it.
+ */
+
+/* files and team: JUST ADDED, tighter rows */
+.just-added{background:var(--primary-actions);color:#fff;font-size:11px;letter-spacing:.06em;padding:2px 7px;border-radius:5px;margin-right:6px}
+.team-grid,.upload-grid.files-grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr))!important;gap:10px!important}
+.team-contact{display:inline-flex;gap:6px}
+.team-card-footer{flex-wrap:wrap;gap:6px}

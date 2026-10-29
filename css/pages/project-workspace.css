@@ -1,0 +1,341 @@
+
+
+.project-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 13px 0;
+  padding-top: 10px;
+  border-top: 1px solid #f1e9e5;
+}
+
+/*PROJECT OVERVIEW PAGE*/
+.overview-page {
+  padding: 24px;
+}
+
+/* Header card */
+.project-header {
+  position: relative;
+  padding: 24px;
+  border: 1px solid var(--stroke);
+  border-bottom: 0;
+  border-radius: 20px 20px 0 0;
+  background: var(--greeting-card-bg);
+  color: var(--dark-brown);
+  font-family: var(--font-body);
+}
+
+.project-header-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.project-title {
+  color: var(--dark-brown);
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.project-type {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.project-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 15px;
+  background: var(--success-mid);
+  color: var(--success);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.project-status i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.project-details {
+  margin-bottom: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--dark-brown);
+}
+
+.project-details + .project-details {
+  font-size: 14px;
+}
+
+.project-detail-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.project-header-buttons {
+  position: absolute;
+  top: 50%;
+  right: 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transform: translateY(-50%);
+}
+
+.project-header-buttons .create-project-btn {
+  height: 46px;
+}
+
+/*PROJECT WORKSPACE PAGE MENU*/
+.more-btn {
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--stroke);
+  border-radius: 10px;
+  background: var(--white);
+  color: var(--dark-brown);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.more-menu {
+  position: relative;
+}
+
+.menu-card-project {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 6px);
+  right: 0;
+  display: none;
+  width: 220px;
+  padding: 8px 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  border-radius: 12px;
+  border: 1px solid #E8D8D0;
+  background: #FFF;
+  box-shadow: 0 8px 16px 0 rgba(119, 97, 88, 0.12);
+}
+
+.menu-card-project::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  right: 0;
+  left: 0;
+  height: 8px;
+}
+
+.more-menu:hover .menu-card-project,
+.more-menu:focus-within .menu-card-project {
+  display: block;
+}
+
+.menu-options {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 0;
+  background: var(--white);
+  color: var(--dark-brown);
+  font: 500 14px var(--font-body);
+  text-align: left;
+  cursor: pointer;
+}
+
+.menu-options:hover {
+  background: var(--main-bg);
+  border-top: 1px solid var(--stroke);
+  border-bottom: 1px solid var(--stroke);
+  
+}
+
+.menu-options:nth-child(3) {
+  border-top: 1px solid var(--stroke);
+}
+
+/*PROJECT HEADER CARD*/
+.project-header-card {
+  padding: 16px 24px;
+  margin-bottom: 24px;
+  border: 1px solid var(--stroke);
+  border-top: 0;
+  border-radius: 0 0 20px 20px;
+  background: var(--white);
+  font-family: var(--font-body);
+}
+
+.project-metric {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  border-left: 1px solid var(--stroke);
+  font-size: 14px;
+  color: var(--medium-black);
+}
+
+.project-metric-icon {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  place-items: center;
+  border-radius: 8px;
+}
+
+.project-metric-icon.tasks { background: var(--warning-light); color: var(--warning); }
+
+.project-metric-icon.rfis { background: var(--error-light); color: var(--error); }
+
+.project-metric-icon.deliverables { background: var(--success-light); color: var(--success); }
+
+.project-metric-icon.transmittal { background: var(--purple-light); color: var(--purple); }
+
+.project-metric-icon.meetings { background: var(--in-progress-light); color: var(--in-progress); }
+
+.project-metric-icon.team { background: var(--success-light); color: var(--success); }
+
+/*PROJECT NAV BAR*/
+.project-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding: 12px 22px;
+  border: 1px solid var(--stroke);
+  border-radius: 12px;
+  background: var(--white);
+  font-family: var(--font-body);
+}
+
+.project-nav-tabs {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.project-nav-tab {
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-radius:10px;
+  background: transparent;
+  color: var(--dark-brown);
+  font: 600 16px var(--font-body);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.project-nav-tab:hover {
+  background: var(--dark-brown);
+  color: var(--white);
+}
+
+.project-nav-tab:focus-visible {
+  outline: 3px solid var(--primary-actions);
+  outline-offset: 2px;
+}
+
+/*Filter by Tower and Starred Towers Button */
+.project-nav-filters {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.tower-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--secondary-actions);
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--secondary-actions);
+  font: 500 13px var(--font-body);
+  cursor: pointer;
+}
+
+.tower-dropdown {
+  position: relative;
+}
+
+.tower-menu {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 200px;
+  padding: 4px 0;
+  border: 1px solid var(--stroke);
+  border-radius: 10px;
+  background: var(--white);
+  box-shadow: 0 12px 26px rgba(28, 27, 27, 0.15);
+}
+
+.tower-menu[hidden],
+.tower-row[hidden] {
+  display: none;
+}
+
+.tower-row {
+  display: flex;
+  align-items: center;
+}
+
+.tower-row:hover {
+  background: var(--main-bg);
+  border-top: 1px solid var(--stroke);
+  border-bottom: 1px solid var(--stroke);
+}
+
+.tower-name {
+  flex: 1;
+  padding: 12px 16px;
+  border: 0;
+  background: transparent;
+  color: var(--dark-brown);
+  font: 500 14px var(--font-body);
+  text-align: left;
+  cursor: pointer;
+}
+
+.tower-star {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+  border: 0;
+  background: transparent;
+  color: var(--secondary-actions);
+  cursor: pointer;
+}
+
+.starred-towers-btn {
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--secondary-actions);
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--secondary-actions);
+  font: 500 13px var(--font-body);
+  cursor: pointer;
+}

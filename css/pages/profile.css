@@ -1,0 +1,220 @@
+/**
+ * File: css/pages/profile.css
+ * Role: Profile, notification preferences and help.
+ * Dependencies: Loaded by index.html as stylesheet 25 of 45. Reads colours, fonts and spacing from css/base/tokens.css (var(--...)). Cascade order matters: it overrides stylesheets listed before it.
+ */
+
+.profile-panel[data-profile-panel="account"] {
+  padding: 0;
+  overflow: hidden;
+}
+
+.profile-hero {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  border-bottom: 1px solid var(--stroke);
+  background: var(--main-bg);
+}
+
+.profile-hero strong {
+  display: block;
+  color: var(--black);
+  font-size: 18px;
+}
+
+.pref-hint {
+  color: var(--light-black);
+  font-size: 13px;
+}
+
+.pref-switch {
+  position: relative;
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.pref-switch input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.pref-switch-track {
+  position: relative;
+  width: 36px;
+  height: 20px;
+  border-radius: 20px;
+  background: var(--stroke);
+  transition: background-color 0.15s ease;
+}
+
+.pref-switch-track::after {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  content: "";
+  transition: transform 0.15s ease;
+}
+
+.pref-switch input:checked + .pref-switch-track {
+  background: var(--secondary-actions);
+}
+
+.pref-switch input:checked + .pref-switch-track::after {
+  transform: translateX(16px);
+}
+
+.pref-switch input:focus-visible + .pref-switch-track {
+  outline: 2px solid var(--primary-action-muted);
+  outline-offset: 2px;
+}
+
+.pref-digest {
+  max-width: 320px;
+  padding: 16px 0;
+}
+
+.profile-help {
+  align-items: start;
+}
+
+.faq-item {
+  border-bottom: 1px solid #f0e8e4;
+}
+
+.faq-item summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  color: var(--black);
+  font-size: 14px;
+  font-weight: 600;
+  list-style: none;
+  cursor: pointer;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  color: var(--secondary-actions);
+  content: "+";
+  font-size: 18px;
+  line-height: 1;
+}
+
+.faq-item[open] summary::after {
+  content: "−";
+}
+
+.faq-item p {
+  padding-bottom: 14px;
+  color: var(--medium-black);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.help-subtitle {
+  margin: 20px 0 10px;
+  color: var(--black);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.shortcut-list {
+  display: grid;
+  gap: 8px;
+}
+
+.shortcut-list div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--medium-black);
+  font-size: 13px;
+}
+
+.help-form {
+  display: grid;
+  gap: 14px;
+}
+
+.help-contact {
+  margin-top: 16px;
+}
+
+.team-card-copy strong {
+  color: var(--black);
+  font-size: 15px;
+}
+
+.team-card-footer strong {
+  color: var(--black);
+}
+
+.tracker-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  color: var(--medium-black);
+  font-size: 13px;
+}
+
+.tracker-summary strong {
+  color: var(--black);
+}
+
+.team-folder-copy strong {
+  color: var(--black);
+  font-size: 15px;
+}
+
+.team-folder-copy small {
+  color: var(--light-black);
+  font-size: 13px;
+}
+
+.people-option .member-copy small {
+  font-size: 12px;
+}
+
+.drawer-comment strong {
+  color: var(--black);
+  font-size: 12px;
+}
+
+.drawer-comment small {
+  color: var(--grey);
+  font-size: 12px;
+}
+
+.drawer-comment p {
+  margin-top: 4px;
+}
+
+.discipline-summary {
+  margin-left: 6px;
+  color: var(--grey);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/*SHARED DATE PICKER (every date field uses the Create Project calendar)*/
+.date-picker.has-value > summary {
+  color: var(--medium-black);
+}
+
+/* Folders without an avatar preview (Files) still push the count to the right */
+.team-folder-copy + .team-folder-count {
+  margin-left: auto;
+}

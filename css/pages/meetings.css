@@ -1,0 +1,225 @@
+
+/*MEETINGS PAGE*/
+.meeting-days {
+  display: grid;
+  gap: 24px;
+}
+
+.meeting-day-title {
+  margin-bottom: 12px;
+  color: var(--black);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.meeting-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 16px;
+}
+
+.mom-table {
+  min-width: 760px;
+}
+
+.mom-empty {
+  padding: 24px !important;
+  text-align: center;
+}
+
+.page-view.meetings-view .project-tasks-view {
+  gap: 16px;
+}
+
+.meetings-toolbar {
+  position: relative;
+  z-index: 3;
+  margin-bottom: 0;
+}
+
+.meetings-toolbar .filter-count {
+  background: var(--dark-brown);
+}
+
+.meetings-toolbar .policy-filter-button[aria-expanded="true"] .filter-count {
+  background: var(--white);
+  color: var(--secondary-actions);
+}
+
+.meetings-toolbar .policy-filter-button.has-filters:not([aria-expanded="true"]) {
+  background: var(--main-bg);
+}
+
+.meetings-filter-wrap {
+  position: relative;
+}
+
+.meetings-filter-pop {
+  position: fixed;
+  z-index: 60;
+  width: 300px;
+  overflow-y: auto;
+  padding: 16px;
+  border: 1px solid var(--stroke);
+  border-radius: 14px;
+  background: var(--white);
+  box-shadow: 0 12px 30px -8px var(--black-shadow);
+  font-family: var(--font-body);
+}
+
+.meetings-filter-pop[hidden] {
+  display: none;
+}
+
+.meetings-filter-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.meetings-filter-head h2 {
+  color: var(--dark-brown);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* The popup closes plainly: no spin on the x (that animation is for side drawers) */
+.meetings-filter-head .drawer-close {
+  width: 28px;
+  height: 28px;
+  transition: none;
+}
+
+.meetings-filter-head .drawer-close:hover,
+.meetings-filter-head .drawer-close:active {
+  transform: none;
+}
+
+.meetings-filter-label {
+  margin-bottom: 6px;
+  color: var(--black);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.meetings-filter-dates {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.meetings-filter-date label {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--medium-black);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.meetings-filter-date .date-picker > summary {
+  min-height: 36px;
+  padding: 0 10px;
+  border-radius: 9px;
+  font-size: 12px;
+}
+
+.meetings-filter-error {
+  margin: -6px 0 12px;
+  color: var(--error);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.meetings-filter-error[hidden] {
+  display: none;
+}
+
+.meetings-filter-projects {
+  min-width: 0;
+  margin: 0 0 14px;
+  padding: 0;
+  border: 0;
+}
+
+.meetings-filter-check {
+  display: flex;
+  min-height: 30px;
+  align-items: center;
+  gap: 10px;
+  color: var(--medium-black);
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.meetings-filter-check input {
+  display: grid;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  place-items: center;
+  margin: 0;
+  border: 1.5px solid #B78E79;
+  border-radius: 4px;
+  background: var(--white);
+  appearance: none;
+  cursor: pointer;
+}
+
+.meetings-filter-check input:checked {
+  border-color: var(--primary-actions);
+  background: var(--primary-actions);
+}
+
+.meetings-filter-check input:checked::after {
+  width: 4px;
+  height: 8px;
+  margin-top: -2px;
+  border: solid var(--white);
+  border-width: 0 2px 2px 0;
+  content: "";
+  transform: rotate(45deg);
+}
+
+.meetings-filter-check input:checked + span {
+  color: var(--black);
+  font-weight: 700;
+}
+
+.meetings-filter-check input:focus-visible {
+  outline: 3px solid var(--primary-action-muted);
+  outline-offset: 2px;
+}
+
+.meetings-filter-pop .meetings-filter-apply {
+  min-height: 32px;
+  padding: 0 12px;
+  border-radius: 9px;
+  font-size: 13px;
+}
+
+.meetings-filter-clear {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  padding: 6px 0;
+  border: 0;
+  background: transparent;
+  color: var(--grey);
+  font: 700 13px var(--font-body);
+  text-align: center;
+  cursor: pointer;
+}
+
+.meetings-filter-clear:hover {
+  color: var(--dark-brown);
+}
+
+.meetings-filter-clear:focus-visible {
+  outline: 3px solid var(--primary-action-muted);
+  outline-offset: 2px;
+}

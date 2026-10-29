@@ -1,0 +1,18 @@
+/**
+ * File: css/components/pager.css
+ * Role: Shared Library pagination footer (Page x of N with chevron and numbered buttons).
+ * Dependencies: Loaded by index.html as stylesheet 29 of 45. Reads colours, fonts and spacing from css/base/tokens.css (var(--...)). Cascade order matters: it overrides stylesheets listed before it.
+ */
+
+/* Shared Library pagination footer */
+.lib-pager { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 22px; border-top: 1px solid var(--stroke); font-family: var(--font-body); }
+
+.lib-pager[hidden] { display: none; }
+
+.lib-pager-status { font-size: 14px; font-weight: 700; color: var(--dark-brown); }
+
+.lib-pager-nav { display: flex; align-items: center; gap: 8px; }
+
+.lib-pager-num, .lib-pager-step { display: inline-flex; align-items: center; justify-content: center; min-width: 28px; height: 28px; padding: 0 6px; border: 0; border-radius: 6px; background: transparent; color: var(--light-brown); font: 700 14px var(--font-body); cursor: pointer; }
+
+.lib-pager-gap { color: var(--light-brown); font-size: 14px; font-weight: 700; }

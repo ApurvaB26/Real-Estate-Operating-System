@@ -1,0 +1,236 @@
+/**
+ * File: js/features/project/transmittal-pdf.js
+ * Role: Transmittal PDF: build, download and edit.
+ * Dependencies: Loaded by index.html as script 39 of 80. Uses globals from js/components/action-dialog.js, js/components/layers.js, js/core/router.js, js/core/utils.js, js/core/vendor-loaders.js, js/features/document-viewer.js and 3 more. Its globals are used by js/features/document-viewer.js, js/features/record-drawer.js.
+ */
+
+// PDF fonts only cover basic Latin, so swap typographic dashes and dots for plain ones
+const pdfText = (text) =>
+  String(text ?? "")
+    .replace(/[—–]/g, "-")
+    .replace(/·/g, "|")
+    .replace(/[‘’]/g, "'")
+    .replace(/[“”]/g, '"');
+
+const transmittalSubject = (t) =>
+  t.subject || `Issue of ${t.drawings.length} drawing${t.drawings.length === 1 ? "" : "s"} for ${t.wing}`;
+
+// What each issuing party is, printed after its name on the form: "DSG (MEP Consultant)"
+const sourceRoles = {
+  DSG: "MEP Consultant",
+  Urja: "Electrical Consultant",
+  "Verdant Systems": "MEP Consultant",
+  "In-house": "MEP Design"
+};
+
+const purposeRemarks = {
+  "For construction": "GFC",
+  "For approval": "APPROVAL",
+  "For information": "INFO",
+  "For tender": "TENDER"
+};
+
+const drawingRemark = (t, drawing) => drawing.remarks || (t.origin === "ifc" ? "GFC" : purposeRemarks[t.purpose] || "");
+
+// The open project, or the first one when a PDF or document is opened straight from a link
+const currentProjectName = () => {
+  const title = overviewPage.querySelector(".project-title").textContent;
+  return title === "Project name" ? document.querySelector("[data-project-card] h2").textContent : title;
+};
+
+// The transmittal form is laid out on a fixed character grid (Courier), like the site office template
+async function buildTransmittalPdf(t) {
+  const JsPDF = await loadJsPdf();
+  const doc = new JsPDF({ unit: "mm", format: "a4" });
+  const project = currentProjectName();
+  // The form uses a fixed-width font, so columns line up by padding strings to a character count instead of measuring text
+  const width = 92; // characters per line: 9 pt Courier is 1.905 mm a character
+  const left = 17;
+  const lineHeight = 4.6;
+  let y = 18;
+
+  // Truncate with '...' or pad with spaces so every column keeps its width on the grid
+  const fit = (text, size) => {
+    const value = pdfText(text);
+    return (value.length > size ? `${value.slice(0, size - 3)}...` : value).padEnd(size);
+  };
+  const line = (text = "", bold = false) => {
+    // Near the bottom of an A4 page, start a new page and reset the vertical position
+    if (y > 283) {
+      doc.addPage();
+      y = 18;
+    }
+    doc.setFont("courier", bold ? "bold" : "normal");
+    doc.text(pdfText(text), left, y);
+    y += lineHeight;
+  };
+  const columns = (leftText, rightText, at = 48) => `${fit(leftText, at)}${pdfText(rightText)}`;
+  const spread = (leftText, rightText) =>
+    `${pdfText(leftText).padEnd(width - pdfText(rightText).length)}${pdfText(rightText)}`;
+  const issueDate = new Date(
+    ...(t.sent || toDateInput(new Date())).split("-").map((part, i) => Number(part) - (i === 1 ? 1 : 0))
+  );
+  const dotted = `${pad2(issueDate.getDate())}.${pad2(issueDate.getMonth() + 1)}.${issueDate.getFullYear()}`;
+  const sent = t.status === "sent";
+  const copies = `${t.copies.color} CL + ${t.copies.bw} BW`;
+  const sourceRole = sourceRoles[t.source];
+
+  doc.setFontSize(9);
+  doc.setTextColor(28, 27, 27);
+  line("=".repeat(width));
+  y += 1;
+  line(
+    spread(
+      `${project.toUpperCase()} | TRANSMITTAL FORM`,
+      `TRANSMITTAL No. : ${project.replace(/^halden\s+/i, "").toUpperCase()} ${t.no.replace(/\D/g, "")}`
+    ),
+    true
+  );
+  line();
+  line("-".repeat(width));
+  line(columns("PROJECT DETAILS", "DISTRIBUTION / RECIPIENT"), true);
+  line(
+    columns(
+      `Project / Tower : ${t.wing}`,
+      `To         : ${t.recipient || "-"}${t.recipientRole ? ` (${t.recipientRole})` : ""}`
+    )
+  );
+  line(columns(`Issue Date      : ${dotted}`, `Source     : ${t.source}${sourceRole ? ` (${sourceRole})` : ""}`));
+  line("-".repeat(width));
+  line();
+  if (t.subject) {
+    line(`SUBJECT : ${t.subject}`, true);
+    line();
+  }
+  line(`LIST OF DRAWINGS / DOCUMENTS (${t.drawings.length} ITEM${t.drawings.length === 1 ? "" : "S"})`, true);
+  line();
+  line(
+    `${"SR".padEnd(4)}${"DESCRIPTION".padEnd(36)}${"DRAWING NO.".padEnd(26)}${"REV".padEnd(6)}${"COPIES".padEnd(13)}REMARKS`,
+    true
+  );
+  line("-".repeat(width));
+  t.drawings.forEach((drawing, index) => {
+    line(
+      `${pad2(index + 1).padEnd(4)}${fit(drawing.name, 35)} ${fit(drawing.no, 25)} ${fit(drawing.rev, 5)} ${fit(copies, 12)} ${pdfText(drawingRemark(t, drawing))}`
+    );
+  });
+  line("-".repeat(width));
+  line();
+  if (t.remarks) {
+    line("REMARKS", true);
+    doc.splitTextToSize(pdfText(t.remarks), 172).forEach((part) => line(part));
+    line();
+  }
+  line("AUTHORIZATION & APPROVALS", true);
+  line(`Status         : ${sent ? "Approved & Sent" : "Pending Approval (Draft)"}`);
+  line(`Generated By   : ${t.origin === "ifc" ? "Auto-System (GFC Batch Upload)" : t.by}`);
+  line(
+    columns(
+      `Approved By    : ${sent ? t.approvedBy || t.by : profileState.name}`,
+      `Date: [ ${transmittalDate(t.sent || toDateInput(new Date()))} ]`,
+      52
+    )
+  );
+  line("=".repeat(width));
+  return doc;
+}
+
+async function downloadTransmittalPdf(t) {
+  try {
+    const doc = await buildTransmittalPdf(t);
+    doc.save(`${t.no}_${t.wing.replace(/\s+/g, "-")}.pdf`);
+    (t.activity ||= []).push(`PDF downloaded by ${profileState.name}`);
+    if (recordCtx?.data === t) rerenderRecordDrawer();
+  } catch (error) {
+    showToast(error.message);
+  }
+}
+
+// Edit what goes on the PDF; the changes are saved to the transmittal itself
+const pdfRowHtml = (drawing = { no: "", name: "", rev: "R0", remarks: "" }) => `
+  <tr data-pdf-row>
+    <td class="pdf-sr"></td>
+    <td><input data-pdf-key="name" value="${escapeHtml(drawing.name)}" aria-label="Description"></td>
+    <td><input data-pdf-key="no" value="${escapeHtml(drawing.no)}" aria-label="Drawing number"></td>
+    <td><input data-pdf-key="rev" value="${escapeHtml(drawing.rev)}" aria-label="Revision"></td>
+    <td><input data-pdf-key="remarks" value="${escapeHtml(drawing.remarks || "")}" aria-label="Remarks"></td>
+    <td><button class="pdf-remove" type="button" data-pdf-remove aria-label="Remove row">×</button></td>
+  </tr>`;
+
+function openTransmittalPdfEditor(t) {
+  openActionDialog({
+    title: `Edit ${t.no} PDF`,
+    subtitle: "Changes are saved to the transmittal and used for every PDF download.",
+    wide: true,
+    body: `
+      <div class="doc-viewer">
+        <div class="doc-viewer-bar"><span>Transmittal form · ${escapeHtml(t.wing)}</span><span>Click any text to change it</span></div>
+        <article class="doc-page pdf-edit">
+          <p class="doc-page-kicker">Transmittal form · ${escapeHtml(t.no)}</p>
+          <label class="pdf-field pdf-subject"><span>Subject (optional)</span><input data-pdf="subject" value="${escapeHtml(t.subject || "")}" placeholder="Printed above the drawing list"></label>
+          <div class="pdf-grid">
+            <label class="pdf-field"><span>To</span><input data-pdf="recipient" value="${escapeHtml(t.recipient)}" placeholder="Recipient name"></label>
+            <label class="pdf-field"><span>Role</span><input data-pdf="recipientRole" value="${escapeHtml(t.recipientRole || "")}" placeholder="e.g. Site Manager"></label>
+            <label class="pdf-field"><span>Source</span><input data-pdf="source" value="${escapeHtml(t.source)}"></label>
+            <label class="pdf-field"><span>Purpose</span><input data-pdf="purpose" value="${escapeHtml(t.purpose)}"></label>
+            <label class="pdf-field"><span>Colour copies</span><input data-pdf="color" type="number" min="0" value="${t.copies.color}"></label>
+            <label class="pdf-field"><span>B&amp;W copies</span><input data-pdf="bw" type="number" min="0" value="${t.copies.bw}"></label>
+          </div>
+          <table class="doc-page-table pdf-table">
+            <thead><tr><th>Sr</th><th>Description</th><th>Drawing No.</th><th>Rev</th><th>Remarks</th><th><span class="visually-hidden">Remove</span></th></tr></thead>
+            <tbody>${t.drawings.map((drawing) => pdfRowHtml({ ...drawing, remarks: drawingRemark(t, drawing) })).join("")}</tbody>
+          </table>
+          <button class="drawer-add-action" type="button" data-pdf-add-row>+ Add drawing row</button>
+          <label class="pdf-field"><span>Remarks</span><textarea data-pdf="remarks" placeholder="Printed under the drawing list...">${escapeHtml(t.remarks)}</textarea></label>
+        </article>
+      </div>`,
+    submitLabel: "Save PDF Changes",
+    onSubmit() {
+      const get = (key) => actionFields.querySelector(`[data-pdf="${key}"]`).value.trim();
+      const drawings = Array.from(actionFields.querySelectorAll("[data-pdf-row]"), (tr) => {
+        const value = (key) => tr.querySelector(`[data-pdf-key="${key}"]`).value.trim();
+        return { no: value("no"), name: value("name"), rev: value("rev") || "R0", remarks: value("remarks") };
+      }).filter((drawing) => drawing.name || drawing.no);
+      if (!drawings.length) {
+        setActionError("Keep at least one drawing on the transmittal.");
+        return false;
+      }
+      Object.assign(t, {
+        subject: get("subject"),
+        recipient: get("recipient"),
+        recipientRole: get("recipientRole"),
+        purpose: get("purpose") || t.purpose,
+        source: get("source") || t.source,
+        remarks: get("remarks"),
+        copies: { color: Math.max(0, Number(get("color")) || 0), bw: Math.max(0, Number(get("bw")) || 0) },
+        drawings
+      });
+      (t.activity ||= []).push(`PDF details edited by ${profileState.name}`);
+      renderTransmittals();
+      if (recordCtx?.data === t) rerenderRecordDrawer();
+      refreshTransmittalPreview(t);
+      showToast(`${t.no} PDF updated.`);
+    }
+  });
+  numberPdfRows();
+}
+
+function numberPdfRows() {
+  actionFields.querySelectorAll("[data-pdf-row] .pdf-sr").forEach((cell, index) => {
+    cell.textContent = pad2(index + 1);
+  });
+}
+
+actionFields.addEventListener("click", (e) => {
+  if (e.target.closest("[data-pdf-add-row]")) {
+    const body = actionFields.querySelector(".pdf-table tbody");
+    body.insertAdjacentHTML("beforeend", pdfRowHtml());
+    numberPdfRows();
+    body.lastElementChild.querySelector("input").focus();
+  }
+  const remove = e.target.closest("[data-pdf-remove]");
+  if (remove) {
+    remove.closest("tr").remove();
+    numberPdfRows();
+  }
+});

@@ -1,0 +1,48 @@
+/**
+ * File: css/components/cx-layers.css
+ * Role: Styles for the shared right-hand drawer and centred modal (.cx-layer, .cx-drawer, .cx-modal) plus the people directory, chat, task board, reminder log and meeting-request content inside them.
+ * Dependencies: Loaded by index.html as stylesheet 42 of 45. Reads colours, fonts and spacing from css/base/tokens.css (var(--...)). Cascade order matters: it overrides stylesheets listed before it.
+ */
+
+/* drawers and modals */
+.cx-layer{position:fixed;inset:0;z-index:500;font-family:var(--font-body);color:var(--black)}
+.cx-scrim{position:absolute;inset:0;background:rgba(28,20,16,.5)}
+.cx-drawer{position:absolute;top:0;right:0;bottom:0;width:min(460px,100vw);background:var(--white);display:flex;flex-direction:column;box-shadow:-10px 0 30px rgba(0,0,0,.2)}
+.cx-center{display:grid;place-items:center;padding:16px}
+.cx-modal{position:relative;background:var(--white);border-radius:16px;width:min(560px,100%);max-height:92vh;overflow:auto;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.cx-drawer>header,.cx-modal>header{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--stroke)}
+.cx-drawer h2,.cx-modal h2{margin:0;flex:1;font:600 22px var(--font-main);color:var(--dark-brown)}
+.cx-body{padding:16px 18px;display:flex;flex-direction:column;gap:14px;overflow:auto;flex:1}
+.cx-muted{color:var(--medium-black);font-size:14px;margin:0}
+.cx-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.cx-end{justify-content:flex-end}.cx-grow{flex:1;min-width:0}
+.cx-search{display:flex;align-items:center;gap:8px;border:1px solid var(--stroke);border-radius:10px;padding:0 12px;min-height:42px;background:var(--main-bg)}
+.cx-search input{border:0;background:none;font:inherit;flex:1;outline:none;color:inherit}
+.cx-person{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--stroke)}
+.cx-person small{display:block;color:var(--medium-black);font-size:13px}
+.cx-av{position:relative;width:40px;height:40px;border-radius:50%;background:var(--secondary-actions);color:#fff;display:grid;place-items:center;font-weight:700;flex:none}
+.cx-pres{position:absolute;right:-1px;bottom:-1px;width:12px;height:12px;border-radius:50%;border:2px solid #fff}
+.cx-pres.is-on{background:var(--success)}.cx-pres.is-busy{background:var(--error)}.cx-pres.is-off{background:var(--grey)}
+.cx-p-on{color:var(--success)!important}.cx-p-busy{color:var(--error)!important}
+.cx-chat{display:flex;flex-direction:column;gap:8px;flex:1;overflow:auto;min-height:200px}
+.cx-msg{max-width:82%;padding:8px 12px;border-radius:14px;background:var(--main-bg);border:1px solid var(--stroke)}
+.cx-msg.me{align-self:flex-end;background:var(--in-progress-light);border-color:var(--in-progress)}
+.cx-msg small{display:block;color:var(--medium-black);font-size:12px}
+.cx-compose{display:flex;gap:8px}.cx-compose input{flex:1;min-height:42px;border:1px solid var(--stroke);border-radius:10px;padding:0 12px;font:inherit}
+.cx-acc{border:1px solid var(--stroke);border-radius:12px;padding:0 14px}.cx-acc summary{padding:12px 0;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px}.cx-acc[open] summary{border-bottom:1px solid var(--stroke);margin-bottom:6px}
+.cx-acc p,.cx-acc ul{margin:6px 0 12px}.cx-count{background:var(--table-header);border-radius:10px;padding:0 8px;font-size:13px}
+.cx-banner{display:flex;gap:10px;align-items:flex-start;border-radius:10px;padding:10px 14px;font-size:14px;margin-bottom:10px}
+.cx-banner.is-warn{background:var(--warning-mid);color:#7a3f0a;border:1px solid var(--warning)}.cx-banner.is-good{background:var(--success-light);color:var(--success);border:1px solid var(--success)}.cx-banner.is-info{background:var(--in-progress-light);color:#124a7a;border:1px solid var(--in-progress)}
+.cx-banner svg{flex:none;margin-top:2px}
+.cx-tag{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:700;padding:3px 10px;border-radius:99px;background:var(--table-header);color:var(--dark-brown)}
+.cx-tag.is-good{background:var(--success-mid);color:var(--success)}.cx-tag.is-warn{background:var(--warning-mid);color:#7a3f0a}.cx-tag.is-bad{background:var(--error-mid);color:var(--error)}
+.cx-field{display:flex;flex-direction:column;gap:4px;font-weight:600;font-size:14px;flex:1;min-width:130px}
+.cx-field input,.cx-field select,.cx-field textarea{font:inherit;border:1px solid var(--stroke);border-radius:10px;min-height:42px;padding:6px 10px;background:var(--white);color:inherit}
+.cx-point{border:1px solid var(--stroke);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:10px;align-items:flex-start}.cx-point p{margin:0}
+.cx-conv{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;width:100%}
+.cx-src{font-size:13px;font-weight:600;padding:2px 9px;border-radius:99px;background:var(--table-header);color:var(--dark-brown)}.cx-src.is-MOM{background:var(--in-progress-mid);color:#124a7a}.cx-src.is-Dailylist{background:var(--purple-light);color:var(--purple)}
+.cx-clash{margin-bottom:4px}
+.cx-page{padding:0 24px 40px;font-family:var(--font-body)}
+
+.cx-rem-filters{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end}.cx-rem-filters label{display:flex;flex-direction:column;gap:4px;font-weight:600;font-size:13px;color:var(--medium-black)}
+.cx-rem-filters select,.cx-rem-filters input{min-height:40px;border:1px solid var(--stroke);border-radius:10px;padding:0 10px;font:inherit;background:var(--white);color:var(--black)}
+.cx-export{margin-left:auto}

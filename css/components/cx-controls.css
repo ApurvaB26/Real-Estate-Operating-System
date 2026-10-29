@@ -1,0 +1,16 @@
+/**
+ * File: css/components/cx-controls.css
+ * Role: Shared chips and buttons (.cx-chip, .cx-btn, .cx-primary, .cx-icon) used inside the directory, task board, reminder log, 3D card and Site Team portal.
+ * Dependencies: Loaded by index.html as stylesheet 39 of 45. Reads colours, fonts and spacing from css/base/tokens.css (var(--...)). Cascade order matters: it overrides stylesheets listed before it.
+ */
+
+.cx-noscroll{overflow:hidden}
+.cx-chips{display:flex;gap:8px;flex-wrap:wrap}
+.cx-chip{border:1px solid var(--stroke);background:var(--white);color:var(--dark-brown);border-radius:99px;padding:6px 14px;font:500 14px var(--font-body);cursor:pointer}
+.cx-chip.is-on{background:var(--dark-brown);color:#fff;border-color:var(--dark-brown)}
+.cx-btn,.cx-primary,.cx-icon{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border-radius:10px;font:600 14px var(--font-body);cursor:pointer;border:1px solid var(--stroke);background:var(--white);color:var(--dark-brown)}
+.cx-btn:hover,.cx-icon:hover{background:var(--table-header)}
+.cx-primary{background:var(--primary-actions);border-color:var(--primary-actions);color:#fff}
+.cx-btn.is-bad{background:var(--error-light);color:var(--error);border-color:var(--error)}.cx-btn.is-good{background:var(--success-light);color:var(--success);border-color:var(--success)}
+.cx-icon{width:40px;padding:0;justify-content:center}
+.cx-wide{width:100%;justify-content:center;min-height:52px;font-size:16px}

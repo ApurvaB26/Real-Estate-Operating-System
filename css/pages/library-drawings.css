@@ -1,0 +1,228 @@
+/**
+ * File: css/pages/library-drawings.css
+ * Role: Library > Standard Drawings tab: discipline folders and drawing file rows.
+ * Dependencies: Loaded by index.html as stylesheet 35 of 45. Reads colours, fonts and spacing from css/base/tokens.css (var(--...)). Cascade order matters: it overrides stylesheets listed before it.
+ */
+
+/*LIBRARY: APPROVED MAKES*/
+.policy-browser[hidden],
+.drawings-browser[hidden],
+.makes-browser[hidden] {
+  display: none;
+}
+
+.makes-browser .policy-category,
+.makes-browser .policy-filter-button {
+  font-size: 13px;
+}
+
+.makes-browser .policy-search input {
+  font-size: 13px;
+}
+
+/*BOQ VIEWER (spreadsheet layout)*/
+.boq-search {
+  width: min(280px, 100%);
+  min-height: 32px;
+}
+
+.location-search {
+  display: flex;
+  min-height: 37px;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  border: 1px solid var(--stroke);
+  border-radius: 9px;
+  background: var(--white);
+  color: var(--grey);
+}
+
+.location-search:focus-within {
+  border-color: var(--secondary-actions);
+  box-shadow: 0 0 0 3px rgba(171, 133, 118, 0.14);
+}
+
+.project-dialog .form-field .location-search input {
+  flex: 1;
+  height: 35px;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+}
+
+/*LIBRARY: STANDARD DRAWINGS*/
+.drawings-crumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--dark-brown);
+  font: 500 14px var(--font-body);
+}
+
+.drawings-crumb strong {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.drawings-back {
+  padding: 6px 10px;
+  border: 1px solid #cdb4a8;
+  border-radius: 9px;
+  background: var(--white);
+  color: var(--dark-brown);
+  font: 600 14px var(--font-body);
+  cursor: pointer;
+}
+
+.drawings-back:hover {
+  background: var(--main-bg);
+}
+
+.drawings-folder-row,
+.drawings-file-row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 22px;
+  border: 0;
+  border-top: 1px solid #eadbd3;
+  background: var(--white);
+  color: var(--black);
+  font: 500 15px var(--font-body);
+  text-align: left;
+}
+
+.drawings-list > :first-child {
+  border-top: 0;
+}
+
+.drawings-folder-row {
+  cursor: pointer;
+}
+
+.drawings-folder-row:hover,
+.drawings-folder-row:focus-visible {
+  background: var(--main-bg);
+  outline: none;
+}
+
+.drawings-folder-row:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--primary-action-muted);
+}
+
+.drawings-folder-icon {
+  display: grid;
+  place-items: center;
+  color: var(--dark-brown);
+}
+
+.drawings-folder-name,
+.drawings-file-name {
+  flex: 1;
+  min-width: 0;
+  font-weight: 600;
+}
+
+.drawings-file-name {
+  overflow-wrap: anywhere;
+}
+
+.drawings-count,
+.drawings-file-meta {
+  color: var(--medium-black);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.drawings-chevron {
+  display: grid;
+  place-items: center;
+  color: var(--dark-brown);
+}
+
+.drawings-file-type {
+  display: grid;
+  width: 42px;
+  height: 32px;
+  flex: 0 0 42px;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--main-bg);
+  color: var(--dark-brown);
+  font: 700 12px var(--font-body);
+}
+
+.drawings-file-type.is-pdf {
+  background: #fde8e6;
+  color: #b42318;
+}
+
+.drawings-file-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.drawings-btn {
+  min-height: 34px;
+  padding: 0 14px;
+  border: 1px solid var(--secondary-actions);
+  border-radius: 9px;
+  background: var(--white);
+  color: var(--secondary-actions);
+  font: 600 14px var(--font-body);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.drawings-btn.is-primary {
+  background: var(--secondary-actions);
+  color: var(--white);
+}
+
+.drawings-btn:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14);
+}
+
+.drawings-btn:focus-visible {
+  outline: 3px solid var(--primary-actions);
+  outline-offset: 2px;
+}
+
+@media (max-width: 800px) {
+  .drawings-file-row {
+    flex-wrap: wrap;
+  }
+
+  .drawings-file-actions {
+    margin-left: auto;
+  }
+}
+
+.library-flyout-item:hover,
+.library-flyout-item:focus-visible {
+  background: var(--main-bg);
+  outline: none;
+}
+
+.library-flyout-item:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--primary-action-muted);
+}
+
+.library-flyout-item.active {
+  background: var(--dark-brown);
+  color: var(--white);
+}
+
+.lib-pager-num.active { background: var(--dark-brown); color: var(--white); }
+
+.lib-pager-num:hover:not(.active), .lib-pager-step:hover:not(:disabled) { color: var(--dark-brown); }
+
+.lib-pager-step:disabled { opacity: 0.4; cursor: default; }
+
+.lib-pager-num:focus-visible, .lib-pager-step:focus-visible { outline: 2px solid var(--primary-action-muted); outline-offset: 2px; }
+
+/* Standard Drawings table: same look as Approved Makes */
+.drawings-table .drawings-file-actions { display: flex; justify-content: flex-end; gap: 8px; }
+.drawings-table tr[data-drawing-index] { cursor: pointer; }

@@ -1,0 +1,81 @@
+/**
+ * File: css/pages/library-mas.css
+ * Role: Library > MAS tab: toolbar card, legend, rounded checkboxes, make chips and the owner column.
+ * Dependencies: Loaded by index.html as stylesheet 36 of 45. Reads colours, fonts and spacing from css/base/tokens.css (var(--...)). Cascade order matters: it overrides stylesheets listed before it.
+ */
+
+/* MAS Library */
+.mas-browser[hidden] { display: none; }
+
+.mas-browser .policy-category, .mas-browser .policy-filter-button, .mas-browser .policy-search input { font-size: 13px; }
+
+.mas-filter-menu select, #mas-filter-menu select { font: inherit; font-size: 14px; padding: 8px 10px; border: 1px solid var(--stroke); border-radius: 10px; background: var(--white); color: var(--black); width: 100%; margin-bottom: 8px; }
+
+.mas-card { background: var(--white); }
+
+.mas-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; padding: 16px 22px; font-size: 14px; font-weight: 600; color: var(--medium-black); }
+
+.mas-legend-label { font-weight: 700; color: var(--dark-brown); }
+
+.mas-legend-item { display: inline-flex; align-items: center; gap: 8px; }
+
+.mas-legend-dot { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: #fff; border: 1px solid #E3E3E3; color: var(--muted-state); }
+
+.mas-legend-dot.is-done { background: #F6FFF7; border-color: #8BBE90; color: var(--success); }
+
+.mas-count { margin-left: auto; font-size: 13px; color: var(--grey); }
+
+.mas-role-note { margin: 14px 0 0; font-size: 13px; color: var(--grey); }
+
+.mas-role-note:empty { display: none; }
+
+.mas-table th, .mas-table td { font-size: 14px; }
+
+.mas-table th { letter-spacing: 0.04em; text-transform: uppercase; }
+
+.mas-table td strong { font-weight: 600; color: var(--black); }
+
+/* Rows are 75px high; the owner is semibold like the item name */
+.mas-table tbody tr { height: 75px; }
+
+.mas-table td:nth-child(4) { font-weight: 600; color: var(--black); }
+
+.mas-check { width: 56px; }
+
+/* Checkbox: rounded square with a taupe border; ticked it fills dark brown with a white tick */
+.mas-select { appearance: none; position: relative; width: 20px; height: 20px; margin: 0; border: 1.5px solid #B78E79; border-radius: 5px; background: var(--white); cursor: pointer; }
+
+.mas-select:checked { border-color: var(--dark-brown); background: var(--dark-brown); }
+
+.mas-select:checked::after { content: ""; position: absolute; top: 2px; left: 6px; width: 5px; height: 9px; border: solid var(--white); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+
+.mas-select:focus-visible { outline: 3px solid var(--primary-action-muted); outline-offset: 2px; }
+
+.mas-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.mas-chip { display: inline-flex; align-items: center; gap: 8px; font: 500 14px var(--font-body); padding: 4px 14px; border-radius: 999px; border: 1px solid #E3E3E3; background: #F0F0F0; color: var(--muted-state); white-space: nowrap; }
+
+.mas-chip.is-done { background: #E8F6EC; border-color: #8BBE90; color: var(--success); font-weight: 700; cursor: pointer; }
+
+.mas-chip.is-done:focus-visible { outline: 2px solid var(--success); outline-offset: 2px; }
+
+.mas-icon { flex: none; }
+
+.mas-upload { display: inline-flex; align-items: center; justify-content: center; padding: 0; border: 0; background: transparent; color: var(--dark-brown); cursor: pointer; }
+
+.mas-upload:hover { color: var(--primary-actions); }
+
+.mas-upload:focus-visible { outline: 3px solid var(--primary-actions); outline-offset: 2px; border-radius: 4px; }
+
+.mas-table th:nth-child(2), .mas-table td:nth-child(2) { width: 28%; }
+
+.mas-table th:nth-child(3), .mas-table td:nth-child(3) { width: 46%; }
+
+/* Toolbar card: thin taupe outline, 20px corners; the pills use the same taupe, the active one is filled */
+.mas-toolbar { margin-bottom: 24px; padding: 16px 20px; border: 1px solid #B78E79; border-radius: 20px; background: var(--white); }
+
+.mas-browser .policy-category, .mas-browser .policy-filter-button { border-color: #B78E79; color: #B78E79; font-weight: 600; }
+
+.mas-browser .policy-category.active, .mas-browser .policy-category:hover, .mas-browser .policy-filter-button[aria-expanded="true"] { border-color: #B78E79; background: #B78E79; color: var(--white); }
+
+.mas-toolbar .policy-search { width: min(350px, 100%); border-color: #EADFD8; background: #F5EFEB; }

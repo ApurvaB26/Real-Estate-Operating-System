@@ -1,0 +1,86 @@
+/**
+ * File: css/components/buttons.css
+ * Role: Shared buttons.
+ * Dependencies: Loaded by index.html as stylesheet 7 of 45. Reads colours, fonts and spacing from css/base/tokens.css (var(--...)). Cascade order matters: it overrides stylesheets listed before it.
+ */
+
+.task-submit {
+  width: 100%;
+  min-height: 40px;
+  font-size: 13px;
+}
+
+.add-btn {
+  display: flex;
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  background: var(--primary-actions);
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.comment-btn,
+.remind-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding: 4px 8px;
+  border-radius: 8px;
+  border: 1px solid var(--dark-brown);
+  background: var(--white);
+  color: var(--dark-brown);
+  cursor: pointer;
+}
+
+.comment-btn:hover,
+.remind-btn:hover {
+  background: var(--main-bg);
+}
+
+.view-all {
+  display: flex;
+  padding: 16px 24px;
+  align-items: center;
+  gap: 12px;
+  align-self: stretch;
+  color: var(--dark-brown, #644235);
+  font-family: Jost;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  
+}
+
+a.view-all {
+  text-decoration: none !important;
+}
+
+/* Muted button: for a button that does not work yet. Add the class together with the disabled attribute and a title such as "Coming soon".
+   It sits on top of any button class (for example .cx-primary): same size, radius and font, only the colours and the cursor change. */
+.btn-muted,
+.btn-muted:hover,
+.cx-primary.btn-muted,
+.cx-primary.btn-muted:hover {
+  border-color: #E6E1DD;
+  background: #E6E1DD;
+  color: #9A918C;
+  box-shadow: none;
+  transform: none;
+  cursor: not-allowed;
+}
+
+/* The icon follows the text colour */
+.btn-muted svg {
+  color: inherit;
+}

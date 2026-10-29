@@ -1,0 +1,12 @@
+/**
+ * File: css/layout/zoom-scale.css
+ * Role: Shrinks the sidebar when the browser is at 67% zoom so it looks the same size as at 50%.
+ * Dependencies: Loaded by index.html as stylesheet 44 of 45. Cascade order matters: it overrides stylesheets listed before it.
+ */
+
+/* Sidebar at 67% browser zoom looks the same size as at 50% (scaled to 75%) */
+html.zoom-67 .app{grid-template-columns:180px minmax(0,1fr) 376px}
+html.zoom-67 .app.sidebar-collapsed{grid-template-columns:66px minmax(0,1fr) 376px}
+html.zoom-67 .app.rail-collapsed{grid-template-columns:180px minmax(0,1fr) 104px}
+html.zoom-67 .app.rail-collapsed.sidebar-collapsed{grid-template-columns:66px minmax(0,1fr) 104px}
+html.zoom-67 .sidebar{zoom:.75}

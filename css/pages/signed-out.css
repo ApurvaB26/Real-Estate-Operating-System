@@ -1,0 +1,68 @@
+/**
+ * File: css/pages/signed-out.css
+ * Role: Signed-out screen.
+ * Dependencies: Loaded by index.html as stylesheet 28 of 45. Reads colours, fonts and spacing from css/base/tokens.css (var(--...)). Cascade order matters: it overrides stylesheets listed before it.
+ */
+
+/*SIGNED OUT*/
+.signed-out-screen {
+  position: fixed;
+  z-index: 1200;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: var(--sidebar-bg);
+  font-family: var(--font-body);
+}
+
+.signed-out-screen[hidden] {
+  display: none;
+}
+
+.signed-out-card {
+  display: grid;
+  width: min(420px, 100%);
+  justify-items: center;
+  gap: 12px;
+  padding: 40px 32px;
+  border-radius: 20px;
+  background: var(--white);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+  text-align: center;
+}
+
+.signed-out-card h1 {
+  color: var(--black);
+  font: 700 28px var(--font-main);
+}
+
+.signed-out-card p {
+  color: var(--light-black);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.signed-out-card .submit-project-btn {
+  min-height: 44px;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+@media (max-width: 700px) {
+  .page-view {
+    padding: 12px;
+  }
+
+  .meeting-grid,
+  .focus-list,
+  .action-detail-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Buttons with their own display value ignore the hidden attribute */
+#action-submit[hidden],
+#action-cancel[hidden] {
+  display: none;
+}

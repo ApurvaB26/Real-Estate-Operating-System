@@ -1,0 +1,224 @@
+/**
+ * File: css/components/cards.css
+ * Role: Overview panels, upload cards, discipline bars, milestone and activity lists.
+ * Dependencies: Loaded by index.html as stylesheet 16 of 45. Reads colours, fonts and spacing from css/base/tokens.css (var(--...)). Cascade order matters: it overrides stylesheets listed before it.
+ */
+
+.overview-panel {
+  min-width: 0;
+  padding: 16px 18px 12px;
+  border: 1px solid var(--stroke);
+  border-radius: 14px;
+  background: var(--white);
+  font-family: var(--font-body);
+}
+
+.overview-panel-header {
+  display: flex;
+  min-height: 26px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.overview-panel-header h2 {
+  min-width: 0;
+  color: var(--black);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.overview-panel-link,
+.overview-panel-link-inline {
+  color: var(--dark-brown);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.overview-panel-link:hover,
+.overview-panel-link-inline:hover {
+  color: var(--primary-actions);
+}
+
+.milestone-status {
+  padding: 5px 9px;
+  border: 1px solid var(--stroke);
+  border-radius: 5px;
+  background: #f8f3f0;
+  color: #896f62;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.overview-panel > .overview-panel-link {
+  display: inline-flex;
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.activity-panel {
+  padding-bottom: 8px;
+}
+
+.activity-item {
+  display: grid;
+  min-height: 50px;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid #f0e8e4;
+}
+
+.activity-avatar {
+  display: grid;
+  width: 26px;
+  height: 26px;
+  place-items: center;
+  border-radius: 50%;
+  background: #7e6257;
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.activity-avatar.avatar-slate { background: #a18e86; }
+
+.activity-avatar.avatar-brown { background: #92786c; }
+
+.activity-avatar.avatar-muted { background: #b0a39d; }
+
+.activity-copy {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+
+.activity-tag {
+  padding: 5px 8px;
+  border: 1px solid #eee3dd;
+  border-radius: 5px;
+  background: #f8f3f0;
+  color: var(--medium-black);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.upload-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding-top: 2px;
+  border-top: 1px solid #f0e8e4;
+}
+
+.upload-card {
+  display: grid;
+  min-width: 0;
+  min-height: 116px;
+  grid-template-rows: auto auto auto auto 1fr;
+  gap: 5px;
+  padding: 10px;
+  border: 1px solid #eee3dd;
+  border-radius: 10px;
+  background: #faf6f3;
+}
+
+.upload-card > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.upload-file-icon {
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.upload-file-icon.is-pdf { color: #c93232; }
+
+.upload-file-icon.is-sheet { color: #238047; }
+
+.upload-file-icon.is-drawing { color: #4283b5; }
+
+.upload-type {
+  padding: 3px 5px;
+  border-radius: 4px;
+  background: var(--white);
+  color: var(--medium-black);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.upload-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  align-self: end;
+  margin-top: 4px;
+}
+
+.upload-actions button {
+  min-height: 28px;
+  border: 1px solid var(--secondary-actions);
+  border-radius: 6px;
+  background: var(--white);
+  color: var(--secondary-actions);
+  font: 600 12px var(--font-body);
+  cursor: pointer;
+}
+
+.upload-actions button:hover {
+  background: var(--main-bg);
+}
+
+.upload-actions button.upload-download {
+  border-color: var(--secondary-actions);
+  background: var(--secondary-actions);
+  color: var(--white);
+}
+
+.discipline-panel {
+  padding-bottom: 16px;
+}
+
+.discipline-item {
+  display: grid;
+  grid-template-columns: 24px 104px minmax(0, 1fr) 42px;
+  align-items: center;
+  gap: 10px;
+}
+
+.discipline-icon {
+  display: grid;
+  width: 22px;
+  height: 22px;
+  place-items: center;
+  border-radius: 6px;
+  background: #f6eee9;
+  color: var(--dark-brown);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.discipline-name {
+  color: var(--black);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.discipline-progress {
+  height: 5px;
+  overflow: hidden;
+  border-radius: 5px;
+  background: #f1e9e5;
+}
+
+.discipline-total {
+  color: var(--grey);
+  font-size: 12px;
+  text-align: right;
+  white-space: nowrap;
+}

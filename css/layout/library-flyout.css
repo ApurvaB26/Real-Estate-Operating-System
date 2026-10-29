@@ -1,0 +1,40 @@
+/**
+ * File: css/layout/library-flyout.css
+ * Role: Flyout that opens from the sidebar's Library item to jump straight to a Library page.
+ * Dependencies: Loaded by index.html as stylesheet 31 of 45. Reads colours, fonts and spacing from css/base/tokens.css (var(--...)). Cascade order matters: it overrides stylesheets listed before it.
+ */
+
+/*SIDEBAR: LIBRARY FLYOUT*/
+.library-flyout {
+  position: fixed;
+  z-index: 1200;
+  padding-left: 8px;
+}
+
+.library-flyout[hidden] {
+  display: none;
+}
+
+.library-flyout-card {
+  display: grid;
+  min-width: 220px;
+  gap: 2px;
+  padding: 8px;
+  border: 1px solid #d9c4b9;
+  border-radius: 14px;
+  background: var(--white);
+  box-shadow: 0 12px 32px rgba(60, 35, 25, 0.22);
+}
+
+.library-flyout-item {
+  min-height: 38px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--dark-brown);
+  font: 600 14px var(--font-body);
+  text-align: left;
+  white-space: nowrap;
+  cursor: pointer;
+}

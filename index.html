@@ -1,0 +1,2358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REOS · Real Estate Operating System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base/tokens.css">
+    <link rel="stylesheet" href="css/base/reset.css">
+    <link rel="stylesheet" href="css/layout/app-shell.css">
+    <link rel="stylesheet" href="css/layout/sidebar.css">
+    <link rel="stylesheet" href="css/layout/topbar.css">
+    <link rel="stylesheet" href="css/layout/right-rail.css">
+    <link rel="stylesheet" href="css/components/buttons.css">
+    <link rel="stylesheet" href="css/components/forms.css">
+    <link rel="stylesheet" href="css/components/select.css">
+    <link rel="stylesheet" href="css/components/date-picker.css">
+    <link rel="stylesheet" href="css/components/dialogs.css">
+    <link rel="stylesheet" href="css/components/drawers.css">
+    <link rel="stylesheet" href="css/components/tables.css">
+    <link rel="stylesheet" href="css/components/toolbar.css">
+    <link rel="stylesheet" href="css/components/page-intro.css">
+    <link rel="stylesheet" href="css/components/cards.css">
+    <link rel="stylesheet" href="css/components/meeting-card.css">
+    <link rel="stylesheet" href="css/components/document-viewer.css">
+    <link rel="stylesheet" href="css/pages/dashboard.css">
+    <link rel="stylesheet" href="css/pages/projects.css">
+    <link rel="stylesheet" href="css/pages/project-workspace.css">
+    <link rel="stylesheet" href="css/pages/project-tabs.css">
+    <link rel="stylesheet" href="css/pages/library.css">
+    <link rel="stylesheet" href="css/pages/reporting.css">
+    <link rel="stylesheet" href="css/pages/profile.css">
+    <link rel="stylesheet" href="css/pages/focus.css">
+    <link rel="stylesheet" href="css/pages/meetings.css">
+    <link rel="stylesheet" href="css/pages/signed-out.css">
+    <link rel="stylesheet" href="css/components/pager.css">
+    <link rel="stylesheet" href="css/components/daily-list.css">
+    <link rel="stylesheet" href="css/layout/library-flyout.css">
+    <link rel="stylesheet" href="css/pages/dashboard-attention.css">
+    <link rel="stylesheet" href="css/pages/project-overview.css">
+    <link rel="stylesheet" href="css/pages/project-brief.css">
+    <link rel="stylesheet" href="css/pages/library-drawings.css">
+    <link rel="stylesheet" href="css/pages/library-mas.css">
+    <link rel="stylesheet" href="css/pages/projects-grouped.css">
+    <link rel="stylesheet" href="css/pages/project-model.css">
+    <link rel="stylesheet" href="css/components/cx-controls.css">
+    <link rel="stylesheet" href="css/pages/project-files-team.css">
+    <link rel="stylesheet" href="css/pages/project-rfi-ai.css">
+    <link rel="stylesheet" href="css/components/cx-layers.css">
+    <link rel="stylesheet" href="css/pages/site-portal.css">
+    <link rel="stylesheet" href="css/layout/zoom-scale.css">
+    <link rel="stylesheet" href="css/components/header-filter.css">
+</head>
+<body>
+    <div class="app">
+
+    <!-- Sidebar -->
+  <aside class="sidebar">
+    <!-- Sidebar Brand set -->
+    <div class="brand-logoset">
+  <div class="brand-logo">A</div>
+  <div class="brand-text">
+  <h2 class="brand-title">REOS</h2>
+  <p class="brand-subtitle">Real Estate Operating System</p>
+</div>
+    <button class="collapse-btn" aria-label="Collapse sidebar">
+  <svg data-icon="sidebar-collapse" width="20" height="20"></svg>
+</button>
+  </div>
+  <!-- Sidebar navigation set -->
+<nav class="nav-bar">
+
+     <!--Dashboard button-->
+  <a href="#dashboard" class="active" data-view-target="dashboard" aria-current="page">
+<svg data-icon="nav-dashboard" width="20" height="20"></svg>
+Dashboard
+</a>
+
+<!--Projects button-->
+  <a href="#projects" data-view-target="projects">
+<svg data-icon="nav-projects" width="20" height="20"></svg>
+Projects
+</a>
+
+<!--Reporting button-->
+  <a href="#library" data-view-target="library">
+<svg data-icon="nav-library" width="20" height="20"></svg>
+Library
+</a>
+
+  <a href="#reporting" data-view-target="reporting">
+<svg data-icon="nav-reporting" width="20" height="20"></svg>
+Reporting
+</a>
+
+</nav>
+
+<!--Logout button-->
+<a href="#" class="logout" data-action="logout">
+    <svg data-icon="nav-logout" width="20" height="20"></svg>
+Logout
+</a>
+</aside>
+
+    <main class="main">
+    <div class="main-header">
+    <div class="topbar">
+    <div class="topbar-actions">
+  <div class="search">
+    <svg data-icon="search-topbar" width="18" height="18"></svg>
+    <input type="search"  aria-label="Search tasks" placeholder="Search projects, policies, consultants..." >
+    <span class="search-key">⌘K</span>
+  </div>
+
+  <div class="topbar-right">
+    <span class="sync"><span class="sync-dot"></span>Synced just now</span>
+
+    
+
+    
+    <div class="icon-set">
+<div class="mail-menu">
+  <button class="icon-btn mail-trigger" type="button" aria-label="Mail" aria-haspopup="true" aria-expanded="false">
+    <svg data-icon="mail" width="24" height="24"></svg>
+  </button>
+
+  <section class="mail-overlay" id="mail-overlay" aria-label="Recent emails" hidden>
+    <header class="mail-overlay-top">
+      <span class="mail-eyebrow">Recent emails</span>
+      <a class="mail-inbox-link" href="https://mail.google.com/mail/u/0/#inbox" target="_blank" rel="noopener noreferrer">
+        View inbox
+        <svg data-icon="external-link" width="12" height="12" aria-hidden="true"></svg>
+      </a>
+    </header>
+    <h2 class="mail-overlay-title">Needs a reply</h2>
+    <ul class="mail-list" id="mail-list"></ul>
+  </section>
+</div>
+
+<button class="icon-btn" type="button" aria-label="AI assistant" data-open-assistant>
+  <svg data-icon="ai-assistant" width="24" height="24"></svg>
+</button>
+
+<div class="mail-menu notif-menu">
+<button class="icon-btn notif-trigger" type="button" aria-label="Notifications" aria-haspopup="true" aria-expanded="false">
+  <svg data-icon="notification-bell" width="24" height="24"></svg>
+  <span class="notif-badge" id="notif-badge" aria-hidden="true"></span>
+</button>
+
+  <section class="mail-overlay notif-overlay" id="notif-overlay" aria-label="Notifications" hidden>
+    <header class="mail-overlay-top">
+      <span class="mail-eyebrow">Notifications</span>
+      <button class="mail-inbox-link notif-mark-read" type="button" id="notif-mark-read">Mark all as read</button>
+    </header>
+    <h2 class="mail-overlay-title" id="notif-title">Recent updates</h2>
+    <ul class="mail-list" id="notif-list"></ul>
+  </section>
+</div>
+</div>
+
+<div class="user-menu">
+  <div class="user">
+  <button class="user-avatar profile-trigger" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Open profile menu">AB</button>
+  <div class="user-info">
+    <strong class="user-name">Apurva Bhadange</strong>
+    <div class="role-switch-wrap">
+        <button class="user-role role-switch-trigger" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="role-switch-menu">
+          <span class="current-role">Super Admin</span>
+          <svg data-icon="chevron-down" aria-hidden="true"></svg>
+        </button>
+        <div class="role-switch-menu" id="role-switch-menu" role="menu" aria-label="Switch role" hidden>
+          <span class="role-switch-heading">Switch role</span>
+          <button type="button" role="menuitemradio" data-role="Super Admin" aria-checked="true">Super Admin</button>
+          <button type="button" role="menuitemradio" data-role="HOD" aria-checked="false">HOD</button>
+          <button type="button" role="menuitemradio" data-role="L0" aria-checked="false">L0</button>
+          <button type="button" role="menuitemradio" data-role="L1" aria-checked="false">L1</button>
+          <button type="button" role="menuitemradio" data-role="L2" aria-checked="false">L2</button>
+          <button type="button" role="menuitemradio" data-role="L3" aria-checked="false">L3</button>
+          <button type="button" role="menuitemradio" data-role="L4" aria-checked="false">L4</button>
+          <button type="button" role="menuitemradio" data-role="Pool Team" aria-checked="false">Pool Team</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="profile-card" id="profile-card" hidden>
+    <div class="profile-head">
+      <div class="profile-avatar">AB</div>
+      <div>
+        <strong>Apurva Bhadange</strong>
+        <span class="profile-role">MEP Design</span>
+        <span class="profile-email">apurva.bhadange@example.com</span>
+      </div>
+    </div>
+
+    <button 
+    class="profile-item" type="button" data-route="profile/account">
+      <svg data-icon="user" width="22" height="22" aria-hidden="true"></svg>
+
+      View / Edit Profile
+      <svg data-icon="chevron-right" class="chevron" width="16" height="16" aria-hidden="true"></svg>
+    </button>
+
+    <button 
+    class="profile-item" type="button" data-route="profile/notifications">
+      <svg data-icon="bell-profile" width="22" height="22" aria-hidden="true"></svg>
+
+      Notification Preferences
+      <svg data-icon="chevron-right" class="chevron" width="16" height="16" aria-hidden="true"></svg>
+    </button>
+
+    <div 
+    class="profile-item profile-theme">
+      <svg data-icon="palette" width="22" height="22" aria-hidden="true"></svg>
+
+      Theme
+      <div class="theme-toggle" role="group" aria-label="Choose theme">
+        <button class="theme-option active" type="button" data-theme-choice="system" aria-label="Use system theme" title="System theme" aria-pressed="true">
+          <svg data-icon="monitor" width="16" height="16" aria-hidden="true"></svg>
+        </button>
+        <button class="theme-option" type="button" data-theme-choice="light" aria-label="Use light theme" title="Light theme" aria-pressed="false">
+          <svg data-icon="sun" width="16" height="16" aria-hidden="true"></svg>
+        </button>
+        <button class="theme-option" type="button" data-theme-choice="dark" aria-label="Use dark theme" title="Dark theme" aria-pressed="false">
+          <svg data-icon="moon" width="16" height="16" aria-hidden="true"></svg>
+        </button>
+      </div>
+    </div>
+
+    <button class="profile-item" type="button" data-route="profile/help">
+      <svg data-icon="help-circle" width="22" height="22" aria-hidden="true"></svg>
+      Help &amp; Support
+      <svg data-icon="chevron-right" class="chevron" width="16" height="16" aria-hidden="true"></svg>
+    </button>
+
+    <div class="profile-logout-wrap">
+      <button class="profile-logout" type="button" data-action="logout">
+        <svg data-icon="logout" width="22" height="22" aria-hidden="true"></svg>
+        Log Out
+      </button>
+    </div>
+    </div>   <!-- profile-card -->
+</div>     <!-- user-menu -->
+</div>     <!-- topbar-right -->
+</div>     <!-- topbar-actions -->
+</div>     <!-- topbar -->
+</div>     <!-- main-header -->
+
+<div class="main-content">
+<nav class="breadcrumb" id="breadcrumb" aria-label="Breadcrumb"></nav>
+
+<div class="dialog-backdrop" id="project-dialog-backdrop" hidden>
+  <section class="project-dialog" role="dialog" aria-modal="true" aria-labelledby="project-dialog-title" aria-describedby="project-dialog-description">
+    <header class="project-dialog-header">
+      <div>
+        <h2 id="project-dialog-title">Create Project</h2>
+        <p id="project-dialog-description"></p>
+      </div>
+      <button class="dialog-close" type="button" aria-label="Close dialog" data-close-project-dialog>&times;</button>
+    </header>
+
+    <form class="project-form" id="project-form">
+      <div class="project-form-fields">
+        <div class="form-field">
+          <label for="project-name">Project name <span>*</span></label>
+          <input id="project-name" name="projectName" placeholder="e.g. Riverside Greens" required>
+        </div>
+        <div class="form-field">
+          <label for="project-code">Project code</label>
+          <input id="project-code" name="projectCode" placeholder="e.g. LB-K">
+        </div>
+        <div class="form-field">
+          <label>Project segment <span>*</span></label>
+          <input id="project-category" name="category" type="hidden">
+          <details class="custom-select category-select" data-select="category">
+
+            <summary><span class="select-value">Select project segment</span><span class="select-chevron" aria-hidden="true"></span></summary>
+            <div class="select-menu category-options" role="listbox" aria-label="Project segment">
+              <button type="button" class="category-option" data-value="Commercial" aria-selected="false">
+
+                <svg data-icon="category-building" width="16" height="16"></svg>
+<span><strong>Commercial</strong></span>
+                
+                <span class="category-selected-check" aria-hidden="true">
+                <svg data-icon="check-heavy" width="20" height="20"></svg>
+              </span></button>
+              <button type="button" class="category-option" data-value="Residential"><span class="option-icon">⌂</span><span><strong>Residential</strong></span></button>
+              <button type="button" class="category-option" data-value="Infrastructure"><span class="option-icon">⊗</span><span><strong>Infrastructure</strong></span></button>
+              <button type="button" class="category-option" data-value="Industrial"><span class="option-icon">▤</span><span><strong>Industrial</strong></span></button>
+              <button type="button" class="category-option" data-value="Renovation"><span class="option-icon">⚒</span><span><strong>Renovation</strong></span></button>
+            </div>
+          </details>
+        </div>
+
+        <div class="form-field">
+          <label>Project category <span>*</span></label>
+          <input id="project-tier" name="tier" type="hidden">
+          <details class="custom-select category-select tier-select" data-select="tier">
+            <summary><span class="select-value">Select project category</span><span class="select-chevron" aria-hidden="true"></span></summary>
+            <div class="select-menu category-options" role="listbox" aria-label="Project category">
+              <button type="button" class="category-option" data-value="Gold 1"><span class="option-icon tier-gold" aria-hidden="true">◆</span><span><strong>Gold 1</strong></span></button>
+              <button type="button" class="category-option" data-value="Gold 2"><span class="option-icon tier-gold" aria-hidden="true">◆</span><span><strong>Gold 2</strong></span></button>
+              <button type="button" class="category-option" data-value="Platinum"><span class="option-icon tier-platinum" aria-hidden="true">◆</span><span><strong>Platinum</strong></span></button>
+              <button type="button" class="category-option" data-value="Diamond"><span class="option-icon tier-diamond" aria-hidden="true">◇</span><span><strong>Diamond</strong></span></button>
+            </div>
+          </details>
+        </div>
+
+        <div class="form-field location-field">
+          <label for="project-location">Location <span>*</span></label>
+          <div class="location-search">
+            <svg data-icon="map-pin" width="16" height="16" aria-hidden="true"></svg>
+            <input id="project-location" name="location" type="text" required autocomplete="off" placeholder="Search a place or address" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="location-suggestions">
+          </div>
+          <input id="project-location-lat" name="locationLat" type="hidden">
+          <input id="project-location-lng" name="locationLng" type="hidden">
+          <div class="select-menu location-suggestions" id="location-suggestions" role="listbox" aria-label="Location suggestions" hidden></div>
+          <p class="location-hint" id="location-hint"></p>
+        </div>
+        <div class="form-field form-field-wide">
+          <div class="field-label-row">
+            <label for="project-description">Description</label>
+            <span class="character-count" aria-live="polite">0 / 500</span>
+          </div>
+          <textarea id="project-description" name="description" maxlength="500" placeholder="Briefly describe the project scope, objectives, and key deliverables..."></textarea>
+        </div>
+        <div class="form-field">
+          <label for="project-start-date">Start date</label>
+          <input class="visually-hidden date-value-input" id="project-start-date" name="startDate" type="date" tabindex="-1" aria-hidden="true">
+          <details class="date-picker" data-date-picker="project-start-date" data-placeholder="Select start date">
+            <summary aria-label="Choose project start date"><span class="date-picker-value">Select start date</span><svg data-icon="calendar-field" aria-hidden="true"></svg></summary>
+            <div class="calendar-panel">
+              <div class="calendar-monthbar"><strong class="calendar-month-label"></strong><div><button class="calendar-month-prev" type="button" aria-label="Previous month"><svg data-icon="caret-up" aria-hidden="true" width="14" height="14"></svg></button><button class="calendar-month-next" type="button" aria-label="Next month"><svg data-icon="caret-down" aria-hidden="true" width="14" height="14"></svg></button></div></div>
+              <div class="calendar-weekdays" aria-hidden="true"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
+              <div class="calendar-days" role="grid" aria-label="Calendar dates"></div>
+              <div class="calendar-footer"><button class="calendar-clear" type="button">Clear</button><button class="calendar-today" type="button">Today</button></div>
+            </div>
+          </details>
+        </div>
+        <div class="form-field">
+          <label for="project-target-date">Target completion date</label>
+          <input class="visually-hidden date-value-input" id="project-target-date" name="targetDate" type="date" tabindex="-1" aria-hidden="true">
+          <details class="date-picker" data-date-picker="project-target-date" data-placeholder="Select target date">
+            <summary aria-label="Choose target completion date"><span class="date-picker-value">Select target date</span><svg data-icon="calendar-field" aria-hidden="true"></svg></summary>
+            <div class="calendar-panel">
+              <div class="calendar-monthbar"><strong class="calendar-month-label"></strong><div><button class="calendar-month-prev" type="button" aria-label="Previous month"><svg data-icon="caret-up" aria-hidden="true" width="14" height="14"></svg></button><button class="calendar-month-next" type="button" aria-label="Next month"><svg data-icon="caret-down" aria-hidden="true" width="14" height="14"></svg></button></div></div>
+              <div class="calendar-weekdays" aria-hidden="true"><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span></div>
+              <div class="calendar-days" role="grid" aria-label="Calendar dates"></div>
+              <div class="calendar-footer"><button class="calendar-clear" type="button">Clear</button><button class="calendar-today" type="button">Today</button></div>
+            </div>
+          </details>
+        </div>
+        <div class="form-field">
+          <label>Project manager</label>
+          <input id="project-manager" name="manager" type="hidden">
+          <details class="custom-select searchable-select" data-select="manager">
+
+            <summary>
+              <span class="select-value">Select project manager</span>
+              <span class="select-chevron" aria-hidden="true"></span>
+            </summary>
+            <div 
+
+            class="select-menu people-options" role="listbox" aria-label="Project manager">
+              <label class="dropdown-search">
+                <span aria-hidden="true">⌕</span>
+                <input type="search" placeholder="Search project managers" aria-label="Search project managers">
+              </label>
+
+              <button 
+              type="button" class="person-option" data-value="Priya Shah">
+                <span class="person-avatar">PS</span>
+                <span>
+                  <strong>Priya Shah</strong>
+                  <small>Senior Project Manager</small>
+                </span>
+
+                <span class="option-check" aria-hidden="true">✓</span>
+              </button>
+
+              <button 
+              type="button" class="person-option" data-value="Arjun Mehta">
+              <span class="person-avatar">AM</span>
+              <span>
+                <strong>Arjun Mehta</strong>
+                <small>Project Manager · West region</small>
+              </span>
+              <span class="option-check" aria-hidden="true">✓</span>
+            </button>
+            <button type="button" class="person-option" data-value="Neha Kapoor">
+              <span class="person-avatar">NK</span>
+              <span>
+                <strong>Neha Kapoor</strong>
+                <small>Design Program Manager</small>
+              </span>
+              <span class="option-check" aria-hidden="true">✓</span>
+            </button>
+            <button type="button" class="person-option" data-value="Daniel Wu">
+              <span class="person-avatar">DW</span>
+              <span>
+                <strong>Daniel Wu</strong>
+                <small>Construction Project Manager</small>
+              </span>
+              <span class="option-check" aria-hidden="true">✓</span>
+            </button>
+            <button type="button" class="person-option" data-value="Fatima Khan">
+              <span class="person-avatar">FK</span>
+              <span>
+                <strong>Fatima Khan</strong>
+                <small>Associate Project Manager</small>
+              </span>
+              <span class="option-check" aria-hidden="true">✓</span>
+            </button>
+            <p class="no-options" hidden>No project managers found.</p>
+          </div>
+          </details>
+        </div>
+        <div class="form-field">
+          <label>Consultant</label>
+          <input id="project-consultant" name="consultant" type="hidden">
+          <details class="custom-select searchable-select" data-select="consultant">
+            <summary><span class="select-value">Select Consultant</span><span class="select-chevron" aria-hidden="true"></span></summary>
+            <div class="select-menu people-options consultant-options" role="listbox" aria-label="Consultant">
+              <label class="dropdown-search"><span aria-hidden="true">⌕</span><input type="search" placeholder="Search consultant" aria-label="Search consultant"></label>
+              <button type="button" class="person-option" data-value="Axis Structural">
+                <span class="option-icon">▦</span>
+                <span>
+                  <strong>Axis Structural</strong>
+                  <small>Structural engineering · Axis Partners</small>
+                </span>
+                <span class="option-check" aria-hidden="true">✓</span>
+              </button>
+              <button type="button" class="person-option" data-value="Studio North">
+                <span class="option-icon">◇</span>
+                <span>
+                  <strong>Studio North</strong>
+                  <small>Architecture and interiors</small>
+                </span>
+                <span class="option-check" aria-hidden="true">✓</span>
+              </button>
+              <button type="button" class="person-option" data-value="Verdant Systems">
+                <span class="option-icon">❧</span>
+                <span>
+                  <strong>Verdant Systems</strong>
+                  <small>MEP and sustainability</small>
+                </span>
+                <span class="option-check" aria-hidden="true">✓</span>
+              </button>
+              <button type="button" class="person-option" data-value="TerraScope">
+                <span class="option-icon">♧</span>
+                <span>
+                  <strong>TerraScope</strong>
+                  <small>Landscape architecture</small>
+                </span>
+                <span class="option-check" aria-hidden="true">✓</span>
+              </button>
+              <button type="button" class="person-option" data-value="CivicLine Advisory">
+                <span class="option-icon">▤</span>
+                <span>
+                  <strong>CivicLine Advisory</strong>
+                  <small>Planning and approvals</small>
+                </span>
+                <span class="option-check" aria-hidden="true">✓</span>
+              </button>
+              <p class="no-options" hidden>No consultants found.</p>
+            </div>
+          </details>
+        </div>
+        <fieldset class="form-field form-field-wide team-field">
+          <legend>Team members</legend>
+          <details class="team-picker">
+            <summary>
+              <span class="team-search-icon" aria-hidden="true">⌕</span>
+              <span class="team-summary-label">Search team members</span>
+              <span class="select-chevron" aria-hidden="true"></span>
+            </summary>
+            <div class="team-options">
+              <div class="team-options-heading">
+                <strong class="team-selection-count">3 members selected</strong>
+                <span class="team-selection-fraction">3 / 6</span>
+                <button class="clear-team-selection" type="button">Clear selection</button>
+              </div>
+              <label class="colleague-search">
+                <svg data-icon="search-lg" aria-hidden="true"></svg>
+                <input class="colleague-search-input" type="search" aria-label="Search colleagues" placeholder="Search colleagues...">
+              </label>
+              <label class="team-member-option"><input type="checkbox" name="teamMembers" value="priya" checked><span class="member-avatar">PS</span><span class="member-copy"><strong>Priya Shah</strong><small>Senior Project Manager</small></span></label>
+              <label class="team-member-option"><input type="checkbox" name="teamMembers" value="arjun" checked><span class="member-avatar avatar-cocoa">AM</span><span class="member-copy"><strong>Arjun Mehta</strong><small>Project Manager · West region</small></span></label>
+              <label class="team-member-option"><input type="checkbox" name="teamMembers" value="neha" checked><span class="member-avatar avatar-sand">NK</span><span class="member-copy"><strong>Neha Kapoor</strong><small>Design Program Manager</small></span></label>
+              <label class="team-member-option"><input type="checkbox" name="teamMembers" value="daniel"><span class="member-avatar avatar-cocoa">DW</span><span class="member-copy"><strong>Daniel Wu</strong><small>Construction Project Manager</small></span></label>
+              <label class="team-member-option"><input type="checkbox" name="teamMembers" value="fatima"><span class="member-avatar avatar-sand">FK</span><span class="member-copy"><strong>Fatima Khan</strong><small>Associate Project Manager</small></span></label>
+              <label class="team-member-option"><input type="checkbox" name="teamMembers" value="riya"><span class="member-avatar">RS</span><span class="member-copy"><strong>Riya Shah</strong><small>MEP Designer</small></span></label>
+              <p class="no-colleagues" hidden>No colleagues found.</p>
+              <div class="team-options-footer"><span>Team access can be changed later.</span><button class="team-done-btn" type="button">Done</button></div>
+            </div>
+          </details>
+        </fieldset>
+        <div class="form-field">
+          <label for="project-attachment">Attachment</label>
+          <label class="attachment-dropzone" for="project-attachment">
+            <span aria-hidden="true">⇧</span>
+            <span class="attachment-prompt">Drop an area statement or design brief here</span>
+            <span class="attachment-filename" aria-live="polite"></span>
+          </label>
+          <input class="visually-hidden" id="project-attachment" name="attachment" type="file" accept=".pdf,.doc,.docx,.xls,.xlsx,.png,.jpg,.jpeg">
+        </div>
+      </div>
+      <footer class="project-dialog-footer">
+        <p class="required-note"><span aria-hidden="true">ⓘ</span> Fields marked with * are required</p>
+        <div class="dialog-actions">
+          <button class="cancel-project-btn" type="button" data-close-project-dialog>Cancel</button>
+          <button class="submit-project-btn" type="submit"><span aria-hidden="true">+</span> Create Project</button>
+        </div>
+      </footer>
+    </form>
+  </section>
+</div>
+
+<div class="dialog-backdrop" id="task-dialog-backdrop" hidden>
+  <section class="task-dialog" role="dialog" aria-modal="true" aria-labelledby="task-dialog-title">
+    <header class="task-dialog-header">
+      <div>
+        <h2 id="task-dialog-title">New Task</h2>
+        <p class="required-note">
+  <svg data-icon="info-circle" width="14" height="14"></svg>
+  Fields marked with * are required
+</p>
+      </div>
+      <button class="dialog-close" type="button" aria-label="Close" data-close-task-dialog>&times;</button>
+    </header>
+
+    <form class="task-form" id="task-form">
+      <div class="task-form-fields">
+        <div class="form-field">
+          <label for="task-title">Title <span>*</span></label>
+          <input id="task-title" placeholder="Enter Task title (e.g., Issue Fire Tender)" required>
+        </div>
+
+        <div class="form-field">
+          <label for="task-description">Description</label>
+          <textarea id="task-description" placeholder="Add detailed instruction, location notes, or context ..."></textarea>
+        </div>
+
+        <div class="task-row">
+          <div class="form-field">
+            <label for="task-priority">Priority</label>
+            <select id="task-priority">
+              <option>Low</option>
+              <option selected>Medium</option>
+              <option>High</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="task-discipline">Discipline</label>
+            <select id="task-discipline">
+              <option selected>General</option>
+              <option>Plumbing</option>
+              <option>Drainage</option>
+              <option>HVAC</option>
+              <option>Electrical</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="task-row">
+          <div class="form-field">
+            <label for="task-date">Target Date</label>
+            <input id="task-date" type="date" data-placeholder="Select target date">
+          </div>
+          <div class="form-field">
+            <label for="task-attachment">Attachment</label>
+            <label class="task-upload" for="task-attachment">
+              <span class="task-upload-text" data-default-label="Upload Files">Upload Files</span>
+              <svg data-icon="upload" width="18" height="18" aria-hidden="true"></svg>
+            </label>
+            <input class="visually-hidden" id="task-attachment" type="file">
+          </div>
+        </div>
+
+        <div class="form-field">
+          <div class="field-label-row">
+            <label for="task-assignee">Assign To <span>*</span></label>
+          </div>
+          <button class="assign-me" type="button">Assign to me</button>
+          <input id="task-assignee" type="search" placeholder="Search colleagues.." required>
+        </div>
+      </div>
+
+      <footer class="task-dialog-footer">
+        <button class="submit-project-btn task-submit" type="submit">Create Task</button>
+        <button class="task-discard" type="button" data-close-task-dialog>Discard</button>
+      </footer>
+    </form>
+  </section>
+</div>
+
+<div class="dialog-backdrop" id="notes-dialog-backdrop" hidden>
+  <section class="notes-dialog" role="dialog" aria-modal="true" aria-labelledby="notes-dialog-title">
+    <header class="notes-dialog-header">
+      <div>
+        <h2 id="notes-dialog-title">Minutes of meeting</h2>
+        <p>Saved here on this meeting — every meeting keeps its own record.</p>
+      </div>
+      <button class="dialog-close" type="button" aria-label="Close" data-close-notes-dialog>&times;</button>
+    </header>
+
+    <form class="notes-form" id="notes-form">
+      <div class="notes-fields">
+
+        <div class="notes-row">
+          <div class="form-field">
+            <label for="notes-subject">Meeting Subject</label>
+            <input id="notes-subject" placeholder="e.g. Elanor Coordination Meeting">
+          </div>
+          <div class="form-field">
+            <label for="notes-date">Date</label>
+            <input id="notes-date" type="date" data-placeholder="Select meeting date">
+          </div>
+        </div>
+
+        <div class="form-field">
+          <span class="notes-label">Generate Via</span>
+          <div class="notes-generate">
+            <button class="notes-option" type="button" data-pick-recording>
+              <svg data-icon="audio-waveform" width="16" height="16" aria-hidden="true"></svg>
+              <span class="notes-option-label">Existing Recording</span>
+            </button>
+            <input class="visually-hidden" id="notes-recording" type="file" accept="audio/*,video/*" tabindex="-1" aria-hidden="true">
+            <label class="notes-upload" for="notes-file">
+              <span><strong>Upload Files</strong><small>Pdf, Word, JPG, PNG, Excel</small></span>
+              <svg data-icon="upload" width="20" height="20" aria-hidden="true"></svg>
+            </label>
+            <input class="visually-hidden" id="notes-file" type="file" accept=".pdf,.doc,.docx,.xls,.xlsx,.png,.jpg,.jpeg">
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="notes-text">Minutes / points discussed</label>
+          <textarea id="notes-text" placeholder="Decisions, action items, who owns what, follow-up date..."></textarea>
+          <div class="notes-ai-row">
+            <button class="notes-ai-btn" type="button" data-summarize-notes>
+              <svg data-icon="sparkles" width="16" height="16" aria-hidden="true"></svg>
+              Summarize with AI
+            </button>
+            <span class="notes-count" id="notes-count">0 characters</span>
+          </div>
+        </div>
+
+      </div>
+
+      <footer class="notes-footer">
+        <div class="notes-meta">
+          <p>Recorded by: <span>Apurva Bhadange</span></p>
+          <div class="notes-notify">
+            <label class="custom-checkbox">
+              <input class="task-checkbox" id="notes-notify" type="checkbox">
+              <span class="checkbox-box"></span>
+            </label>
+            <label for="notes-notify">Notify meeting participants via email</label>
+          </div>
+        </div>
+        <div class="dialog-actions">
+          <button class="cancel-project-btn" type="button" data-close-notes-dialog>Cancel</button>
+          <button class="submit-project-btn" type="submit">Save Changes</button>
+        </div>
+      </footer>
+    </form>
+  </section>
+</div>
+
+<div class="drawer-backdrop" id="task-drawer-backdrop" hidden>
+  <aside class="task-drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+
+    <header class="drawer-header">
+  <h2>Task Details</h2>
+  <div class="drawer-more-wrap">
+  <button class="drawer-more-btn" type="button" aria-label="More options" aria-haspopup="menu" aria-expanded="false" aria-controls="drawer-more-menu">
+    <svg data-icon="more-dots" width="16" height="16" aria-hidden="true"></svg>
+  </button>
+    <div class="role-switch-menu drawer-more-menu" id="drawer-more-menu" role="menu" aria-label="Task options" hidden>
+      <button type="button" role="menuitem" data-drawer-action="copy">Copy task ID</button>
+      <button type="button" role="menuitem" data-drawer-action="duplicate">Duplicate task</button>
+      <button type="button" role="menuitem" data-drawer-action="delete">Delete task</button>
+    </div>
+  </div>
+  <button class="drawer-close" type="button" aria-label="Close" data-close-drawer>
+    <svg data-icon="close" width="16" height="16" aria-hidden="true"></svg>
+  </button>
+</header>
+
+    <div class="drawer-body">
+      <p class="drawer-meta" id="drawer-meta"></p>
+      <h3 class="drawer-title" id="drawer-title"></h3>
+      <p class="drawer-description" id="drawer-description"></p>
+
+      <div class="drawer-detail-grid">
+        <div class="drawer-detail"><span>Status</span><details class="drawer-custom-select" data-drawer-select="status">
+          <summary aria-label="Select task status"><span class="drawer-selected-dot"></span><span class="drawer-selected-value">In Progress</span><span class="drawer-chevron" aria-hidden="true"></span></summary>
+          <div class="drawer-select-options" role="listbox" aria-label="Task status">
+            <button class="drawer-select-option" type="button" role="option" data-value="Not Started" data-color="status-not-started"><i></i><span>Not Started</span><span class="drawer-option-check" aria-hidden="true">✓</span></button>
+            <button class="drawer-select-option" type="button" role="option" data-value="In Progress" data-color="status-in-progress"><i></i><span>In Progress</span><span class="drawer-option-check" aria-hidden="true">✓</span></button>
+            <button class="drawer-select-option" type="button" role="option" data-value="In Review" data-color="status-in-review"><i></i><span>In Review</span><span class="drawer-option-check" aria-hidden="true">✓</span></button>
+            <button class="drawer-select-option" type="button" role="option" data-value="On Hold" data-color="status-on-hold"><i></i><span>On Hold</span><span class="drawer-option-check" aria-hidden="true">✓</span></button>
+            <button class="drawer-select-option" type="button" role="option" data-value="Completed" data-color="status-completed"><i></i><span>Completed</span><span class="drawer-option-check" aria-hidden="true">✓</span></button>
+          </div>
+        </details></div>
+        <div class="drawer-detail"><span>Priority</span><details class="drawer-custom-select" data-drawer-select="priority">
+          <summary aria-label="Select task priority"><span class="drawer-selected-dot"></span><span class="drawer-selected-value">Medium</span><span class="drawer-chevron" aria-hidden="true"></span></summary>
+          <div class="drawer-select-options" role="listbox" aria-label="Task priority">
+            <button class="drawer-select-option" type="button" role="option" data-value="High" data-color="priority-high"><i></i><span>High</span><span class="drawer-option-check" aria-hidden="true">✓</span></button>
+            <button class="drawer-select-option" type="button" role="option" data-value="Medium" data-color="priority-medium"><i></i><span>Medium</span><span class="drawer-option-check" aria-hidden="true">✓</span></button>
+            <button class="drawer-select-option" type="button" role="option" data-value="Low" data-color="priority-low"><i></i><span>Low</span><span class="drawer-option-check" aria-hidden="true">✓</span></button>
+          </div>
+        </details></div>
+        <label class="drawer-detail"><span>Target date</span><span class="drawer-control date-control"><input id="drawer-due-date" type="date" aria-label="Task target date"></span></label>
+        <label class="drawer-detail"><span>Discipline</span><span class="drawer-control"><select id="drawer-discipline" aria-label="Task discipline"><option>General</option><option>Plumbing</option><option>Coordinated</option><option>Mechanical</option><option>Electrical</option><option>HVAC</option></select><span class="drawer-chevron" aria-hidden="true"></span></span></label>
+      </div>
+
+      <section class="drawer-section">
+        <h4>Dependency</h4>
+        <div class="drawer-item-list" id="drawer-dependency-list"><p class="drawer-empty">No dependencies recorded.</p></div>
+        <form class="drawer-inline-form" id="drawer-dependency-form" hidden>
+          <input id="drawer-dependency-input" type="text" placeholder="Enter dependency" aria-label="Task dependency">
+          <button type="submit">Add</button>
+          <button type="button" class="drawer-inline-cancel" data-cancel-dependency>Cancel</button>
+        </form>
+        <button class="drawer-add-action" type="button" data-add-dependency>+ Add dependency</button>
+      </section>
+
+      <section class="drawer-section">
+        <h4>Attachments</h4>
+        <div class="drawer-item-list" id="drawer-attachment-list"><p class="drawer-empty">No attachments.</p></div>
+        <input class="visually-hidden" id="drawer-attachment-input" type="file" multiple>
+        <button class="drawer-add-action" type="button" data-add-attachment>+ Add attachment</button>
+      </section>
+
+      <section class="drawer-section">
+        <h4>Activity</h4>
+        <div class="drawer-activity-list" id="drawer-activity-list"></div>
+      </section>
+
+      <section class="drawer-section">
+        <h4>Comments</h4>
+        <div class="drawer-comments" id="drawer-comments-list"><p class="drawer-empty">No comments yet.</p></div>
+        <form class="drawer-comment-form" id="drawer-comment-form">
+          <input id="drawer-comment-input" type="text" placeholder="Add a comment..." aria-label="Add a comment" autocomplete="off">
+          <button type="submit" aria-label="Send comment">
+            <svg data-icon="send-comment" width="18" height="18" aria-hidden="true"></svg>
+          </button>
+        </form>
+      </section>
+    </div>
+
+    <footer class="drawer-footer">
+      <button class="submit-project-btn drawer-save" type="button">Save Changes</button>
+      <button class="task-discard" type="button" data-close-drawer>Discard</button>
+    </footer>
+
+  </aside>
+</div>
+
+<!-- Shared dialog for Remind / Respond / Add Deliverable / Transmittal / Add Member / Schedule Meeting / previews -->
+<div class="dialog-backdrop" id="action-dialog-backdrop" hidden>
+  <section class="task-dialog action-dialog" role="dialog" aria-modal="true" aria-labelledby="action-dialog-title">
+    <header class="task-dialog-header">
+      <div>
+        <h2 id="action-dialog-title"></h2>
+        <p class="action-dialog-subtitle" id="action-dialog-subtitle"></p>
+      </div>
+      <button class="dialog-close" type="button" aria-label="Close" data-close-action-dialog>&times;</button>
+    </header>
+    <form class="task-form" id="action-form" novalidate>
+      <div class="task-form-fields" id="action-form-fields"></div>
+      <footer class="task-dialog-footer">
+        <button class="submit-project-btn task-submit" type="submit" id="action-submit"></button>
+        <button class="task-discard" type="button" data-close-action-dialog id="action-cancel">Cancel</button>
+      </footer>
+    </form>
+  </section>
+</div>
+
+<!-- Details drawer shared by RFIs, deliverables and transmittals -->
+<div class="drawer-backdrop" id="record-drawer-backdrop" hidden>
+  <aside class="task-drawer record-drawer" role="dialog" aria-modal="true" aria-labelledby="record-drawer-heading">
+    <header class="drawer-header">
+      <h2 id="record-drawer-heading">Details</h2>
+      <button class="drawer-close" type="button" aria-label="Close" data-close-record-drawer>
+        <svg data-icon="close" width="16" height="16" aria-hidden="true"></svg>
+      </button>
+    </header>
+    <div class="drawer-body" id="record-drawer-body"></div>
+    <input class="visually-hidden" id="record-attachment-input" type="file" multiple tabindex="-1" aria-hidden="true">
+    <footer class="drawer-footer" id="record-drawer-footer">
+      <button class="submit-project-btn drawer-save" type="button" data-record-save>Save Changes</button>
+      <button class="task-discard" type="button" data-close-record-drawer>Discard</button>
+    </footer>
+  </aside>
+</div>
+
+<!-- AI assistant drawer -->
+<div class="drawer-backdrop" id="assistant-backdrop" hidden>
+  <aside class="task-drawer assistant-drawer" role="dialog" aria-modal="true" aria-labelledby="assistant-title">
+    <header class="drawer-header">
+      <h2 id="assistant-title">REOS Assistant</h2>
+      <button class="drawer-close" type="button" aria-label="Close" data-close-assistant>
+        <svg data-icon="close" width="16" height="16" aria-hidden="true"></svg>
+      </button>
+    </header>
+    <div class="drawer-body assistant-body">
+      <div class="assistant-messages" id="assistant-messages" aria-live="polite"></div>
+      <div class="assistant-suggestions" id="assistant-suggestions">
+        <button class="task-priority-filter" type="button" data-assistant-prompt="What's overdue?">What's overdue?</button>
+        <button class="task-priority-filter" type="button" data-assistant-prompt="Summarise my day">Summarise my day</button>
+        <button class="task-priority-filter" type="button" data-assistant-prompt="Which RFIs are blocking?">Which RFIs are blocking?</button>
+        <button class="task-priority-filter" type="button" data-assistant-prompt="When is my next meeting?">When is my next meeting?</button>
+      </div>
+    </div>
+    <footer class="drawer-footer assistant-footer">
+      <form class="drawer-comment-form" id="assistant-form">
+        <input id="assistant-input" type="text" placeholder="Ask about tasks, RFIs, deliverables, meetings..." aria-label="Ask the assistant" autocomplete="off">
+        <button type="submit" aria-label="Send">
+          <svg data-icon="send-comment" width="18" height="18" aria-hidden="true"></svg>
+        </button>
+      </form>
+      <p class="assistant-note">Answers come from the data on this page.</p>
+    </footer>
+  </aside>
+</div>
+
+<section class="open-items-page" id="open-items-page" hidden>
+  <header class="page-intro"><div><h1 class="page-intro-title">Open Items</h1><p class="page-intro-text">Deliverables, RFIs and tasks that still need your action.</p></div></header>
+  <nav class="project-nav-bar" aria-label="Open items sections">
+    <div class="project-nav-tabs">
+      <button class="project-nav-tab" type="button" data-open-tab="deliverables">
+        Deliverables <span class="tab-count">03</span>
+      </button>
+      <button class="project-nav-tab" type="button" data-open-tab="rfis">
+        RFIs <span class="tab-count">06</span>
+      </button>
+      <button class="project-nav-tab" type="button" data-open-tab="tasks">
+        Tasks <span class="tab-count">05</span>
+      </button>
+    </div>
+  </nav>
+
+  <section data-open-panel="deliverables" hidden><h2>Deliverables</h2></section>
+  <section data-open-panel="rfis" hidden><h2>RFIs</h2></section>
+  <section data-open-panel="tasks" hidden><h2>Tasks</h2></section>
+</section>
+
+<div class="dialog-backdrop" id="daily-dialog-backdrop" hidden>
+  <section class="daily-dialog" role="dialog" aria-modal="true" aria-labelledby="daily-dialog-title">
+    <header class="daily-header">
+      <div>
+        <h2 id="daily-dialog-title">Quick Task Entry</h2>
+        <p id="daily-date"></p>
+      </div>
+      <button class="daily-close" type="button" id="daily-close" aria-label="Close quick task entry">&times;</button>
+    </header>
+    <div class="daily-bar" id="daily-bar" hidden>
+      <label class="daily-selectall"><input type="checkbox" id="daily-select-all"><span>Select All</span></label>
+      <div class="daily-bar-actions">
+        <button class="daily-add-btn" type="button" id="daily-add-more">+ Add more</button>
+        <button class="daily-move-btn" type="button" id="daily-bulk-move" hidden>+ Move to Taskboard</button>
+        <button class="daily-add-btn" type="button" id="daily-bulk-done" hidden>&#10003; Mark as Done</button>
+      </div>
+    </div>
+    <ul class="daily-list" id="daily-list"></ul>
+    <form class="daily-add" id="daily-form">
+      <label class="visually-hidden" for="daily-input">Add an item to today's list</label>
+      <input id="daily-input" type="text" placeholder="What do you need to finish today?" autocomplete="off">
+      <label class="visually-hidden" for="daily-project">Project</label>
+      <select id="daily-project"><option value="">Select Project</option></select>
+      <button class="daily-add-btn" type="submit" id="daily-submit">Add</button>
+    </form>
+    <p class="daily-hint" id="daily-hint">Press Enter to add. Unfinished items carry over to tomorrow.</p>
+    <footer class="daily-footer">
+      <button class="daily-photo-btn" type="button" disabled title="Coming soon">Upload handwritten note (coming soon)</button>
+      <button class="daily-clear" type="button" id="daily-clear">Clear All</button>
+    </footer>
+  </section>
+</div>
+
+<div class="dashboard-view" id="dashboard-view">
+<section class="greeting-card">
+  <div class="greeting-text">
+    <h1>Good Morning, Apurva!</h1>
+    <p id="greeting-summary"></p>
+  </div>
+  <div class="greeting-actions">
+    <label class="visually-hidden" for="dash-project-filter">Show projects</label>
+    <select class="dash-project-filter" id="dash-project-filter"><option value="">All Projects</option></select>
+    <button class="daily-open-btn" type="button" id="daily-open-btn">
+      <svg data-icon="plus-thin" width="16" height="16" aria-hidden="true"></svg>
+      
+      Daily Task List
+    </button>
+  </div>
+</section>
+
+<!--RFIs Table-->
+<section class="panel" id="dashboard-rfi-panel">
+  <div class="panel-header">
+    <h2>Pending RFIs - Critical</h2>
+    <span class="panel-count" id="dashboard-rfi-count">3 Pending</span>
+  </div>
+
+  <table class="data-table" id="rfiTable" data-project-col="2" data-empty="No pending RFIs for this project.">
+  <thead>
+    <tr>
+      <th>RFI ID</th>
+      <th>Query</th>
+      <th data-hf="dash-rfi-project">Project Name</th>
+      <th data-hf="dash-rfi-impact">Impact</th>
+      <th data-hf="dash-rfi-discipline">Discipline</th>
+      <th data-hf="dash-rfi-by">Raised By</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>RFI-209</td>
+      <td><strong>MCB Rating Clarification</strong><span class="badge blocking">Blocking</span><span class="row-subtitle">Received 2h ago · <svg data-icon="paperclip" width="12" height="12" aria-hidden="true"></svg> 2 files</span></td>
+      <td>Skyline One • Tower B</td>
+      <td>None</td>
+      <td>Electrical</td>
+      <td>Sachin Patil</td>
+      <td><button class="remind-btn" type="button" data-row-action="respond"><svg data-icon="send-plane" width="14" height="14" aria-hidden="true"></svg>Respond</button></td>
+    </tr>
+    <tr>
+      <td>RFI-210</td>
+      <td><strong>Issue Revised Infra Fire Layout</strong><span class="row-subtitle">Received 2h ago · <svg data-icon="paperclip" width="12" height="12" aria-hidden="true"></svg> 2 files</span></td>
+      <td>Amberwood Residences • Wing 25</td>
+      <td>None</td>
+      <td>Electrical</td>
+      <td>Sachin Patil</td>
+      <td><button class="remind-btn" type="button" data-row-action="respond"><svg data-icon="send-plane" width="14" height="14" aria-hidden="true"></svg>Respond</button></td>
+    </tr>
+    <tr>
+      <td>RFI-211</td>
+      <td><strong>MCB Rating Clarification</strong><span class="badge blocking">Blocking</span><span class="row-subtitle">Received 2h ago · <svg data-icon="paperclip" width="12" height="12" aria-hidden="true"></svg> 2 files</span></td>
+      <td>Lakeshore • Phase 2</td>
+      <td>None</td>
+      <td>Electrical</td>
+      <td>Sachin Patil</td>
+      <td><button class="remind-btn" type="button" data-row-action="respond"><svg data-icon="send-plane" width="14" height="14" aria-hidden="true"></svg>Respond</button></td>
+    </tr>
+  </tbody>
+</table>
+
+  <a href="#open-items/rfis" class="view-all" data-route="open-items/rfis">View All RFIs ↗</a>
+</section>
+
+<section class="panel" id="dashboard-deliverables-panel">
+  <div class="panel-header">
+    <h2>Project Deliverables - Today & Overdue</h2>
+    <div class="panel-actions">
+      <button class="add-btn" type="button" aria-label="Add deliverable" data-project-action="add-deliverable">
+        <svg data-icon="plus-add" width="16" height="16" aria-hidden="true"></svg>
+      </button>
+      <span class="panel-count" aria-live="polite">0/3</span>
+    </div>
+  </div>
+
+  <div class="deliverables-scroll">
+    <table class="data-table aligned-table" id="deliverables-table" data-project-col="2" data-empty="No deliverables overdue or due today for this project.">
+  <colgroup>
+    <col class="col-check"><col class="col-main"><col class="col-project"><col class="col-status"><col class="col-due"><col class="col-action">
+  </colgroup>
+      <thead>
+        <tr>
+          <th scope="col" aria-label="Complete"></th>
+          <th scope="col">Document Name</th>
+          <th scope="col" data-hf="dash-deliv-project">Project Name</th>
+          <th scope="col" data-hf="dash-deliv-status">Status</th>
+          <th scope="col">Due Date</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><label class="custom-checkbox"><input class="task-checkbox" type="checkbox" aria-label="Complete Issue Fire Tender Pacakage"><span class="checkbox-box"></span></label></td>
+          <td>
+            <strong>Issue Fire Tender Pacakage</strong><span class="badge high">High</span>
+            <span class="row-subtitle"><span class="waiting-tag">
+              <svg data-icon="waiting-alert" width="12" height="12" aria-hidden="true"></svg>
+Waiting on MEP Consultant</span></span>
+          </td>
+          <td>Skyline One • Tower B</td>
+          <td><span class="task-state delayed">Delayed</span></td>
+          <td><span class="status overdue">Overdue</span></td>
+          <td><button class="remind-btn" type="button" data-row-action="remind"><svg data-icon="send-plane" width="14" height="14" aria-hidden="true"></svg>Remind</button></td>
+        </tr>
+        <tr>
+          <td><label class="custom-checkbox"><input class="task-checkbox" type="checkbox" aria-label="Complete Issue Coordinated Typical Floor GFC"><span class="checkbox-box"></span></label></td>
+          <td><strong>Issue Coordinated Typical Floor GFC</strong><span class="badge medium">Medium</span></td>
+          <td>Amberwood Residences • Wing 25</td>
+          <td><span class="task-state in-progress">In Progress</span></td>
+          <td><span class="status due-today">Due Today</span></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><label class="custom-checkbox"><input class="task-checkbox" type="checkbox" aria-label="Complete Issue Revised Infra Fire Layout"><span class="checkbox-box"></span></label></td>
+          <td>
+            <strong>Issue Revised Infra Fire Layout</strong><span class="badge medium">Medium</span>
+            <span class="row-subtitle"><span class="waiting-tag"><svg data-icon="waiting-alert" width="12" height="12" aria-hidden="true"></svg>Waiting on Architect</span></span>
+          </td>
+          <td>Lakeshore • Phase 2</td>
+          <td><span class="task-state pending">Pending</span></td>
+          <td><span class="status due-tomorrow">Due Tomorrow</span></td>
+          <td><button class="remind-btn" type="button" data-row-action="remind"><svg data-icon="send-plane" width="14" height="14" aria-hidden="true"></svg>Remind</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a href="#open-items/deliverables" class="view-all" data-route="open-items/deliverables">View All Deliverables ↗</a>
+</section>
+
+<section class="panel" hidden>
+  <section class="panel-header">
+    <h2>Urgent Tasks - Today & Overdue</h2>
+    <div class="panel-actions">
+    <button class="add-btn" type="button" aria-label="Add task">
+        <svg data-icon="plus-add" width="16" height="16"></svg>
+    </button>
+    <span class="panel-count" aria-live="polite">0/3</span>
+  </div>
+  </section>
+
+  <div class="table-scroll">
+ <table class="data-table" id="tasks-table">
+  
+    <thead>
+      <tr>
+        <th scope="col" aria-label="Complete"></th>
+        <th scope="col">ID</th>
+        <th scope="col">Task</th>
+        <th scope="col">Project Name</th>
+        <th scope="col">Status</th>
+        <th scope="col">Due Date</th>
+        <th scope="col">Assigned By</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><label class="custom-checkbox"><input class="task-checkbox" type="checkbox" aria-label="Complete Review Plumbing Schematics"><span class="checkbox-box"></span></label></td>
+      <td>T-12</td>
+      <td><strong>Review Plumbing Schematics</strong><span class="badge high">High</span><span class="row-subtitle">Plumbing</span></td>
+      <td class="cell-project">Skyline One • Wing 25</td>
+      <td><span class="task-state in-progress">In Progress</span></td>
+      <td><span class="status overdue">Overdue</span></td>
+      <td>Apurva Bhadange</td>
+      <td><button class="comment-btn" type="button"><svg data-icon="comment" width="14" height="14" aria-hidden="true"></svg>Comment</button></td>
+    </tr>
+    <tr>
+      <td><label class="custom-checkbox"><input class="task-checkbox" type="checkbox" aria-label="Complete Approved Revised Typical Floor1"><span class="checkbox-box"></span></label></td>
+      <td>T-13</td>
+      <td><strong>Approved Revised Typical Floor1</strong><span class="badge high">High</span><span class="row-subtitle">Coordinated</span></td>
+      <td class="cell-project">Skyline One • Wing 25</td>
+      <td><span class="task-state in-progress">In Progress</span></td>
+      <td><span class="status due-today">Due Today</span></td>
+      <td>Apurva Bhadange</td>
+      <td><button class="comment-btn" type="button"><svg data-icon="comment" width="14" height="14" aria-hidden="true"></svg>Comment</button></td>
+    </tr>
+    <tr data-task-status="Not Started">
+      <td><label class="custom-checkbox"><input class="task-checkbox" type="checkbox" aria-label="Complete Approve Revised Typical Floor"><span class="checkbox-box"></span></label></td>
+      <td>T-15</td>
+      <td><strong>Approve Revised Typical Floor</strong><span class="badge low">Low</span><span class="row-subtitle">Firefighting · <span class="waiting-tag">Waiting on MEP Consultant</span></span></td>
+      <td class="cell-project">Skyline One • Wing 25</td>
+      <td><span class="task-state pending">Pending</span></td>
+      <td><span class="status due-date">Wed, Sept 05</span></td>
+      <td>Apurva Bhadange</td>
+      <td><button class="remind-btn" type="button" data-row-action="remind"><svg data-icon="send-plane" width="14" height="14" aria-hidden="true"></svg>Remind</button></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<a href="#open-items/tasks" class="view-all" data-route="open-items/tasks">View All Tasks <svg data-icon="arrow-up-right" width="16" height="16"></svg></a>
+</section>
+
+</div>
+
+<section class="projects-view" id="projects-view" hidden>
+  <header class="page-intro"><div><h1 class="page-intro-title">Projects</h1><p class="page-intro-text">Every project you can open, with its status, progress and next milestone.</p></div>
+    <div class="page-intro-actions">
+    <button class="create-project-btn" type="button" data-open-project-dialog aria-label="Create Project">
+      <span aria-hidden="true">
+        <svg data-icon="plus-create-project" width="16" height="16"></svg>
+      </span>
+      <span class="create-project-label">Create Project</span>
+    </button>
+    </div></header>
+  <div class="project-toolbar">
+    <label class="project-search">
+      <svg data-icon="search" aria-hidden="true"></svg>
+      <input id="project-search" type="search" aria-label="Search projects" placeholder="Search projects">
+    </label>
+    <div class="project-toolbar-actions">
+      <label class="project-status-filter">
+        <span class="visually-hidden">Filter by status</span>
+        <select id="project-status-filter">
+          <option value="all">Filter by Status</option>
+          <option value="on-track">On Track</option>
+          <option value="on-hold">On Hold</option>
+        </select>
+      </label>
+    </div>
+  </div>
+
+  <h2 class="project-group-title">Needs your attention <small>3 of your 6 projects</small></h2>
+  <div class="project-grid" id="project-grid">
+    <article class="project-card" data-project-card data-status="on-track" data-health="delayed" data-attn="1">
+      <div class="project-card-top"><span class="project-building-icon" aria-hidden="true">
+        <svg data-icon="building" width="24" height="24"></svg>
+      </span><span class="project-state delayed"><i></i> Delayed</span></div>
+      <div class="project-card-title"><h2>Skyline One</h2><p class="project-meta">LO-B <span>•</span> Residential Development <span>•</span> 3 Towers</p></div>
+      <div class="project-card-progress"><div class="project-progress-label"><span>Project Progress</span><strong>48%</strong></div><div class="project-progress"><span style="width:48%"></span></div></div>
+      <div class="project-card-deliverables"><div class="project-due"><strong>9</strong><span>deliverables due in the next 30 days</span></div>
+      <div class="project-metrics"><span><svg data-icon="check-circle" width="12" height="12" aria-hidden="true"></svg><strong>2</strong> RFIs</span><span><svg data-icon="check-circle" width="12" height="12" aria-hidden="true"></svg><strong>3</strong> GFCs</span><span><svg data-icon="check-circle" width="12" height="12" aria-hidden="true"></svg><strong>1</strong> Tenders</span></div></div>
+      <div class="project-milestone"><span class="milestone-icon" aria-hidden="true"><svg data-icon="calendar" width="12" height="12" aria-hidden="true"></svg></span><span><small>Next Milestone</small><strong>Fire tender package <b>— Oct 31</b></strong></span></div>
+      <p class="project-updated">Updated 1h ago</p>
+    </article>
+    <article class="project-card" data-project-card data-status="on-track" data-health="at-risk" data-attn="1">
+      <div class="project-card-top"><span class="project-building-icon" aria-hidden="true">
+        <svg data-icon="building" width="24" height="24"></svg>
+      </span><span class="project-state at-risk"><i></i> At Risk</span></div>
+      <div class="project-card-title"><h2>Amberwood Residences</h2><p class="project-meta">LA-W <span>•</span> Residential Development <span>•</span> 2 Wings</p></div>
+      <div class="project-card-progress"><div class="project-progress-label"><span>Project Progress</span><strong>62%</strong></div><div class="project-progress"><span style="width:62%"></span></div></div>
+      <div class="project-card-deliverables"><div class="project-due"><strong>7</strong><span>deliverables due in the next 30 days</span></div>
+      <div class="project-metrics"><span><svg data-icon="check-circle" width="12" height="12" aria-hidden="true"></svg><strong>1</strong> RFIs</span><span><svg data-icon="check-circle" width="12" height="12" aria-hidden="true"></svg><strong>4</strong> GFCs</span><span><svg data-icon="check-circle" width="12" height="12" aria-hidden="true"></svg><strong>0</strong> Tenders</span></div></div>
+      <div class="project-milestone"><span class="milestone-icon" aria-hidden="true"><svg data-icon="calendar" width="12" height="12" aria-hidden="true"></svg></span><span><small>Next Milestone</small><strong>Typical floor GFC <b>— Nov 2</b></strong></span></div>
+      <p class="project-updated">Updated 2h ago</p>
+    </article>
+    <article class="project-card" data-project-card data-status="on-track" data-health="at-risk" data-attn="1">
+      <div class="project-card-top"><span class="project-building-icon" aria-hidden="true">
+        <svg data-icon="building" width="24" height="24"></svg>
+      </span><span class="project-state at-risk"><i></i> At Risk</span></div>
+      <div class="project-card-title"><h2>Lakeshore Gold-3</h2><p class="project-meta">LG-3 <span>•</span> Residential Development <span>•</span> 3 Towers 1 Podium</p></div>
+      <div class="project-card-progress"><div class="project-progress-label"><span>Project Progress</span><strong>58%</strong></div><div class="project-progress"><span style="width:58%"></span></div></div>
+      <div class="project-card-deliverables"><div class="project-due"><strong>8</strong><span>deliverables due in the next 30 days</span></div>
+      <div class="project-metrics"><span><svg data-icon="check-circle" width="12" height="12" aria-hidden="true"></svg><strong>3</strong> RFIs</span><span><svg data-icon="check-circle" width="12" height="12" aria-hidden="true"></svg><strong>4</strong> GFCs</span><span><svg data-icon="check-circle" width="12" height="12" aria-hidden="true"></svg><strong>1</strong> Tenders</span></div></div>
+      <div class="project-milestone"><span class="milestone-icon" aria-hidden="true"><svg data-icon="calendar" width="12" height="12" aria-hidden="true"></svg></span><span><small>Next Milestone</small><strong>MEP coordination GFC <b>— Nov 4</b></strong></span></div>
+      <p class="project-updated">Updated 3h ago</p>
+    </article>
+  </div>
+  <h2 class="project-group-title">Other projects</h2>
+  <div class="project-grid" id="project-grid-rest">
+    <article class="project-card" data-project-card data-status="on-track" data-health="on-track" data-attn="0">
+      <div class="project-card-top"><span class="project-building-icon" aria-hidden="true">
+        <svg data-icon="building" width="24" height="24"></svg>
+      </span><span class="project-state on-track"><i></i> On Track</span></div>
+      <div class="project-card-title"><h2>Meridian</h2><p class="project-meta">MD-1 <span>•</span> Commercial Tower <span>•</span> Security & ELV scope</p></div>
+      <div class="project-card-progress"><div class="project-progress-label"><span>Project Progress</span><strong>71%</strong></div><div class="project-progress"><span style="width:71%"></span></div></div>
+      <div class="project-card-deliverables"><div class="project-due"><strong>4</strong><span>deliverables due in the next 30 days</span></div>
+      <div class="project-metrics"><span><svg data-icon="check-circle" width="12" height="12" aria-hidden="true"></svg><strong>1</strong> RFIs</span><span><svg data-icon="check-circle" width="12" height="12" aria-hidden="true"></svg><strong>2</strong> GFCs</span><span><svg data-icon="check-circle" width="12" height="12" aria-hidden="true"></svg><strong>1</strong> Tenders</span></div></div>
+      <div class="project-milestone"><span class="milestone-icon" aria-hidden="true"><svg data-icon="calendar" width="12" height="12" aria-hidden="true"></svg></span><span><small>Next Milestone</small><strong>ELV riser GFC <b>— Nov 9</b></strong></span></div>
+      <p class="project-updated">Updated Yesterday</p>
+    </article>
+    <article class="project-card" data-project-card data-status="on-track" data-health="on-track" data-attn="0">
+      <div class="project-card-top"><span class="project-building-icon" aria-hidden="true">
+        <svg data-icon="building" width="24" height="24"></svg>
+      </span><span class="project-state on-track"><i></i> On Track</span></div>
+      <div class="project-card-title"><h2>Riverside Greens</h2><p class="project-meta">LB-K <span>•</span> Residential Development <span>•</span> 4 Towers 1 MLCP</p></div>
+      <div class="project-card-progress"><div class="project-progress-label"><span>Project Progress</span><strong>65%</strong></div><div class="project-progress"><span style="width:65%"></span></div></div>
+      <div class="project-card-deliverables"><div class="project-due"><strong>12</strong><span>deliverables due in the next 30 days</span></div>
+      <div class="project-metrics"><span><svg data-icon="check-circle" width="12" height="12" aria-hidden="true"></svg><strong>4</strong> RFIs</span><span><svg data-icon="check-circle" width="12" height="12" aria-hidden="true"></svg><strong>6</strong> GFCs</span><span><svg data-icon="check-circle" width="12" height="12" aria-hidden="true"></svg><strong>2</strong> Tenders</span></div></div>
+      <div class="project-milestone"><span class="milestone-icon" aria-hidden="true"><svg data-icon="calendar" width="12" height="12" aria-hidden="true"></svg></span><span><small>Next Milestone</small><strong>Facade package issue <b>— Sep 5</b></strong></span></div>
+      <p class="project-updated">Updated 2h ago</p>
+    </article>
+    <article class="project-card project-card-hold" data-project-card data-status="on-hold" data-health="on-hold" data-attn="0">
+      <div class="project-card-top"><span class="project-building-icon" aria-hidden="true">
+        <svg data-icon="building" width="24" height="24"></svg>
+      </span><span class="project-state on-hold">• On Hold</span></div>
+      <div class="project-card-title"><h2>Parkview Heights</h2><p class="project-meta">PH-2 <span>•</span> Residential Development <span>•</span> 2 Towers</p></div>
+      <div class="project-card-progress"><div class="project-progress-label"><span>Project Progress</span><strong>25%</strong></div><div class="project-progress"><span style="width:25%"></span></div></div>
+      <div class="project-card-deliverables"><div class="project-due"><strong>—</strong><span>Deliverables paused since 12 Oct</span></div>
+      <div class="project-metrics"><span><svg data-icon="check-circle" width="12" height="12" aria-hidden="true"></svg><strong>0</strong> RFIs</span><span><svg data-icon="check-circle" width="12" height="12" aria-hidden="true"></svg><strong>0</strong> GFCs</span><span><svg data-icon="check-circle" width="12" height="12" aria-hidden="true"></svg><strong>0</strong> Tenders</span></div></div>
+      <div class="project-milestone milestone-inactive"><span class="milestone-icon" aria-hidden="true"><svg data-icon="calendar" width="12" height="12" aria-hidden="true"></svg></span><strong>No active milestone</strong></div>
+      <p class="project-updated">Updated 16 days ago</p>
+    </article>
+  </div>
+  <p class="empty-projects" hidden>No projects match these filters.</p>
+</section>
+
+<section class="library-view" id="library-view" hidden>
+  <header class="page-intro"><div><h1 class="page-intro-title" id="library-intro-title">Library</h1><p class="page-intro-text" id="library-intro-text">Company standards, approved makes, MAS, drawings and reference books in one place.</p></div>
+    <div class="page-intro-actions"><button class="cx-primary" type="button" id="library-upload-btn" hidden><svg data-icon="upload" width="16" height="16" aria-hidden="true"></svg> <span id="library-upload-label">Upload</span></button><button class="cx-primary site-only" type="button" data-site-mas><svg data-icon="upload" width="16" height="16" aria-hidden="true"></svg> Upload Non - Standard MAS</button></div></header>
+  <nav class="library-tabs" aria-label="Library sections">
+    <button class="library-tab active" type="button" aria-current="page" data-library-tab="policies">Policies</button>
+    <button class="library-tab" type="button" data-library-tab="learnings">Learnings</button>
+    <button class="library-tab" type="button" data-library-tab="boqs">BOQs</button>
+    <button class="library-tab" type="button" data-library-tab="makes">Approved Makes</button>
+    <button class="library-tab" type="button" data-library-tab="mas">MAS Library</button>
+    <button class="library-tab" type="button" data-library-tab="drawings">Standard Drawings</button>
+    <button class="library-tab" type="button" data-library-tab="books">Reference Books</button>
+    <button class="library-tab" type="button" data-library-tab="catalogues">Catalogues</button>
+  </nav>
+
+  <section class="policy-browser" aria-label="Policies">
+    <div class="policy-toolbar">
+      <div class="policy-controls">
+        <div class="policy-categories" role="group" aria-label="Filter policies by category">
+          <button class="policy-category active" type="button" data-policy-category="all" aria-pressed="true">All</button>
+          <button class="policy-category" type="button" data-policy-category="general" aria-pressed="false">General</button>
+          <button class="policy-category" type="button" data-policy-category="hvac" aria-pressed="false">HVAC</button>
+          <button class="policy-category" type="button" data-policy-category="phe" aria-pressed="false">PHE</button>
+          <button class="policy-category" type="button" data-policy-category="fire" aria-pressed="false">Fire</button>
+          <button class="policy-category" type="button" data-policy-category="electrical" aria-pressed="false">Electrical</button>
+        </div>
+        <div class="policy-filter-wrap">
+          <button class="policy-filter-button" type="button" aria-expanded="false" aria-controls="policy-filter-menu">
+            <svg data-icon="filter-lines" aria-hidden="true"></svg>
+            Filters
+          </button>
+          <div class="policy-filter-menu" id="policy-filter-menu" hidden>
+            <label for="policy-sort">Sort by</label>
+            <select id="policy-sort">
+              <option value="updated">Last updated</option>
+              <option value="name">Document name</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <label class="policy-search">
+        <svg data-icon="search" aria-hidden="true"></svg>
+        <input id="policy-search" type="search" aria-label="Search policies" placeholder="Search policies...">
+      </label>
+    </div>
+
+    <div class="policy-table-scroll">
+      <table class="policy-table">
+        <thead>
+          <tr>
+            <th scope="col" id="library-ref-heading">Policy No.</th>
+            <th scope="col">Document Name</th>
+            <th scope="col">Version</th>
+            <th scope="col">Last Updated</th>
+          </tr>
+        </thead>
+        <tbody id="policy-list">
+          <tr data-policy-category="hvac" data-updated="2026-07-15"><td>MEP-04</td><td><strong>HVAC Design Standards &amp; Guidelines</strong><small>4.2 MB · 24 Pages</small></td><td>v3.2</td><td>15 July 2026</td></tr>
+          <tr data-policy-category="fire" data-updated="2026-07-10"><td>MEP-05</td><td><strong>Standards for Firefighting and Fire Alarm Systems</strong><small>4.2 MB · 24 Pages</small></td><td>v2.1</td><td>10 July 2026</td></tr>
+          <tr data-policy-category="phe" data-updated="2026-07-08"><td>MEP-08</td><td><strong>Guidelines for Plumbing</strong><small>4.2 MB · 24 Pages</small></td><td>v4.0</td><td>08 July 2026</td></tr>
+          <tr data-policy-category="electrical" data-updated="2026-07-02"><td>MEP-08</td><td><strong>Standards for Electrical Design</strong><small>4.2 MB · 24 Pages</small></td><td>v1.8</td><td>02 July 2026</td></tr>
+          <tr data-policy-category="general" data-updated="2026-06-28"><td>MEP-08</td><td><strong>BMS Integration Guidelines</strong><small>4.2 MB · 24 Pages</small></td><td>v2.5</td><td>28 June 2026</td></tr>
+          <tr data-policy-category="general" data-updated="2026-06-25"><td>MEP-08</td><td><strong>Standards for Vertical Transportation</strong><small>4.2 MB · 24 Pages</small></td><td>v3.0</td><td>25 June 2026</td></tr>
+          <tr data-policy-category="general" data-updated="2026-06-20"><td>MEP-08</td><td><strong>Garbage Handling Guidelines</strong><small>4.2 MB · 24 Pages</small></td><td>v2.3</td><td>20 June 2026</td></tr>
+          <tr data-policy-category="phe" data-updated="2026-06-15"><td>MEP-08</td><td><strong>STP Guidelines</strong><small>4.2 MB · 24 Pages</small></td><td>v1.5</td><td>15 June 2026</td></tr>
+        </tbody>
+      </table>
+      <p class="policy-empty" id="policy-empty" hidden>No policies match your search.</p>
+    </div>
+  </section>
+
+  <!-- Approved Makes: equipment types grouped by discipline -->
+  <section class="makes-browser" id="makes-browser" aria-label="Approved makes" hidden>
+    <div class="policy-toolbar">
+      <div class="policy-controls">
+        <div class="policy-categories makes-categories" role="group" aria-label="Filter makes by discipline">
+          <button class="policy-category active" type="button" data-makes-category="all" aria-pressed="true">All</button>
+          <button class="policy-category" type="button" data-makes-category="electrical" aria-pressed="false">Electrical</button>
+          <button class="policy-category" type="button" data-makes-category="plumbing" aria-pressed="false">Plumbing</button>
+          <button class="policy-category" type="button" data-makes-category="firefighting" aria-pressed="false">Firefighting</button>
+          <button class="policy-category" type="button" data-makes-category="hvac" aria-pressed="false">HVAC</button>
+        </div>
+        <div class="policy-filter-wrap">
+          <button class="policy-filter-button" type="button" id="makes-filter-button" aria-expanded="false" aria-controls="makes-filter-menu">
+            <svg data-icon="filter-lines" aria-hidden="true"></svg>
+            Filters
+          </button>
+          <div class="policy-filter-menu" id="makes-filter-menu" hidden>
+            <label for="makes-sort">Sort by</label>
+            <select id="makes-sort">
+              <option value="default">Default order</option>
+              <option value="updated">Last updated</option>
+              <option value="type">Equipment type</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <label class="policy-search makes-search">
+        <svg data-icon="search" aria-hidden="true"></svg>
+        <input id="makes-search" type="search" aria-label="Search approved makes" placeholder="Search makes...">
+      </label>
+    </div>
+    <div class="policy-table-scroll makes-table-scroll">
+      <table class="policy-table makes-table">
+        <thead><tr><th scope="col">Equipment Types</th><th scope="col">Approved Makes</th><th scope="col">Preferred</th><th scope="col">IS Code</th><th scope="col">Notes</th><th scope="col">Last Updated</th></tr></thead>
+        <tbody id="makes-groups"></tbody>
+      </table>
+      <footer class="lib-pager" id="makes-pager" hidden></footer>
+    </div>
+    <p class="policy-empty" id="makes-empty" hidden>No approved makes match your search.</p>
+  </section>
+
+  <!-- Standard Drawings: drawings grouped by discipline folder, same layout as Approved Makes -->
+  <section class="drawings-browser" id="drawings-browser" aria-label="Standard drawings" hidden>
+    <div class="policy-toolbar">
+      <div class="policy-controls">
+        <div class="policy-categories makes-categories" role="group" aria-label="Filter drawings by discipline">
+          <button class="policy-category active" type="button" data-drawings-category="all" aria-pressed="true">All</button>
+          <button class="policy-category" type="button" data-drawings-category="electrical" aria-pressed="false">Electrical</button>
+          <button class="policy-category" type="button" data-drawings-category="phe" aria-pressed="false">Plumbing</button>
+          <button class="policy-category" type="button" data-drawings-category="fire" aria-pressed="false">Firefighting</button>
+          <button class="policy-category" type="button" data-drawings-category="hvac" aria-pressed="false">HVAC</button>
+          <button class="policy-category" type="button" data-drawings-category="general" aria-pressed="false">Infra</button>
+        </div>
+      </div>
+      <label class="policy-search makes-search">
+        <svg data-icon="search" aria-hidden="true"></svg>
+        <input id="drawings-search" type="search" aria-label="Search standard drawings" placeholder="Search drawings...">
+      </label>
+    </div>
+    <div class="policy-table-scroll makes-table-scroll">
+      <table class="policy-table makes-table drawings-table">
+        <thead><tr><th scope="col">Drawing No.</th><th scope="col">Drawing Name</th><th scope="col">Type</th><th scope="col">Size</th><th scope="col">Last Updated</th><th scope="col"><span class="visually-hidden">Actions</span></th></tr></thead>
+        <tbody id="drawings-list"></tbody>
+      </table>
+    </div>
+    <p class="policy-empty" id="drawings-empty" hidden>No drawings match your search.</p>
+  </section>
+
+  <!-- MAS Library: standard items with approved makes; green chip = MAS on file -->
+  <section class="mas-browser" id="mas-browser" aria-label="MAS Library" hidden>
+    <div class="policy-toolbar mas-toolbar">
+      <div class="policy-controls">
+        <div class="policy-categories makes-categories" role="group" aria-label="Filter MAS items by discipline" id="mas-tabs"></div>
+        <div class="policy-filter-wrap">
+          <button class="policy-filter-button" type="button" id="mas-filter-button" aria-expanded="false" aria-controls="mas-filter-menu">
+            <svg data-icon="filter-lines" aria-hidden="true"></svg>
+            Filters
+          </button>
+          <div class="policy-filter-menu" id="mas-filter-menu" hidden>
+            <label for="mas-owner">Owner</label>
+            <select id="mas-owner"><option value="">All owners</option></select>
+          </div>
+        </div>
+      </div>
+      <label class="policy-search makes-search">
+        <svg data-icon="search" aria-hidden="true"></svg>
+        <input id="mas-search" type="search" aria-label="Search MAS items or makes" placeholder="Search MAS items...">
+      </label>
+    </div>
+    <div class="policy-table-scroll mas-card">
+      <div class="mas-legend">
+        <span class="mas-legend-label">Legend :</span>
+        <span class="mas-legend-item"><span class="mas-legend-dot is-done"></span>Available (View Only)</span>
+        <span class="mas-legend-item"><span class="mas-legend-dot"><svg data-icon="ban" aria-hidden="true" width="14" height="14"></svg></span>Pending (View Restricted)</span>
+        <span class="mas-count" id="mas-count"></span>
+      </div>
+      <table class="policy-table mas-table">
+        <thead><tr><th scope="col" class="mas-check"><span class="visually-hidden">Select</span></th><th scope="col">Item Description</th><th scope="col">Makes</th><th scope="col">Owner</th></tr></thead>
+        <tbody id="mas-rows"></tbody>
+      </table>
+      <footer class="lib-pager" id="mas-pager" hidden></footer>
+    </div>
+    <p class="policy-empty" id="mas-empty" hidden>No MAS items match your filters.</p>
+    <p class="mas-role-note" id="mas-role-note"></p>
+  </section>
+</section>
+
+<section class="overview-page" id="overview-page" hidden>
+  <section class="project-header">
+  <div class="project-header-title-row">
+    <h1 class="project-title">Project name</h1>
+    <span class="project-type">All towers • Residential Development</span>
+    <span class="project-status"><i></i> On Track</span>
+  </div>
+
+  <p class="project-details">RIV-26 • <span class="project-detail-item"><svg data-icon="map-pin" width="14" height="14" aria-hidden="true"></svg>Pune, Maharashtra</span> • <span class="project-detail-item"><svg data-icon="calendar-lg" width="14" height="14" aria-hidden="true"></svg>Target Date : 30 Jun 2027</span></p>
+  <p class="project-details">4 towers • 1240 units</p>
+
+  <div class="project-header-buttons">
+
+    <button class="create-project-btn" type="button" data-open-project-dialog aria-label="Create Project">
+      <span aria-hidden="true">
+        <svg data-icon="plus-create-project" width="16" height="16"></svg>
+      </span>
+      <span class="create-project-label">Create Project</span>
+    </button>
+
+<div class="more-menu">
+  <button class="more-btn" type="button" aria-label="More options" aria-expanded="false">
+  <svg data-icon="more-dots" width="20" height="20" aria-hidden="true"></svg>
+</button>
+
+<div class="menu-card-project">
+    <button class="menu-options" type="button" data-project-action="add-deliverable">
+      <svg data-icon="plus-lg" width="16" height="16" aria-hidden="true"></svg>
+      Add Deliverable
+    </button>
+    <button class="menu-options" type="button" data-project-action="transmittal">
+      <svg data-icon="send-plane" width="16" height="16" aria-hidden="true"></svg>
+      Create Transmittal
+    </button>
+    <button class="menu-options" type="button" data-project-action="add-member">
+      <svg data-icon="user-plus" width="16" height="16" aria-hidden="true"></svg>
+      Add Member
+    </button>
+    <button class="menu-options" type="button" data-project-action="schedule-meeting">
+      <svg data-icon="calendar-lg" width="16" height="16" aria-hidden="true"></svg>
+      Schedule Meeting
+    </button>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<!-- Project Header Card -->
+<section class="project-header-card">
+  <div class="project-progress-title-row">
+    <h2 class="project-progress-title">Project Progress</h2>
+    <strong class="project-progress-percent">65%</strong>
+  </div>
+
+  <div class="project-progress-bar"><span style="width:65%"></span></div>
+</section>
+
+<!-- PROJECT PAGE NAV BAR -->
+<nav class="project-nav-bar" aria-label="Project sections">
+  <div class="project-nav-tabs">
+
+    <!-- Overview Button -->
+    <button class="project-nav-tab active" type="button" data-project-view="overview">
+      <svg data-icon="tab-overview" width="16" height="16"></svg>
+      Overview</button>
+
+    <!-- RFIs Button -->
+    <button class="project-nav-tab" type="button" data-project-view="rfis">
+      <svg data-icon="tab-rfis" width="16" height="16"></svg>
+      RFIs</button>
+
+    <!-- Deliverables Button -->
+    <button class="project-nav-tab" type="button" data-project-view="deliverables">
+      <svg data-icon="tab-deliverables" width="16" height="16"></svg>
+      Deliverables</button>
+
+    <!-- Tasks Button -->
+    <button class="project-nav-tab" type="button" data-project-view="tasks">
+      <svg data-icon="tab-tasks" width="14" height="14"></svg>
+      Tasks</button>
+
+    <!-- Files Button -->
+    <button class="project-nav-tab" type="button" data-project-view="files">
+      <svg data-icon="tab-files" width="16" height="16"></svg>
+      Files</button>
+
+    <!-- Transmittals Button -->
+    <button class="project-nav-tab" type="button" data-project-view="transmittals">
+      <svg data-icon="tab-transmittals" width="16" height="16"></svg>
+      Transmittals</button>
+
+    <!-- Team Button -->
+    <button class="project-nav-tab" type="button" data-project-view="team">
+      <svg data-icon="tab-team" width="16" height="16"></svg>
+      Team</button>
+   
+  </div>
+</nav>
+
+<section class="overview-dashboard" id="project-overview-content" aria-label="Project overview details">
+  <div class="overview-dashboard-column">
+    <section class="overview-panel milestone-panel">
+      <header class="overview-panel-header">
+        <h2>Upcoming Milestones</h2>
+        <strong>2/5</strong>
+      </header>
+      <ol class="milestone-list">
+        <li class="milestone-item is-complete">
+          <span class="milestone-track"><i aria-hidden="true">✓</i></span>
+          <span class="milestone-copy"><strong>Concept design sign-off</strong><small>14 Feb 2026</small></span>
+          <span class="milestone-status is-complete">Completed</span>
+        </li>
+        <li class="milestone-item is-complete">
+          <span class="milestone-track"><i aria-hidden="true">✓</i></span>
+          <span class="milestone-copy"><strong>Spatial Coordination</strong><small>24 Feb 2026</small></span>
+          <span class="milestone-status is-complete">Completed</span>
+        </li>
+        <li class="milestone-item">
+          <span class="milestone-track"><i aria-hidden="true"></i></span>
+          <span class="milestone-copy"><strong>Facade Package Issue</strong><small>05 Sep 2026</small></span>
+          <span class="milestone-status">Upcoming</span>
+        </li>
+        <li class="milestone-item">
+          <span class="milestone-track"><i aria-hidden="true"></i></span>
+          <span class="milestone-copy"><strong>MEP Coordination Review</strong><small>12 Oct 2026</small></span>
+          <span class="milestone-status">Upcoming</span>
+        </li>
+        <li class="milestone-item">
+          <span class="milestone-track"><i aria-hidden="true"></i></span>
+          <span class="milestone-copy"><strong>Fire Tender Package</strong><small>14 Feb 2027</small></span>
+          <span class="milestone-status">Upcoming</span>
+        </li>
+      </ol>
+      <a class="overview-panel-link" href="#project/milestones" data-project-link="milestones">View All Milestones <span aria-hidden="true">↗</span></a>
+    </section>
+
+    <section class="overview-panel activity-panel">
+      <header class="overview-panel-header">
+        <h2>Recent Activity</h2>
+        <input class="visually-hidden" id="overview-upload-input" type="file" multiple>
+        <a class="overview-panel-link-inline" href="#project/activity" data-project-link="activity">View All Activity <span aria-hidden="true">↗</span></a>
+      </header>
+      <ul class="activity-list" id="overview-activity-list"></ul>
+    </section>
+  </div>
+
+  <div class="overview-dashboard-column">
+    <section class="overview-panel brief-panel" aria-labelledby="brief-title">
+      <header class="overview-panel-header">
+        <h2 id="brief-title">Project brief <small class="discipline-summary" id="brief-summary"></small></h2>
+      </header>
+      <div class="brief-selector" id="brief-selector"></div>
+      <div id="brief-body"></div>
+    </section>
+
+    <section class="overview-panel discipline-panel">
+      <header class="overview-panel-header">
+        <h2>Deliverables <small class="discipline-summary" id="overview-discipline-count"></small></h2>
+        <a class="overview-panel-link-inline" href="#project/deliverables" data-project-link="deliverables">View Details <span aria-hidden="true">↗</span></a>
+      </header>
+      <div class="discipline-list" id="overview-discipline-list">
+        <div class="discipline-item">
+          <span class="discipline-icon">ϟ</span><span class="discipline-name">Electrical</span>
+          <span class="discipline-progress"><span style="width:72%"></span></span><span class="discipline-total"><strong>18</strong> /25</span>
+        </div>
+        <div class="discipline-item">
+          <span class="discipline-icon">⌁</span><span class="discipline-name">Mechanical</span>
+          <span class="discipline-progress"><span style="width:65%"></span></span><span class="discipline-total"><strong>13</strong> /20</span>
+        </div>
+        <div class="discipline-item">
+          <span class="discipline-icon">♨</span><span class="discipline-name">Plumbing</span>
+          <span class="discipline-progress"><span style="width:45%"></span></span><span class="discipline-total"><strong>9</strong> /20</span>
+        </div>
+        <div class="discipline-item">
+          <span class="discipline-icon">♨</span><span class="discipline-name">Fire</span>
+          <span class="discipline-progress"><span style="width:58%"></span></span><span class="discipline-total"><strong>7</strong> /12</span>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>
+
+<section class="project-tasks-view" id="project-tasks-view" hidden aria-label="Project tasks">
+  <div class="project-task-toolbar">
+    <div class="task-priority-filters" role="group" aria-label="Filter tasks by priority">
+      <button class="task-priority-filter is-active" type="button" data-priority-filter="all" aria-pressed="true">All</button>
+      <button class="task-priority-filter" type="button" data-priority-filter="high" aria-pressed="false">High</button>
+      <button class="task-priority-filter" type="button" data-priority-filter="medium" aria-pressed="false">Medium</button>
+      <button class="task-priority-filter" type="button" data-priority-filter="low" aria-pressed="false">Low</button>
+    </div>
+
+    <div class="task-advanced-filter-wrap">
+      <button class="task-advanced-filter-button" type="button" aria-expanded="false" aria-controls="task-advanced-filters">
+        <svg data-icon="filter-lines" width="14" height="14" aria-hidden="true"></svg>
+        Filters
+      </button>
+      <div class="task-advanced-filters" id="task-advanced-filters" hidden>
+        <label for="project-task-status-filter">Status</label>
+        <select id="project-task-status-filter">
+          <option value="all">All statuses</option>
+          <option value="todo">To do</option>
+          <option value="in-progress">In Progress</option>
+          <option value="in-review">In Review</option>
+          <option value="completed">Completed</option>
+        </select>
+      </div>
+    </div>
+
+    <label class="project-task-search">
+      <svg data-icon="search" aria-hidden="true"></svg>
+      <input id="project-task-search" type="search" aria-label="Search project tasks" placeholder="Search tasks...">
+    </label>
+
+    <button class="project-task-add create-task-btn" type="button">
+      <span aria-hidden="true">+</span> Add Task
+    </button>
+  </div>
+
+  <div class="project-task-table-scroll">
+    <table class="data-table project-task-table">
+      <thead><tr>
+        <th scope="col" aria-label="Complete"></th>
+        <th scope="col">ID</th>
+        <th scope="col">Task</th>
+        <th scope="col" data-hf="ptask-priority">Priority</th>
+        <th scope="col">Due Date</th>
+        <th scope="col" data-hf="ptask-wing">Wing No.</th>
+        <th scope="col" data-hf="ptask-by">Assigned By</th>
+        <th scope="col">Action</th>
+      </tr></thead>
+      <tbody id="project-task-list">
+        <tr class="project-task-group-row" data-group-header="todo"><th colspan="8"><button class="task-group-toggle" type="button" data-toggle-task-group="todo" aria-expanded="true"><span class="task-group-chevron" aria-hidden="true"></span><span>To do</span><span class="task-group-count" data-task-group-count="todo">02</span></button></th></tr>
+        <tr class="project-task-row" data-task-row data-group="todo" data-task-status="Not Started" data-priority="high" data-target-date="2026-10-19">
+          <td><label class="custom-checkbox"><input class="task-checkbox" type="checkbox" aria-label="Complete Approve Revised Typical Floor"><span class="checkbox-box"></span></label></td><td>T-12</td><td><strong>Approve Revised Typical Floor</strong><span class="row-subtitle">Plumbing</span></td><td><span class="badge high">High</span></td><td><span class="status due-date">Mon. Oct 19</span></td><td>Wing 25</td><td>You</td><td><button class="comment-btn project-task-action" type="button" data-open-task-details>Comment</button></td>
+        </tr>
+        <tr class="project-task-row" data-task-row data-group="todo" data-task-status="Not Started" data-priority="medium" data-target-date="2026-10-19">
+          <td><label class="custom-checkbox"><input class="task-checkbox" type="checkbox" aria-label="Complete Approve Revised Typical Floor"><span class="checkbox-box"></span></label></td><td>T-12</td><td><strong>Approve Revised Typical Floor</strong><span class="row-subtitle">Plumbing</span></td><td><span class="badge medium">Medium</span></td><td><span class="status due-date">Mon. Oct 19</span></td><td>Wing 25</td><td>Sachin Patil</td><td><button class="comment-btn project-task-action" type="button" data-open-task-details>Comment</button></td>
+        </tr>
+
+        <tr class="project-task-group-row" data-group-header="in-progress"><th colspan="8"><button class="task-group-toggle" type="button" data-toggle-task-group="in-progress" aria-expanded="true"><span class="task-group-chevron" aria-hidden="true"></span><span>In Progress</span><span class="task-group-count is-blue" data-task-group-count="in-progress">03</span></button></th></tr>
+        <tr class="project-task-row" data-task-row data-group="in-progress" data-task-status="In Progress" data-priority="medium" data-target-date="2026-10-13">
+          <td><label class="custom-checkbox"><input class="task-checkbox" type="checkbox" aria-label="Complete Approve Revised Typical Floor"><span class="checkbox-box"></span></label></td><td>T-12</td><td><strong>Approve Revised Typical Floor</strong><span class="row-subtitle">Plumbing</span></td><td><span class="badge medium">Medium</span></td><td><span class="status overdue">Overdue</span></td><td>Wing 25</td><td>Sachin Patil</td><td><button class="comment-btn project-task-action" type="button" data-open-task-details>Comment</button></td>
+        </tr>
+        <tr class="project-task-row" data-task-row data-group="in-progress" data-task-status="In Progress" data-priority="low" data-target-date="2026-10-14">
+          <td><label class="custom-checkbox"><input class="task-checkbox" type="checkbox" aria-label="Complete Approve Revised Typical Floor"><span class="checkbox-box"></span></label></td><td>T-12</td><td><strong>Approve Revised Typical Floor</strong><span class="row-subtitle">Plumbing</span></td><td><span class="badge low">Low</span></td><td><span class="status due-today">Due Today</span></td><td>Wing 25</td><td>Sachin Patil</td><td><button class="comment-btn project-task-action" type="button" data-open-task-details>Comment</button></td>
+        </tr>
+        <tr class="project-task-row" data-task-row data-group="in-progress" data-task-status="In Progress" data-priority="low" data-target-date="2026-10-15">
+          <td><label class="custom-checkbox"><input class="task-checkbox" type="checkbox" aria-label="Complete Approve Revised Typical Floor"><span class="checkbox-box"></span></label></td><td>T-12</td><td><strong>Approve Revised Typical Floor</strong><span class="row-subtitle">Plumbing</span></td><td><span class="badge low">Low</span></td><td><span class="status due-tomorrow">Due Tomorrow</span></td><td>Wing 25</td><td>Sachin Patil</td><td><button class="comment-btn project-task-action" type="button" data-open-task-details>Comment</button></td>
+        </tr>
+
+        <tr class="project-task-group-row" data-group-header="in-review"><th colspan="8"><button class="task-group-toggle" type="button" data-toggle-task-group="in-review" aria-expanded="true"><span class="task-group-chevron" aria-hidden="true"></span><span>In Review</span><span class="task-group-count is-red" data-task-group-count="in-review">01</span></button></th></tr>
+        <tr class="project-task-row" data-task-row data-group="in-review" data-task-status="In Review" data-priority="medium" data-target-date="2026-10-13">
+          <td><label class="custom-checkbox"><input class="task-checkbox" type="checkbox" aria-label="Complete Approve Revised Typical Floor"><span class="checkbox-box"></span></label></td><td>T-12</td><td><strong>Approve Revised Typical Floor</strong><span class="row-subtitle">Firefighting <span class="waiting-tag">· Waiting on MEP Consultant</span></span></td><td><span class="badge medium">Medium</span></td><td><span class="status overdue">Overdue</span></td><td>Wing 25</td><td>Sachin Patil</td><td><button class="comment-btn project-task-action" type="button" data-open-task-details data-row-action="remind">Remind</button></td>
+        </tr>
+        <tr class="project-task-row" data-task-row data-group="in-review" data-task-status="In Review" data-priority="medium" data-target-date="2026-10-13">
+          <td><label class="custom-checkbox"><input class="task-checkbox" type="checkbox" aria-label="Complete Approve Revised Typical Floor"><span class="checkbox-box"></span></label></td><td>T-12</td><td><strong>Approve Revised Typical Floor</strong><span class="row-subtitle">Firefighting <span class="waiting-tag">· Waiting on MEP Consultant</span></span></td><td><span class="badge medium">Medium</span></td><td><span class="status overdue">Overdue</span></td><td>Wing 25</td><td>Sachin Patil</td><td><button class="comment-btn project-task-action" type="button" data-open-task-details data-row-action="remind">Remind</button></td>
+        </tr>
+
+        <tr class="project-task-group-row" data-group-header="completed"><th colspan="8"><button class="task-group-toggle" type="button" data-toggle-task-group="completed" aria-expanded="true"><span class="task-group-chevron" aria-hidden="true"></span><span>Completed</span><span class="task-group-count is-green" data-task-group-count="completed">02</span></button></th></tr>
+        <tr class="project-task-row done" data-task-row data-group="completed" data-task-status="Completed" data-priority="high">
+          <td><label class="custom-checkbox"><input class="task-checkbox" type="checkbox" aria-label="Complete Approve Revised Typical Floor" checked><span class="checkbox-box"></span></label></td><td>T-17</td><td><strong>Approve Revised Typical Floor</strong><span class="row-subtitle">General</span></td><td><span class="badge high">High</span></td><td><span class="status due-date">—</span></td><td>Wing 25</td><td>Sachin Patil</td><td><button class="comment-btn project-task-action" type="button" data-open-task-details>Comment</button></td>
+        </tr>
+        <tr class="project-task-row done" data-task-row data-group="completed" data-task-status="Completed" data-priority="low">
+          <td><label class="custom-checkbox"><input class="task-checkbox" type="checkbox" aria-label="Complete Approve Revised Typical Floor" checked><span class="checkbox-box"></span></label></td><td>T-17</td><td><strong>Approve Revised Typical Floor</strong><span class="row-subtitle">General</span></td><td><span class="badge low">Low</span></td><td><span class="status due-date">—</span></td><td>Wing 25</td><td>Sachin Patil</td><td><button class="comment-btn project-task-action" type="button" data-open-task-details>Comment</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <footer class="project-task-pagination">Page 1 of 1</footer>
+</section>
+
+<section class="project-tasks-view project-rfis-view" id="project-rfis-view" hidden aria-label="Project RFIs">
+  <div class="project-task-toolbar">
+    <div class="task-priority-filters" role="group" aria-label="Filter RFIs by status">
+      <button class="task-priority-filter is-active" type="button" data-rfi-status="all" aria-pressed="true">All</button>
+      <button class="task-priority-filter" type="button" data-rfi-status="in-progress" aria-pressed="false">In Progress</button>
+      <button class="task-priority-filter" type="button" data-rfi-status="delayed" aria-pressed="false">Delayed</button>
+      <button class="task-priority-filter" type="button" data-rfi-status="completed" aria-pressed="false">Completed</button>
+    </div>
+
+    <div class="task-advanced-filter-wrap">
+      <button class="task-advanced-filter-button" type="button" id="rfi-filter-btn" aria-expanded="false" aria-controls="rfi-advanced-filters">
+        <svg data-icon="filter-lines" width="14" height="14" aria-hidden="true"></svg>
+        Filters
+      </button>
+      <div class="task-advanced-filters" id="rfi-advanced-filters" hidden>
+        <label for="rfi-discipline-filter">Discipline</label>
+        <select id="rfi-discipline-filter">
+          <option value="all">All disciplines</option>
+          <option>Electrical</option>
+          <option>Firefighting</option>
+          <option>Plumbing</option>
+          <option>HVAC</option>
+        </select>
+      </div>
+    </div>
+
+    <label class="project-task-search">
+      <svg data-icon="search" aria-hidden="true"></svg>
+      <input id="project-rfi-search" type="search" aria-label="Search RFIs" placeholder="Search rfis by title,Id...">
+    </label>
+  </div>
+
+  <div class="project-task-table-scroll">
+    <table class="data-table project-task-table oi-table rfi-table">
+      <thead><tr>
+        <th scope="col">RFI ID</th>
+        <th scope="col">Query</th>
+        <th scope="col" data-hf="rfi-wing">Wing No.</th>
+        <th scope="col" data-hf="rfi-impact">Impact</th>
+        <th scope="col" data-hf="rfi-discipline">Discipline</th>
+        <th scope="col" data-hf="rfi-by">Raised By</th>
+        <th scope="col">Action</th>
+      </tr></thead>
+      <tbody id="project-rfi-list"></tbody>
+    </table>
+  </div>
+  <footer class="project-task-pagination">Page 1 of 1</footer>
+</section>
+
+<!-- Project Deliverables: design deliverable tracker (can be imported from Excel / CSV) -->
+<section class="project-tasks-view" id="project-deliverables-view" hidden aria-label="Design deliverable tracker">
+  <div class="project-task-toolbar tracker-toolbar">
+    <div class="task-priority-filters" role="group" aria-label="Quick filters">
+      <button class="task-priority-filter is-active" type="button" data-tracker-quick="all" aria-pressed="true">All</button>
+      <button class="task-priority-filter" type="button" data-tracker-quick="mine" aria-pressed="false">Mine</button>
+      <button class="task-priority-filter" type="button" data-tracker-quick="overdue" aria-pressed="false">Overdue</button>
+      <button class="task-priority-filter" type="button" data-tracker-quick="week" aria-pressed="false">Due this week</button>
+      <button class="task-priority-filter" type="button" data-tracker-quick="waiting" aria-pressed="false">Waiting on others</button>
+    </div>
+    <span class="oi-divider"></span>
+    <div class="task-advanced-filter-wrap">
+      <button class="task-advanced-filter-button" type="button" id="tracker-filter-btn" aria-expanded="false" aria-controls="tracker-filters">
+        <svg data-icon="filter-lines" width="14" height="14" aria-hidden="true"></svg>
+        Filters <span class="filter-count" id="tracker-filter-count" hidden></span>
+      </button>
+      <div class="task-advanced-filters tracker-filters" id="tracker-filters" hidden></div>
+    </div>
+    <label class="project-task-search">
+      <svg data-icon="search" aria-hidden="true"></svg>
+      <input id="tracker-search" type="search" aria-label="Search deliverables" placeholder="Search deliverables...">
+    </label>
+<button class="task-advanced-filter-button" type="button" data-tracker-import>
+      <svg data-icon="upload-sm" width="14" height="14" aria-hidden="true"></svg>
+      Import Tracker
+    </button>
+  </div>
+  <p class="tracker-summary" id="tracker-summary"></p>
+  <div class="project-task-table-scroll">
+    <table class="data-table project-task-table oi-table tracker-table">
+      <thead id="tracker-head"></thead>
+      <tbody id="tracker-list"></tbody>
+    </table>
+    <p class="policy-empty" id="tracker-empty" hidden>No deliverables match these filters.</p>
+  </div>
+</section>
+
+<!-- Project Transmittals -->
+<section class="project-tasks-view" id="project-transmittals-view" hidden aria-label="Project transmittals">
+  <div class="project-task-toolbar">
+    <div class="task-priority-filters" role="group" aria-label="Filter transmittals by status">
+      <button class="task-priority-filter is-active" type="button" data-transmittal-status="all" aria-pressed="true">All</button>
+      <button class="task-priority-filter" type="button" data-transmittal-status="pending" aria-pressed="false">Pending</button>
+      <button class="task-priority-filter" type="button" data-transmittal-status="sent" aria-pressed="false">Sent</button>
+    </div>
+    <label class="project-task-search">
+      <svg data-icon="search" aria-hidden="true"></svg>
+      <input id="transmittal-search" type="search" aria-label="Search transmittals" placeholder="Search transmittal, wing, drawing...">
+    </label>
+    <button class="project-task-add" type="button" data-project-action="transmittal"><span aria-hidden="true">+</span> Create Transmittal</button>
+  </div>
+  <div class="project-task-table-scroll transmittal-table-scroll">
+    <table class="data-table project-task-table oi-table transmittal-table">
+      <thead><tr>
+        <th scope="col">Transmittal No.</th>
+        <th scope="col" data-hf="trans-wing">Wing No.</th>
+        <th scope="col">No. of Drawings</th>
+        <th scope="col">No. of Copies</th>
+        <th scope="col" data-hf="trans-source">Source</th>
+        <th scope="col" data-hf="trans-recipient">Recipient</th>
+        <th scope="col" data-hf="trans-status">Status</th>
+        <th scope="col">Sent Date</th>
+        <th scope="col" class="col-action">Action</th>
+      </tr></thead>
+      <tbody id="transmittal-list"></tbody>
+    </table>
+    <p class="policy-empty" id="transmittal-empty" hidden>No transmittals match these filters.</p>
+    <footer class="project-task-pagination transmittal-pagination">Page 1 of 1</footer>
+  </div>
+</section>
+
+<!-- Project Files -->
+<section class="project-tasks-view" id="project-files-view" hidden aria-label="Project files">
+  <div class="project-task-toolbar">
+    <div class="task-priority-filters" role="group" aria-label="Filter files by stage" id="file-stage-filters"></div>
+    <label class="project-task-search">
+      <svg data-icon="search" aria-hidden="true"></svg>
+      <input id="project-file-search" type="search" aria-label="Search files" placeholder="Search files...">
+    </label>
+    <button class="project-task-add" type="button" data-overview-upload-trigger>
+      <svg data-icon="upload-sm" width="14" height="14" aria-hidden="true"></svg>
+      Upload File
+    </button>
+  </div>
+  <section class="team-section" aria-labelledby="files-mep-title">
+    <header class="team-section-head">
+      <h2 id="files-mep-title">MEP Design files <span class="task-group-count" id="files-mep-count"></span></h2>
+      <span class="pref-hint">Your department</span>
+    </header>
+    <div class="upload-grid files-grid" id="project-files-grid"></div>
+  </section>
+  <section class="team-section" aria-labelledby="files-other-title">
+    <header class="team-section-head"><h2 id="files-other-title">Other departments</h2></header>
+    <div class="team-folders" id="file-folders"></div>
+  </section>
+  <p class="policy-empty" id="project-files-empty" hidden>No files match these filters.</p>
+</section>
+
+<!-- Project Team -->
+<section class="project-tasks-view" id="project-team-view" hidden aria-label="Project team">
+  <div class="project-task-toolbar">
+    <label class="project-task-search team-search">
+      <svg data-icon="search" aria-hidden="true"></svg>
+      <input id="project-team-search" type="search" aria-label="Search people across all teams" placeholder="Search people across all teams...">
+    </label>
+    <button class="task-advanced-filter-button" type="button" id="team-expand-all" aria-pressed="false">Expand all teams</button>
+    <button class="project-task-add" type="button" data-project-action="add-member"><span aria-hidden="true">+</span> Add Member</button>
+  </div>
+
+  <!-- Your own team is always open -->
+  <section class="team-section" aria-labelledby="team-mep-title">
+    <header class="team-section-head">
+      <h2 id="team-mep-title">MEP Design Team <span class="task-group-count" id="team-mep-count"></span></h2>
+      <span class="pref-hint">Your team</span>
+    </header>
+    <div class="team-grid" id="team-mep-grid"></div>
+  </section>
+
+  <!-- Other teams sit in folders that open in place -->
+  <section class="team-section" aria-labelledby="team-other-title">
+    <header class="team-section-head">
+      <h2 id="team-other-title">Other teams</h2>
+    </header>
+    <div class="team-folders" id="team-folders"></div>
+  </section>
+  <p class="policy-empty" id="project-team-empty" hidden>No one matches this search.</p>
+</section>
+
+<!-- Project Milestones (View All Milestones) -->
+<section class="project-tasks-view" id="project-milestones-view" hidden aria-label="Project milestones">
+  <div class="project-task-toolbar">
+    <div class="task-priority-filters" role="group" aria-label="Filter milestones">
+      <button class="task-priority-filter is-active" type="button" data-milestone-filter="all" aria-pressed="true">All</button>
+      <button class="task-priority-filter" type="button" data-milestone-filter="upcoming" aria-pressed="false">Upcoming</button>
+      <button class="task-priority-filter" type="button" data-milestone-filter="complete" aria-pressed="false">Completed</button>
+    </div>
+  </div>
+  <section class="overview-panel milestone-panel">
+    <header class="overview-panel-header">
+      <h2>All Milestones</h2>
+      <strong id="project-milestone-progress"></strong>
+    </header>
+    <ol class="milestone-list" id="project-milestone-list"></ol>
+  </section>
+</section>
+
+<!-- Project Activity (View All Activity) -->
+<section class="project-tasks-view" id="project-activity-view" hidden aria-label="Project activity">
+  <div class="project-task-toolbar">
+    <div class="task-priority-filters" role="group" aria-label="Filter activity by location" id="project-activity-filters"></div>
+    <label class="project-task-search">
+      <svg data-icon="search" aria-hidden="true"></svg>
+      <input id="project-activity-search" type="search" aria-label="Search activity" placeholder="Search activity...">
+    </label>
+  </div>
+  <section class="overview-panel activity-panel">
+    <header class="overview-panel-header"><h2>All Activity</h2></header>
+    <ul class="activity-list" id="project-activity-list"></ul>
+  </section>
+</section>
+
+</section>
+
+<!--REPORTING PAGE-->
+<section class="page-view reporting-view" id="reporting-view" hidden aria-labelledby="reporting-title">
+  <header class="page-intro">
+    <div>
+      <h1 class="page-intro-title" id="reporting-title">Reporting</h1>
+      <p class="page-intro-text">Portfolio health across your assigned projects.</p>
+    </div>
+    <div class="page-heading-actions">
+      <label class="project-status-filter">
+        <span class="visually-hidden">Reporting period</span>
+        <select id="report-period">
+          <option value="30">Last 30 days</option>
+          <option value="90">Last quarter</option>
+          <option value="365">This year</option>
+        </select>
+      </label>
+      <button class="project-task-add" type="button" id="report-export">
+        <svg data-icon="download" width="14" height="14" aria-hidden="true"></svg>
+        Export CSV
+      </button>
+    </div>
+  </header>
+
+  <div class="kpi-row report-kpis" id="report-kpis"></div>
+
+  <div class="overview-dashboard report-grid">
+    <div class="overview-dashboard-column">
+      <section class="overview-panel">
+        <header class="overview-panel-header">
+          <h2>Project health</h2>
+          <a class="overview-panel-link-inline" href="#projects" data-view-target="projects">All projects <span aria-hidden="true">↗</span></a>
+        </header>
+        <div class="report-table-scroll">
+          <table class="policy-table report-table">
+            <thead><tr><th scope="col">Project</th><th scope="col">Progress</th><th scope="col">Tasks</th><th scope="col">RFIs</th><th scope="col">Delayed</th><th scope="col">Status</th></tr></thead>
+            <tbody id="report-project-rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="overview-panel">
+        <header class="overview-panel-header">
+          <h2>Tasks closed per week</h2>
+          <strong id="report-throughput-total"></strong>
+        </header>
+        <div class="throughput-chart" id="report-throughput"></div>
+      </section>
+    </div>
+
+    <div class="overview-dashboard-column">
+      <section class="overview-panel">
+        <header class="overview-panel-header">
+          <h2>Item status</h2>
+          <strong id="report-status-total"></strong>
+        </header>
+        <div class="status-stack" id="report-status-stack"></div>
+        <div class="status-legend" id="report-status-legend"></div>
+      </section>
+
+      <section class="overview-panel discipline-panel">
+        <header class="overview-panel-header">
+          <h2>Deliverables by discipline</h2>
+          <strong id="report-discipline-total"></strong>
+        </header>
+        <div class="discipline-list" id="report-discipline-list"></div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<!--PROFILE & SETTINGS PAGE-->
+<section class="page-view profile-view" id="profile-view" hidden aria-label="Account">
+  <header class="page-intro"><div><h1 class="page-intro-title">Profile</h1><p class="page-intro-text">Your account details, notification preferences and help.</p></div></header>
+  <nav class="library-tabs" aria-label="Account sections">
+    <button class="library-tab active" type="button" data-profile-tab="account" aria-current="page">Profile</button>
+    <button class="library-tab" type="button" data-profile-tab="notifications">Notification Preferences</button>
+    <button class="library-tab" type="button" data-profile-tab="help">Help &amp; Support</button>
+  </nav>
+
+  <section class="overview-panel profile-panel" data-profile-panel="account">
+    <div class="profile-hero">
+      <div class="profile-avatar" id="profile-page-avatar">AB</div>
+      <div>
+        <strong id="profile-page-name">Apurva Bhadange</strong>
+        <span class="profile-role" id="profile-page-role">MEP Design · Super Admin</span>
+        <span class="profile-email" id="profile-page-email">apurva.bhadange@example.com</span>
+      </div>
+    </div>
+    <form class="profile-form" id="profile-form">
+      <div class="project-form-fields">
+        <div class="form-field">
+          <label for="profile-name">Full name <span>*</span></label>
+          <input id="profile-name" name="name" required autocomplete="name">
+        </div>
+        <div class="form-field">
+          <label for="profile-email">Work email <span>*</span></label>
+          <input id="profile-email" name="email" type="email" required autocomplete="email">
+        </div>
+        <div class="form-field">
+          <label for="profile-phone">Phone</label>
+          <input id="profile-phone" name="phone" type="tel" autocomplete="tel" placeholder="+91 98xxx xxxxx">
+        </div>
+        <div class="form-field">
+          <label for="profile-department">Department</label>
+          <select id="profile-department" name="department">
+            <option>MEP Design</option>
+            <option>Project Management</option>
+            <option>Design Coordination</option>
+            <option>Site Execution</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="profile-location">Base location</label>
+          <select id="profile-location" name="location">
+            <option>South Mumbai</option>
+            <option>Thane</option>
+            <option>Lakeshore</option>
+            <option>Pune</option>
+            <option>Bangalore</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="profile-manager">Reports to</label>
+          <input id="profile-manager" name="manager" placeholder="e.g. Priya Shah">
+        </div>
+        <div class="form-field form-field-wide">
+          <label for="profile-bio">About</label>
+          <textarea id="profile-bio" name="bio" maxlength="300" placeholder="Disciplines you lead, current focus, how teammates should reach you..."></textarea>
+        </div>
+      </div>
+      <footer class="project-dialog-footer">
+        <p class="required-note">Fields marked with * are required</p>
+        <div class="dialog-actions">
+          <button class="cancel-project-btn" type="button" data-profile-reset>Reset</button>
+          <button class="submit-project-btn" type="submit">Save Profile</button>
+        </div>
+      </footer>
+    </form>
+  </section>
+
+  <section class="overview-panel profile-panel" data-profile-panel="notifications" hidden>
+    <header class="overview-panel-header">
+      <h2>Notification preferences</h2>
+      <span class="pref-hint">Choose where each update reaches you.</span>
+    </header>
+    <form id="pref-form">
+      <div class="report-table-scroll">
+        <table class="policy-table pref-table">
+          <thead><tr><th scope="col">Update</th><th scope="col">In-app</th><th scope="col">Email</th></tr></thead>
+          <tbody id="pref-rows"></tbody>
+        </table>
+      </div>
+      <div class="pref-digest">
+        <div class="form-field">
+          <label for="pref-digest">Daily digest</label>
+          <select id="pref-digest" name="digest">
+            <option value="off">Off</option>
+            <option value="08:00">08:00 — before work</option>
+            <option value="13:00">13:00 — midday</option>
+            <option value="18:00">18:00 — end of day</option>
+          </select>
+        </div>
+      </div>
+      <footer class="project-dialog-footer">
+        <p class="pref-hint">Preferences are saved on this device.</p>
+        <div class="dialog-actions">
+          <button class="submit-project-btn" type="submit">Save Preferences</button>
+        </div>
+      </footer>
+    </form>
+  </section>
+
+  <div class="overview-dashboard profile-help" data-profile-panel="help" hidden>
+    <section class="overview-panel">
+      <header class="overview-panel-header"><h2>Frequently asked</h2></header>
+      <div class="faq-list">
+        <details class="faq-item"><summary>How do I raise an RFI on a project?</summary><p>Open the project, go to the RFIs tab, and use the Respond action on an open RFI. New RFIs come in from consultants and show in your dashboard's Pending RFIs table.</p></details>
+        <details class="faq-item"><summary>Who can see the tasks I create?</summary><p>Tasks are visible to everyone on the project team. The assignee and the person who assigned it get notified based on their notification preferences.</p></details>
+        <details class="faq-item"><summary>How do I record minutes for a meeting?</summary><p>Hover a meeting in Your Schedule and choose Notes. Saved minutes appear in the MOM Tracker under Meetings.</p></details>
+        <details class="faq-item"><summary>Can I switch between roles?</summary><p>Yes. Use the role switcher under your name in the top bar. The role you pick changes which approvals and actions you see.</p></details>
+        <details class="faq-item"><summary>Where do approved makes and standard drawings live?</summary><p>In the Library. Each tab has its own register with search and discipline filters.</p></details>
+      </div>
+      <h3 class="help-subtitle">Keyboard shortcuts</h3>
+      <dl class="shortcut-list">
+        <div><dt><kbd>Ctrl</kbd> / <kbd>⌘</kbd> + <kbd>K</kbd></dt><dd>Jump to search</dd></div>
+        <div><dt><kbd>Esc</kbd></dt><dd>Close a dialog, drawer or menu</dd></div>
+      </dl>
+    </section>
+
+    <section class="overview-panel">
+      <header class="overview-panel-header"><h2>Contact support</h2></header>
+      <form class="help-form" id="help-form">
+        <div class="form-field">
+          <label for="help-topic">Topic</label>
+          <select id="help-topic" name="topic">
+            <option>Something isn't working</option>
+            <option>Access &amp; permissions</option>
+            <option>Data correction</option>
+            <option>Feature request</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="help-subject">Subject <span>*</span></label>
+          <input id="help-subject" name="subject" required placeholder="Short summary of the issue">
+        </div>
+        <div class="form-field">
+          <label for="help-message">Details <span>*</span></label>
+          <textarea id="help-message" name="message" required placeholder="What happened, which project, and what you expected..."></textarea>
+        </div>
+        <div class="dialog-actions">
+          <button class="submit-project-btn" type="submit">Send Request</button>
+        </div>
+      </form>
+      <p class="pref-hint help-contact">Urgent site issue? Message the <strong>MEP desk</strong> channel on Teams.</p>
+    </section>
+  </div>
+</section>
+
+<!--FOCUS MODE PAGE-->
+<section class="page-view focus-view" id="focus-view" hidden aria-labelledby="focus-title">
+  <section class="focus-card focus-hero">
+    <span class="focus-card-tag" id="focus-hero-tag">4 Pending Decisions</span>
+    <h1 class="focus-card-title" id="focus-title">Needs you first</h1>
+    <p class="focus-card-text">Work through these one at a time. Cleared items drop off your queue.</p>
+    <div class="focus-progress" aria-hidden="true"><span id="focus-progress-bar"></span></div>
+  </section>
+  <div class="focus-list" id="focus-list"></div>
+</section>
+
+<!--MEETINGS PAGE-->
+<section class="page-view meetings-view" id="meetings-view" hidden aria-label="Meetings">
+  <header class="page-intro"><div><h1 class="page-intro-title">Meetings</h1><p class="page-intro-text">Your schedule and the minutes of each meeting, with the task they create.</p></div>
+    <div class="page-intro-actions"><button class="cx-primary" type="button" data-project-action="schedule-meeting"><svg data-icon="calendar-lg" width="16" height="16" aria-hidden="true"></svg> Schedule Meeting</button></div></header>
+  <nav class="library-tabs" aria-label="Meeting sections">
+    <button class="library-tab active" type="button" data-meetings-tab="schedule" aria-current="page">Schedule</button>
+    <button class="library-tab" type="button" data-meetings-tab="mom">MOM Tracker</button>
+  </nav>
+
+  <section class="project-tasks-view" data-meetings-panel="schedule">
+    <div class="policy-toolbar meetings-toolbar">
+      <div class="policy-controls">
+        <div class="policy-categories" role="group" aria-label="Show all, upcoming or past meetings">
+          <button class="policy-category" type="button" data-meeting-when="all" aria-pressed="false">All</button>
+          <button class="policy-category active" type="button" data-meeting-when="upcoming" aria-pressed="true">Upcoming</button>
+          <button class="policy-category" type="button" data-meeting-when="past" aria-pressed="false">Past</button>
+        </div>
+        <div class="meetings-filter-wrap">
+          <button class="policy-filter-button" type="button" id="meetings-filter-btn" aria-expanded="false" aria-controls="meetings-filter-pop" aria-haspopup="dialog">
+            <svg data-icon="filter-lines" aria-hidden="true"></svg>
+            Filters <span class="filter-count" id="meetings-filter-count" hidden></span>
+          </button>
+          <section class="meetings-filter-pop" id="meetings-filter-pop" role="dialog" aria-labelledby="meetings-filter-title" hidden>
+            <header class="meetings-filter-head">
+              <h2 id="meetings-filter-title">Filter Meetings</h2>
+              <button class="drawer-close" type="button" aria-label="Close filters" data-meetings-filter-close><svg data-icon="close" width="16" height="16" aria-hidden="true"></svg></button>
+            </header>
+            <form id="meetings-filter-form" novalidate>
+              <p class="meetings-filter-label">Date range</p>
+              <div class="meetings-filter-dates">
+                <div class="meetings-filter-date"><label for="meetings-from">From</label><input type="date" id="meetings-from" aria-label="From date"></div>
+                <div class="meetings-filter-date"><label for="meetings-to">To</label><input type="date" id="meetings-to" aria-label="To date"></div>
+              </div>
+              <p class="meetings-filter-error" id="meetings-filter-error" role="alert" hidden>The From date is after the To date.</p>
+              <fieldset class="meetings-filter-projects">
+                <legend class="meetings-filter-label">Projects</legend>
+                <div id="meetings-filter-projects"></div>
+              </fieldset>
+              <button class="cx-primary cx-wide meetings-filter-apply" type="submit">Apply Filters</button>
+              <button class="meetings-filter-clear" type="button" id="meetings-filter-clear">Clear All</button>
+            </form>
+          </section>
+        </div>
+      </div>
+      <label class="policy-search">
+        <svg data-icon="search" aria-hidden="true"></svg>
+        <input id="meetings-search" type="search" aria-label="Search meetings" placeholder="Search meetings...">
+      </label>
+    </div>    <div class="meeting-days" id="meeting-days"></div>
+  </section>
+
+  <section class="project-tasks-view" data-meetings-panel="mom" hidden>
+    <div class="policy-toolbar meetings-toolbar">
+      <div class="policy-controls">
+        <div class="policy-categories" role="group" aria-label="Filter minutes by status">
+          <button class="policy-category active" type="button" data-mom-status="all" aria-pressed="true">All</button>
+          <button class="policy-category" type="button" data-mom-status="draft" aria-pressed="false">Draft</button>
+          <button class="policy-category" type="button" data-mom-status="shared" aria-pressed="false">Shared</button>
+        </div>
+      </div>
+      <label class="policy-search">
+        <svg data-icon="search" aria-hidden="true"></svg>
+        <input id="mom-search" type="search" aria-label="Search minutes" placeholder="Search minutes...">
+      </label>
+    </div>
+    <div class="project-task-table-scroll">
+      <table class="data-table project-task-table oi-table mom-table">
+        <thead><tr>
+          <th scope="col">Meeting</th>
+          <th scope="col">Date</th>
+          <th scope="col">Recorded By</th>
+          <th scope="col">Action Items</th>
+          <th scope="col">Status</th>
+          <th scope="col">Action</th>
+        </tr></thead>
+        <tbody id="mom-rows"></tbody>
+      </table>
+    </div>
+  </section>
+</section>
+
+<!--DOCUMENT PAGE (BOQs, library documents, project files, transmittal PDFs)-->
+<section class="page-view doc-view" id="doc-view" hidden aria-labelledby="doc-view-title">
+  <header class="doc-view-head">
+    <button class="doc-back" type="button" data-doc-back>
+      <svg data-icon="chevron-left" width="16" height="16" aria-hidden="true"></svg>
+      Back
+    </button>
+    <div class="doc-view-titles">
+      <p class="doc-view-kicker" id="doc-view-kicker"></p>
+      <h1 id="doc-view-title"></h1>
+      <p class="doc-view-meta" id="doc-view-meta"></p>
+    </div>
+    <div class="page-heading-actions" id="doc-view-actions"></div>
+  </header>
+  <div class="doc-view-body" id="doc-view-body"></div>
+</section>
+
+
+</div>
+
+    </main>
+  
+<!--RIGHT RAIL-->
+    <aside class="right-rail">
+
+      <div class="rail-mini">
+  <button class="rail-expand-btn" type="button" aria-label="Expand panel">
+    <span class="rail-mini-icon">
+      <svg data-icon="chevron-left-rail" width="20" height="20" aria-hidden="true"></svg>
+    </span>
+    <span class="rail-mini-label">Expand</span>
+  </button>
+
+  <div class="rail-mini-list" id="rail-mini-list"></div>
+</div>
+      
+  <header class="rail-header">
+    <button class="rail-collapse-btn" type="button" aria-label="Collapse panel">
+      <svg data-icon="chevron-right-rail" width="16" height="16"></svg>
+    </button>
+
+    <div class="rail-date-block">
+      <h2 class="rail-date" id="rail-date">Wednesday, 2 September</h2>
+      <p class="rail-week" id="rail-week">Week 36 · 2026</p>
+    </div>
+
+    <button class="rail-directory-btn" type="button" aria-label="Directory" title="Directory" data-open-directory>
+      <svg data-icon="phone" width="16" height="16" aria-hidden="true"></svg>
+    </button>
+  </header>
+
+<!--WEEK STRIP: pick a day to see its meetings. Clicking the month label expands it into the month calendar in place-->
+<section class="rail-week-strip" aria-label="Pick a day">
+  <div class="rail-week-bar">
+    <button class="rail-month-btn" id="rail-month-btn" type="button" aria-expanded="false" aria-controls="rail-calendar" aria-haspopup="true">
+      <strong id="rail-week-month"></strong>
+    </button>
+    <div class="rail-week-actions">
+    <button class="rail-today-btn" id="rail-today-btn" type="button" aria-label="Go to today" hidden>Today</button>
+    <div class="overlay-arrows">
+      <button type="button" data-rail-week="-1" aria-label="Previous week"><svg data-icon="chevron-left" width="16" height="16" aria-hidden="true"></svg></button>
+      <button type="button" data-rail-week="1" aria-label="Next week"><svg data-icon="chevron-right" width="16" height="16" aria-hidden="true"></svg></button>
+    </div>
+    </div>
+  </div>
+  <section class="rail-calendar" id="rail-calendar" hidden>
+  <div class="calendar-monthbar">
+    <strong class="calendar-month-label"></strong>
+    <div class="overlay-arrows">
+      <button class="calendar-month-prev" type="button" aria-label="Previous month"><svg data-icon="chevron-left" width="16" height="16" aria-hidden="true"></svg></button>
+      <button class="calendar-month-next" type="button" aria-label="Next month"><svg data-icon="chevron-right" width="16" height="16" aria-hidden="true"></svg></button>
+    </div>
+  </div>
+  <div class="calendar-weekdays" aria-hidden="true">
+    <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+  </div>
+  <div class="calendar-days"></div>
+  <div class="calendar-footer"><button class="calendar-clear" type="button">Clear</button><button class="calendar-today" type="button">Today</button></div>
+</section>
+  <div class="rail-week-days" id="rail-week-days"></div>
+</section>
+<!--FOCUS CARD-->
+<section class="focus-card" data-rail-section="focus">
+  <span class="focus-card-tag" id="focus-pending-tag">4 Pending Decisions</span>
+  <h3 class="focus-card-title">Needs you first</h3>
+  <p class="focus-card-text">Clear out your dashboard queue and find your workflow flow-state.</p>
+  <button class="focus-card-btn" type="button" data-route="focus">
+    Open focus mode
+    <svg data-icon="arrow-up-right-sm" width="16" height="16" aria-hidden="true"></svg>
+  </button>
+</section>
+
+<!--MEETINGS SECTION-->
+<section class="schedule">
+  <div class="rail-section-title">
+    <h3 id="schedule-title">Meetings</h3>
+    <button class="schedule-add" type="button" data-project-action="schedule-meeting">
+      <svg data-icon="calendar-field" width="16" height="16" aria-hidden="true"></svg>
+      Schedule Meeting
+    </button>
+  </div>
+  <div class="schedule-list" id="schedule-list"></div>
+  <a href="#meetings" class="rail-view-all schedule-view-all" data-route="meetings">View All ↗</a>
+</section>
+</aside>
+
+</div>
+  <!-- Signed-out screen (shown after Log Out) -->
+  <section class="signed-out-screen" id="signed-out-screen" hidden aria-labelledby="signed-out-title">
+    <div class="signed-out-card">
+      <div class="brand-logo">A</div>
+      <h1 id="signed-out-title">You've signed out</h1>
+      <p>Your work is saved. Sign back in to pick up where you left off.</p>
+      <button class="submit-project-btn" type="button" data-sign-in>Continue as Apurva Bhadange</button>
+    </div>
+  </section>
+
+  <script src="js/core/icons.js" defer></script>
+  <script src="js/core/utils.js" defer></script>
+  <script src="js/core/vendor-loaders.js" defer></script>
+  <script src="js/core/router.js" defer></script>
+  <script src="js/data/attention-projects.js" defer></script>
+  <script src="js/data/boq-sheets.js" defer></script>
+  <script src="js/data/drawing-folders.js" defer></script>
+  <script src="js/data/focus-items.js" defer></script>
+  <script src="js/data/inbox.js" defer></script>
+  <script src="js/data/makes.js" defer></script>
+  <script src="js/data/mas-disciplines.js" defer></script>
+  <script src="js/data/project-activity.js" defer></script>
+  <script src="js/data/project-brief.js" defer></script>
+  <script src="js/data/project-files.js" defer></script>
+  <script src="js/data/reminder-rows.js" defer></script>
+  <script src="js/data/rfis.js" defer></script>
+  <script src="js/data/task-rows.js" defer></script>
+  <script src="js/data/team.js" defer></script>
+  <script src="js/components/date-picker.js" defer></script>
+  <script src="js/components/action-dialog.js" defer></script>
+  <script src="js/components/toolbar.js" defer></script>
+  <script src="js/data/meetings.js" defer></script>
+  <script src="js/components/meeting-card.js" defer></script>
+  <script src="js/layout/sidebar.js" defer></script>
+  <script src="js/layout/topbar.js" defer></script>
+  <script src="js/layout/right-rail.js" defer></script>
+  <script src="js/features/dashboard.js" defer></script>
+  <script src="js/features/projects.js" defer></script>
+  <script src="js/features/create-project.js" defer></script>
+  <script src="js/features/task-dialog.js" defer></script>
+  <script src="js/features/task-drawer.js" defer></script>
+  <script src="js/features/open-items.js" defer></script>
+  <script src="js/features/row-actions.js" defer></script>
+  <script src="js/features/project/workspace.js" defer></script>
+  <script src="js/features/project/rfis.js" defer></script>
+  <script src="js/features/project/deliverable-tracker.js" defer></script>
+  <script src="js/features/project/tracker-import.js" defer></script>
+  <script src="js/features/project/transmittals.js" defer></script>
+  <script src="js/features/project/transmittal-pdf.js" defer></script>
+  <script src="js/features/project/files.js" defer></script>
+  <script src="js/features/project/team.js" defer></script>
+  <script src="js/features/project/overview-feed.js" defer></script>
+  <script src="js/features/library/library.js" defer></script>
+  <script src="js/features/library/pager.js" defer></script>
+  <script src="js/features/library/boqs.js" defer></script>
+  <script src="js/features/library/makes.js" defer></script>
+  <script src="js/features/library/mas.js" defer></script>
+  <script src="js/features/library/drawings.js" defer></script>
+  <script src="js/features/reporting.js" defer></script>
+  <script src="js/features/profile.js" defer></script>
+  <script src="js/features/focus-mode.js" defer></script>
+  <script src="js/features/meetings/meetings-page.js" defer></script>
+  <script src="js/features/meetings/meeting-notes.js" defer></script>
+  <script src="js/features/assistant.js" defer></script>
+  <script src="js/features/auth.js" defer></script>
+  <script src="js/features/record-drawer.js" defer></script>
+  <script src="js/features/document-viewer.js" defer></script>
+  <script src="js/features/dashboard-attention.js" defer></script>
+  <script src="js/features/daily-list.js" defer></script>
+  <script src="js/features/project/brief.js" defer></script>
+  <script src="js/layout/library-flyout.js" defer></script>
+  <script src="js/components/select.js" defer></script>
+  <script src="js/components/header-filter.js" defer></script>
+  <script src="js/components/qr-code.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/utils/dom-helpers.js" defer></script>
+  <script src="js/components/layers.js" defer></script>
+  <script src="js/layout/sidebar-nav.js" defer></script>
+  <script src="js/features/roles.js" defer></script>
+  <script src="js/features/people-directory.js" defer></script>
+  <script src="js/features/task-board.js" defer></script>
+  <script src="js/features/reminder-log.js" defer></script>
+  <script src="js/features/extra-routes.js" defer></script>
+  <script src="js/features/project/model-viewer.js" defer></script>
+  <script src="js/features/project/deliverable-source.js" defer></script>
+  <script src="js/features/project/files-fresh.js" defer></script>
+  <script src="js/features/project/rfi-ai-review.js" defer></script>
+  <script src="js/features/meetings/meeting-requests.js" defer></script>
+  <script src="js/features/site-portal.js" defer></script>
+  <script src="js/layout/zoom-scale.js" defer></script>
+</body>
+</html>

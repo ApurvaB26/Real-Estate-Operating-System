@@ -1,0 +1,42 @@
+/**
+ * File: css/components/page-intro.css
+ * Role: Page title with a one-line description under it, used on every main page (same block as the Task Board).
+ * Dependencies: Loaded by index.html as stylesheet 15 of 45. Reads colours, fonts and spacing from css/base/tokens.css (var(--...)). Cascade order matters: it overrides stylesheets listed before it.
+ */
+
+/* One block for every page: title and description on the left, optional actions (a primary button) on the right at the top, 24px to the first card below */
+.page-intro {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 8px 0 24px;
+}
+
+.page-intro-title {
+  margin: 0 0 4px;
+  color: var(--dark-brown);
+  font-family: var(--font-main);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.page-intro-text {
+  margin: 0;
+  color: var(--medium-black);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.page-intro-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.page-intro-actions [hidden] { display: none !important; }

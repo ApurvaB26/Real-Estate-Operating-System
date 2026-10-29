@@ -1,0 +1,499 @@
+/**
+ * File: css/layout/right-rail.css
+ * Role: Right rail: date header, week strip, calendar, focus card, schedule and the collapsed mini rail.
+ * Dependencies: Loaded by index.html as stylesheet 6 of 45. Reads colours, fonts and spacing from css/base/tokens.css (var(--...)). Cascade order matters: it overrides stylesheets listed before it.
+ */
+
+/*RIGHT RAIL COLLAPSED*/
+.rail-mini {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.rail-expand-btn,
+.rail-mini-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.rail-expand-btn {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.rail-mini-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--stroke);
+  border-radius: 10px;
+  background: var(--main-bg);
+  color: var(--dark-brown);
+}
+
+.rail-mini-icon.red {
+  color: var(--error);
+}
+
+.rail-mini-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--black);
+}
+
+.rail-mini-sub {
+  font-size: 12px;
+  color: var(--light-black);
+}
+
+.rail-mini-pill {
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: var(--error-light);
+  color: var(--error);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.rail-mini-count {
+  padding: 0 4px;
+  border-radius: 6px;
+  background: var(--main-bg);
+  font-size: 12px;
+}
+
+.rail-mini-divider {
+  width: 100%;
+  border: 0;
+  border-top: 1px solid var(--stroke);
+}
+
+/*Right Rail - Top Section*/
+.rail-header {
+  display: flex;
+  padding: 16px 0;
+  height: 72px;
+  gap:12px;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  border-bottom: 1px solid #E8D8D0;
+}
+
+/*Date & Week Block*/
+.rail-date-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+/*Today's Date*/
+.rail-date {
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  color: var(--medium-black);
+  
+}
+
+.rail-week {
+  font-size: 12px;
+  color: var(--medium-black);
+}
+
+/* Directory button (phone icon) on the right of the rail header */
+.rail-directory-btn {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--main-bg);
+  color: var(--dark-brown);
+  cursor: pointer;
+}
+
+.rail-directory-btn:hover {
+  background: var(--secondary-actions);
+  color: var(--white);
+}
+
+/*Expanded Calendar: replaces the week strip in place (default state is the week strip)*/
+.rail-calendar {
+  padding: 0;
+}
+
+.rail-calendar[hidden] {
+  display: none;
+}
+
+/* Footer: Clear on the left, Today on the right (same as the date picker) */
+.rail-calendar .calendar-footer {
+  justify-content: space-between;
+}
+
+/* Month arrows look exactly like the week arrows above (.overlay-arrows): 28px, no border, 8px radius, dark brown icon */
+.rail-calendar .overlay-arrows {
+  gap: 4px;
+}
+
+.rail-calendar .overlay-arrows button {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--dark-brown);
+}
+
+.rail-calendar .overlay-arrows button:hover {
+  background: var(--main-bg);
+}
+
+/*NEEDS YOU FIRST CARD*/
+.focus-card {
+  margin-top: 24px;
+  padding: 16px 24px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #C98A8A 0%, #8E2A2A 100%);
+  color: var(--white);
+}
+
+.focus-card-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: var(--white-15);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.focus-card-title {
+  margin: 16px 0 8px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.focus-card-text {
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: var(--white-80);
+}
+
+.focus-card-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--black);
+  font: 600 13px var(--font-body);
+  cursor: pointer;
+}
+
+/*MEETINGS SECTION*/
+.schedule {
+  margin-top: 24px;
+}
+
+.rail-section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.rail-section-title h3 {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--medium-black);
+}
+
+.rail-view-all {
+  color: var(--dark-brown);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.schedule-empty {
+  padding: 24px 0;
+  text-align: center;
+  font-size: 13px;
+  color: var(--light-black);
+}
+
+.overlay-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--stroke);
+}
+
+.overlay-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--stroke);
+  font-size: 14px;
+  color: var(--medium-black);
+}
+
+.overlay-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.overlay-dot.success { background: var(--success); }
+
+.overlay-dot.progress { background: var(--in-progress); }
+
+.overlay-dot.delayed { background: var(--error); }
+
+.overlay-week {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  justify-items: center;
+  align-items: center;
+  row-gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--black);
+}
+
+.overlay-weekdays {
+  font-weight: 400;
+  color: var(--light-black);
+}
+
+.overlay-arrows {
+  display: flex;
+  gap: 4px;
+}
+
+/* Today shortcut sits just left of the week arrows; shown only when the strip is away from today */
+.rail-week-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rail-today-btn {
+  padding: 4px 8px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--dark-brown);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.rail-today-btn:hover {
+  background: var(--main-bg);
+}
+
+.rail-today-btn:focus-visible {
+  outline: 3px solid var(--primary-action-muted);
+  outline-offset: 2px;
+}
+
+.rail-today-btn[hidden] {
+  display: none;
+}
+
+.overlay-arrows button {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--dark-brown);
+  cursor: pointer;
+}
+
+.overlay-arrows button:hover {
+  background: var(--main-bg);
+}
+
+/* Sections a role may not see are hidden through the hidden attribute; this wins over the display set on the card and mini items */
+[data-rail-section][hidden] {
+  display: none !important;
+}
+
+/*RIGHT RAIL WEEK STRIP*/
+.rail-week-strip {
+  position: relative;
+  padding: 14px 0 16px;
+  border-bottom: 1px solid var(--stroke);
+}
+
+.rail-week-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+/* Month label above the week strip: a plain button that expands the month calendar */
+.rail-month-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  margin: -4px -8px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.rail-month-btn:hover {
+  background: var(--main-bg);
+}
+
+.rail-month-btn:focus-visible {
+  outline: 3px solid var(--primary-action-muted);
+  outline-offset: 2px;
+}
+
+/* While the month calendar is open, the week row and its arrows give way to it */
+.rail-week-strip.is-expanded .rail-week-bar,
+.rail-week-strip.is-expanded .rail-week-days {
+  display: none;
+}
+
+.rail-calendar .calendar-month-label {
+  cursor: pointer;
+}
+
+/* The expanded calendar uses the same type as the week view, so opening it causes no visual jump.
+   Scoped to the rail: the date pickers in forms keep their own sizes (css/components/date-picker.css, css/pages/dashboard.css) */
+.rail-week-strip .rail-calendar .calendar-month-label {
+  color: var(--medium-black);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: normal;
+}
+
+.rail-week-strip .rail-calendar .calendar-weekdays span {
+  color: var(--light-black);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.rail-week-strip .rail-calendar .calendar-day {
+  width: 30px;
+  height: 30px;
+  color: var(--black);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* Dates of the current month outside the selected week: one softer dark tone, change it here */
+.rail-calendar {
+  --rail-calendar-dim: color-mix(in srgb, var(--black) 60%, transparent);
+}
+
+.rail-week-strip .rail-calendar .calendar-day:not(.outside-month):not(.in-selected-week) {
+  color: var(--rail-calendar-dim);
+}
+
+.rail-week-strip .rail-calendar .calendar-day.outside-month {
+  color: #bcb7b3;
+}
+
+.rail-week-strip .rail-calendar .calendar-day.is-selected {
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.rail-week-strip .rail-calendar .calendar-day.is-today:not(.is-selected) {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.rail-week-strip .rail-calendar .calendar-footer button {
+  font-size: 13px;
+}
+
+.rail-week-days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 2px;
+}
+
+.rail-day {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 2px 0 4px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  font-family: var(--font-body);
+}
+
+.rail-day-name {
+  color: var(--light-black);
+  font-size: 13px;
+}
+
+.rail-day-num {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  color: var(--black);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.rail-day:hover .rail-day-num {
+  background: var(--main-bg);
+}
+
+.rail-day-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--secondary-actions);
+}
+
+.rail-day-dot[hidden] {
+  display: block;
+  visibility: hidden;
+}

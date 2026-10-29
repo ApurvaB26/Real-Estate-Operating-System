@@ -1,0 +1,8 @@
+/**
+ * File: css/pages/project-rfi-ai.css
+ * Role: AI draft-review button on RFI rows.
+ * Dependencies: Loaded by index.html as stylesheet 41 of 45. Reads colours, fonts and spacing from css/base/tokens.css (var(--...)). Cascade order matters: it overrides stylesheets listed before it.
+ */
+
+/* AI review */
+.cx-ai{display:inline-flex;align-items:center;gap:6px;margin-top:6px;border:1px solid var(--primary-actions);background:var(--in-progress-light);color:var(--primary-actions);border-radius:8px;padding:4px 10px;font:600 13px var(--font-body);cursor:pointer;white-space:nowrap}

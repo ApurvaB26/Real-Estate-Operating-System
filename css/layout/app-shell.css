@@ -1,0 +1,116 @@
+/**
+ * File: css/layout/app-shell.css
+ * Role: App grid, main column, breadcrumb and shared page scaffolding.
+ * Dependencies: Loaded by index.html as stylesheet 3 of 45. Reads colours, fonts and spacing from css/base/tokens.css (var(--...)). Cascade order matters: it overrides stylesheets listed before it.
+ */
+
+.app {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr) 376px;
+  grid-template-rows: minmax(0, 1fr);
+  height: calc(100vh / var(--app-zoom));
+  overflow: hidden;
+}
+
+.app.sidebar-collapsed {
+  grid-template-columns: 88px minmax(0, 1fr) 376px;
+}
+
+.main {
+  position: relative;
+  background: var(--main-bg);
+  overflow: hidden;
+}
+
+.main-content {
+  position: absolute;
+  top: 72px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+}
+
+/*Scrollbar Styling*/
+.main-content,
+.right-rail {
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary-actions) transparent;
+}
+
+.main-content::-webkit-scrollbar,
+.right-rail::-webkit-scrollbar {
+  width: 8px;
+}
+
+.main-content::-webkit-scrollbar-track,
+.right-rail::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.main-content::-webkit-scrollbar-thumb,
+.right-rail::-webkit-scrollbar-thumb {
+  background: var(--secondary-actions);
+  border-radius: 8px;
+}
+
+/*Navigation Breadcrumb*/
+.main-header {
+  position: relative;
+  z-index: 50;
+  flex-shrink: 0;
+}
+
+.breadcrumb {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 24px 12px;
+  background: var(--main-bg);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted-state);
+}
+
+.breadcrumb a {
+  color: var(--muted-state);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  color: var(--dark-brown);
+}
+
+.breadcrumb .current {
+  color: var(--light-black);
+}
+
+body.project-dialog-open {
+  overflow: hidden;
+}
+
+.dashboard-view[hidden],
+.projects-view[hidden],
+.library-view[hidden] {
+  display: none !important;
+}
+
+/*ADDED PAGES*/
+.page-view {
+  padding: 24px;
+  font-family: var(--font-body);
+}
+
+.page-view[hidden] {
+  display: none !important;
+}
+
+.page-heading-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

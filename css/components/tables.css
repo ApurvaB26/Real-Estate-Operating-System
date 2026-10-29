@@ -1,0 +1,285 @@
+/*TASK TABLE*/
+.panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  border-radius: 20px;
+  border: 1px solid var(--stroke);
+  background: var(--white);
+  box-shadow: 0 6px 18px -6px var(--black-shadow);
+  margin: 24px;
+  overflow: hidden;
+  padding: 0;
+}
+
+.panel[hidden] {
+  display: none;
+}
+
+.panel-header {
+  display: flex;
+  padding: 16px 24px;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+}
+
+.panel-actions {
+  display: flex;
+  width: 120px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.panel-count {
+  color: var(--medium-black);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.panel-header h2 {
+  font-family: var(--font-body);
+  color: var(--black);
+  font-size: 16px;
+  font-style: bold;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.data-table {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+  white-space: nowrap;
+}
+
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+
+.data-table th {
+  padding: 12px 24px;
+  align-items: center;
+  gap: 16px;
+  align-self: stretch;
+  flex: 1 0 0;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  color: var(--black-2);
+  border-bottom: 1px solid var(--stroke);
+  background: var(--table-header);
+}
+
+.data-table td {
+  padding: 16px 24px;
+  align-items: center;
+  gap: 14px;
+  align-self: stretch;
+  border-bottom: 1px solid var(--stroke);
+  background: var(--white);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  color: var(--black-80);
+  vertical-align: middle;
+}
+
+.row-subtitle {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--light-black);
+  margin-top: 2px;
+}
+
+.status {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.status.overdue {
+  color: var(--error);
+}
+
+.status.due-today {
+  color: var(--warning);
+}
+
+.status.due-tomorrow {
+  color: var(--warning);
+}
+
+.status.due-date {
+  color: var(--medium-black);
+}
+
+.badge {
+  font-size: 14px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.badge.high { background: var(--error-light); color: var(--error); }
+
+.badge.medium { background: var(--warning-light); color: var(--warning); }
+
+.badge.low { background: var(--success-light); color: var(--success); }
+
+/* Waiting-on tag: the 12px icon draws its own red stroke (#B91C1C), so colour only affects the text.
+   inline-flex + gap keeps icon and text aligned on one line */
+.waiting-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--error);
+  vertical-align: middle;
+}
+
+.waiting-tag svg {
+  flex: none;
+  width: 12px;
+  height: 12px;
+}
+
+tr.done td {
+  opacity: 0.5;
+}
+
+/* Dashboard table: ID, Task, Project, Assigned By are struck through */
+#tasks-table tr.done td:nth-child(2),
+#tasks-table tr.done td:nth-child(3),
+#tasks-table tr.done td:nth-child(4),
+#tasks-table tr.done td:nth-child(7) {
+  text-decoration: line-through;
+}
+
+#tasks-table tr.done .status {
+  display: none;
+}
+
+#tasks-table tr.done td:nth-child(6)::after {
+  content: "—";
+}
+
+/* Project Tasks table keeps its old column order */
+.project-task-table tr.done td:nth-child(n+2):nth-child(-n+3),
+.project-task-table tr.done td:nth-child(6),
+.project-task-table tr.done td:nth-child(7) {
+  text-decoration: line-through;
+}
+
+.project-task-table tr.done .status {
+  display: none;
+}
+
+.project-task-table tr.done td:nth-child(5)::after {
+  content: "—";
+}
+
+.data-table th,
+.data-table td {
+  text-align: left;
+}
+
+.create-project-btn,
+.submit-project-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 9px;
+  background: var(--primary-actions);
+  color: var(--white);
+  font: 600 13px var(--font-body);
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(46, 59, 138, 0.2);
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.create-project-btn:hover,
+.submit-project-btn:hover {
+  background: #243174;
+  transform: translateY(-1px);
+}
+
+.create-task-btn {
+  min-height: 36px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--primary-actions);
+  color: var(--white);
+  font: 600 13px var(--font-body);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tab-count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.status-stack {
+  display: flex;
+  height: 14px;
+  gap: 2px;
+  margin: 6px 0 8px;
+}
+
+.status-segment {
+  min-width: 6px;
+  flex-basis: 0;
+}
+
+.status-percent {
+  margin-left: auto;
+  color: var(--grey);
+  font-size: 12px;
+}
+
+.project-task-table .project-task-row:hover td,
+.tracker-table .project-task-row:hover td,
+.transmittal-table .project-task-row:hover td,
+#project-rfi-list .project-task-row:hover td,
+[data-open-panel="rfis"] .project-task-row:hover td,
+[data-open-panel="deliverables"] .project-task-row:hover td,
+#rfiTable tbody tr:hover td,
+#deliverables-table tbody tr:hover td {
+  background-color: var(--main-bg);
+  transition: background-color 0s;
+}

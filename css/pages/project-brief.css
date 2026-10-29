@@ -1,0 +1,79 @@
+/**
+ * File: css/pages/project-brief.css
+ * Role: Project Overview > Project Brief card.
+ * Dependencies: Loaded by index.html as stylesheet 34 of 45. Reads colours, fonts and spacing from css/base/tokens.css (var(--...)). Cascade order matters: it overrides stylesheets listed before it.
+ */
+
+/* Overview: project brief */
+.brief-selector { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 14px; }
+
+.brief-select { font: 500 15px var(--font-body); padding: 10px 12px; border: 1px solid var(--stroke); border-radius: 8px; background: var(--white); color: var(--black); min-width: 220px; }
+
+.brief-tiles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+
+.brief-tile { display: grid; gap: 4px; padding: 12px; border: 1px solid var(--stroke); border-radius: 10px; background: var(--main-bg); }
+
+.brief-tile span { font-size: 14px; color: var(--medium-black); }
+
+.brief-tile strong { font-size: 16px; font-weight: 600; color: var(--black); }
+
+.brief-floors { grid-column: 1 / -1; }
+
+.brief-floors strong { font-size: 24px; }
+
+.brief-table-wrap { overflow-x: auto; }
+
+.brief-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+
+.brief-table th, .brief-table td { padding: 10px 8px; text-align: left; border-bottom: 1px solid var(--stroke); vertical-align: top; }
+
+.brief-table thead th { color: var(--medium-black); font-weight: 600; white-space: nowrap; }
+
+.brief-table tbody th { color: var(--medium-black); font-weight: 600; white-space: nowrap; }
+
+.daily-add input, .daily-add select, .daily-inline input[type="text"], .daily-inline select { border: 1px solid var(--stroke); border-radius: 10px; background-color: var(--white); color: var(--black); font: inherit; }
+
+.daily-add input { font-size: 17px; padding: 14px 18px; }
+
+.daily-add select { font-size: 17px; padding: 14px 44px 14px 18px; max-width: none; width: 200px; }
+
+.daily-add select, .daily-inline select { appearance: none; -webkit-appearance: none; color: var(--medium-black);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14' fill='none'%3E%3Cpath d='m3 5 4 4 4-4' stroke='%23605D5D' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center; }
+
+.daily-check > span strong { display: block; font-size: 16px; font-weight: 500; color: var(--black); }
+
+.daily-check small { font-size: 13px; color: var(--medium-black); margin-top: 2px; }
+
+.daily-inline { gap: 12px; }
+
+.daily-inline input[type="text"] { flex: 1; min-width: 0; font-size: 15px; padding: 10px 14px; border-radius: 8px; }
+
+.daily-inline select { font-size: 15px; padding: 10px 40px 10px 14px; border-radius: 8px; width: 190px; }
+
+/* tan square checkboxes */
+.daily-selectall input, .daily-check input, .daily-inline > input[type="checkbox"] {
+  appearance: none; -webkit-appearance: none; width: 20px; height: 20px; flex-shrink: 0; margin: 0;
+  border: 1.5px solid #B8917F; border-radius: 4px; background: var(--white); cursor: pointer; display: inline-grid; place-content: center;
+}
+
+.daily-selectall input:checked, .daily-check input:checked { background: #B8917F; }
+
+.daily-selectall input:checked::after, .daily-check input:checked::after { content: ""; width: 5px; height: 10px; border: solid #fff; border-width: 0 2px 2px 0; transform: translateY(-1px) rotate(45deg); }
+
+.daily-selectall input:indeterminate { background: #B8917F; }
+
+.daily-selectall input:indeterminate::after { content: ""; width: 10px; height: 2px; background: #fff; }
+
+.daily-selectall input:focus-visible, .daily-check input:focus-visible { outline: 3px solid var(--primary-actions); outline-offset: 2px; }
+
+.daily-inline > input[type="checkbox"] { cursor: default; }
+
+@media (max-width: 700px) { .daily-photo-btn { font-size: 14px; padding: 10px 12px; } .daily-add select, .daily-inline select { width: 150px; } }
+
+.daily-add[hidden], .daily-bar[hidden], .daily-list[hidden], .daily-hint[hidden], .daily-bar-actions [hidden] { display: none !important; }
+
+.greeting-actions .ui-select > summary:focus-visible {
+  outline: 3px solid var(--primary-actions);
+  outline-offset: 2px;
+}

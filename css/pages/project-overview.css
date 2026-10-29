@@ -1,0 +1,100 @@
+/* Overview: file uploads live in Recent Activity */
+.activity-copy strong, .activity-copy small { 
+    font-size: 14px; 
+}
+
+.activity-item.has-file { 
+    padding: 8px 0; 
+}
+
+.activity-file-actions { 
+    display: flex; 
+    gap: 8px; 
+    margin-top: 4px; 
+}
+
+.activity-file-actions button { 
+    min-height: 32px; 
+    padding: 0 12px; 
+    border: 1px solid var(--secondary-actions); 
+    border-radius: 6px; 
+    background: var(--white); 
+    color: var(--dark-brown); 
+    font: 600 14px var(--font-body); 
+    cursor: pointer; 
+}
+
+
+.activity-file-actions button:last-child { 
+    background: var(--secondary-actions); 
+    color: var(--white); 
+}
+
+.activity-file-actions button:hover { 
+    background: var(--main-bg); 
+    color: var(--dark-brown); 
+}
+
+.activity-file-actions button:focus-visible { 
+    outline: 3px solid var(--primary-actions); 
+    outline-offset: 2px; 
+}
+
+/* Deliverables: flat list by default, overview shows status instead of disciplines */
+.deliv-tiles { display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px; 
+}
+
+.deliv-tile { 
+    display: grid; 
+    gap: 2px; 
+    padding: 12px; 
+    border: 1px solid var(--stroke); 
+    border-radius: 10px; 
+    background: var(--main-bg); 
+}
+
+.deliv-tile strong { 
+    font-size: 24px; 
+    line-height: 1.1; 
+    color: var(--black); 
+}
+
+.deliv-tile span { 
+    font-size: 14px; 
+    color: var(--medium-black); 
+}
+
+.deliv-tile.is-overdue strong { 
+    color: var(--error); 
+}
+
+.deliv-tile.is-approved strong { 
+    color: var(--success); 
+}
+
+.deliv-next { 
+    list-style: none; 
+    margin: 14px 0 0; 
+    padding: 0; 
+    display: grid; 
+    gap: 8px; 
+}
+
+.deliv-next li { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 12px; 
+    padding-top: 8px; 
+    border-top: 1px solid var(--stroke); 
+    font-size: 14px; 
+}
+
+.deliv-next-title { color: var(--black); font-weight: 500; }
+
+.tracker-toolbar { flex-wrap: wrap; row-gap: 10px; }
+
+.daily-list { margin-top: 12px; border: 1px solid #F0DFD5; border-radius: 14px; background: var(--white); }
+

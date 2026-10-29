@@ -1,0 +1,182 @@
+/**
+ * File: css/pages/focus.css
+ * Role: Focus mode.
+ * Dependencies: Loaded by index.html as stylesheet 26 of 45. Reads colours, fonts and spacing from css/base/tokens.css (var(--...)). Cascade order matters: it overrides stylesheets listed before it.
+ */
+
+/*FOCUS MODE*/
+.focus-hero {
+  margin: 0 0 18px;
+}
+
+.focus-hero .focus-card-title {
+  font-size: 26px;
+}
+
+.focus-progress {
+  max-width: 420px;
+  height: 6px;
+  overflow: hidden;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.focus-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.focus-item {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding: 18px;
+}
+
+.focus-item-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.focus-item .upload-type {
+  background: var(--main-bg);
+}
+
+.focus-item .status {
+  padding: 0;
+  font-size: 13px;
+}
+
+.focus-item-title {
+  color: var(--black);
+  font-size: 17px;
+}
+
+.focus-item-meta {
+  color: var(--light-black);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.focus-item-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.focus-item.is-done {
+  opacity: 0.55;
+}
+
+.focus-item.is-done .focus-item-title {
+  text-decoration: line-through;
+}
+
+.focus-item.is-snoozed {
+  border-style: dashed;
+}
+
+.focus-empty {
+  display: grid;
+  grid-column: 1 / -1;
+  justify-items: start;
+  gap: 8px;
+  padding: 24px;
+}
+
+.focus-empty h2 {
+  color: var(--black);
+  font-size: 18px;
+}
+
+.focus-empty p {
+  color: var(--light-black);
+  font-size: 14px;
+}
+
+.action-checklist {
+  display: grid;
+  gap: 8px;
+}
+
+.action-checklist legend {
+  margin-bottom: 8px;
+  color: var(--black);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.action-detail-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 18px;
+}
+
+.action-detail-list dt {
+  color: var(--grey);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.action-detail-list dd {
+  margin-top: 3px;
+  color: var(--black);
+  font-size: 14px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.tracker-group-meta .status {
+  padding: 0;
+  font-size: 12px;
+}
+
+.people-list {
+  max-height: 230px;
+  overflow-y: auto;
+  padding: 2px 12px 8px;
+  border: 1px solid var(--stroke);
+  border-radius: 10px;
+}
+
+.policy-table.makes-table th:first-child,
+.policy-table.makes-table td:first-child {
+  width: 17%;
+}
+
+.makes-table th {
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.makes-table td strong {
+  font-size: 13px;
+}
+
+.makes-table tbody tr[data-make-index] {
+  cursor: pointer;
+}
+
+/* Own hover on purpose (page background); the shared table row hover is in css/components/tables.css */
+.makes-table tbody tr[data-make-index]:hover td {
+  background: var(--main-bg);
+}
+
+.make-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.tr-drawings td:first-child {
+  color: var(--black);
+  font-weight: 600;
+  white-space: nowrap;
+}

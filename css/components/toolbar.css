@@ -1,0 +1,162 @@
+/**
+ * File: css/components/toolbar.css
+ * Role: List toolbars: filter chips, Filters popover, search box and add button.
+ * Dependencies: Loaded by index.html as stylesheet 14 of 45. Reads colours, fonts and spacing from css/base/tokens.css (var(--...)). Cascade order matters: it overrides stylesheets listed before it.
+ */
+
+.project-tasks-view[hidden] {
+  display: none !important;
+}
+
+.project-tasks-view {
+  position: relative;
+  display: grid;
+  gap: 16px;
+  font-family: var(--font-body);
+}
+
+.project-task-toolbar {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 12px;
+  border: 1px solid var(--stroke);
+  border-radius: 12px;
+  background: var(--white);
+}
+
+.task-priority-filters {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 6px;
+}
+
+.task-priority-filter,
+.task-advanced-filter-button {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 12px;
+  border: 1px solid #d9c4b9;
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--secondary-actions);
+  font: 600 12px var(--font-body);
+  cursor: pointer;
+}
+
+.task-priority-filter:hover,
+.task-advanced-filter-button:hover {
+  background: #faf5f2;
+}
+
+.task-priority-filter.is-active {
+  border-color: var(--secondary-actions);
+  background: var(--secondary-actions);
+  color: var(--white);
+}
+
+.task-advanced-filter-wrap {
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.task-advanced-filter-button {
+  padding: 0 10px;
+}
+
+.task-advanced-filter-button[aria-expanded="true"] {
+  border-color: var(--dark-brown);
+  color: var(--dark-brown);
+}
+
+.task-advanced-filters {
+  position: absolute;
+  z-index: 10;
+  top: calc(100% + 7px);
+  left: 0;
+  display: grid;
+  min-width: 190px;
+  gap: 7px;
+  padding: 12px;
+  border: 1px solid var(--stroke);
+  border-radius: 9px;
+  background: var(--white);
+  box-shadow: 0 10px 24px rgba(28, 27, 27, 0.12);
+}
+
+.task-advanced-filters[hidden] {
+  display: none;
+}
+
+.task-advanced-filters label {
+  color: var(--medium-black);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.project-task-add {
+  display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  gap: 7px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 7px;
+  background: var(--primary-actions);
+  color: var(--white);
+  font: 600 12px var(--font-body);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.project-task-add:hover {
+  background: #243174;
+}
+
+.project-task-table {
+  min-width: 850px;
+  table-layout: auto;
+}
+
+.project-task-table th,
+.project-task-table td {
+  padding: 10px 14px;
+  font-size: 12px;
+}
+
+.project-task-table thead th {
+  padding: 10px 14px;
+  background: var(--table-header);
+  font-size: 12px;
+}
+
+.project-task-table tbody td {
+  height: 48px;
+}
+
+/*OPEN ITEMS PANELS */
+.oi-divider {
+  flex: 0 0 auto;
+  width: 1px;
+  height: 24px;
+  background: var(--stroke);
+}
+
+.location-option.is-active {
+  background: var(--main-bg);
+}
+
+
+#tb-body,
+#rem-body,
+#rem-proj {
+  display: grid;
+  gap: 16px;
+}

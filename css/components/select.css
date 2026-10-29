@@ -1,0 +1,107 @@
+/**
+ * File: css/components/select.css
+ * Role: Custom dropdowns (Create Project selects and every enhanced <select>).
+ * Dependencies: Loaded by index.html as stylesheet 9 of 45. Reads colours, fonts and spacing from css/base/tokens.css (var(--...)). Cascade order matters: it overrides stylesheets listed before it.
+ */
+
+.region-pin {
+  color: #9b8276;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.category-options {
+  max-height: 270px;
+  padding: 4px 0;
+}
+
+.category-option,
+.region-options > button,
+.person-option {
+  display: flex;
+  width: 100%;
+  min-height: 48px;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 14px;
+  border: 0;
+  background: var(--white);
+  color: var(--medium-black);
+  font: 400 12px var(--font-body);
+  text-align: left;
+  cursor: pointer;
+}
+
+.category-option:hover,
+.region-options > button:hover,
+.person-option:hover {
+  background: var(--main-bg);
+}
+
+.option-icon {
+  display: grid;
+  width: 20px;
+  flex: 0 0 20px;
+  place-items: center;
+  color: #9b8276;
+  font-size: 16px;
+}
+
+.region-options {
+  max-height: 285px;
+  padding: 0 0 5px;
+}
+
+.region-options .option-group-title {
+  padding: 10px 14px 6px;
+  color: #a98c7e;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.region-options > button {
+  min-height: 35px;
+  gap: 10px;
+  padding: 5px 14px;
+}
+
+.people-options {
+  padding: 0 0 5px;
+}
+
+.no-options {
+  padding: 10px 14px;
+  color: var(--grey);
+  font-size: 12px;
+}
+
+.category-icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  color: var(--dark-brown);
+}
+
+button.profile-item:hover {
+  background: var(--main-bg);
+}
+
+/*CREATE PROJECT: category tiers + location search*/
+.tier-gold { color: #b8860b; }
+
+.tier-platinum { color: #7d8790; }
+
+.tier-diamond { color: #2f7fb3; }
+
+.location-suggestions {
+  top: 100%;
+  margin-top: 4px;
+  max-height: 260px;
+  border-radius: 9px;
+}
+
+.location-suggestions[hidden] {
+  display: none;
+}

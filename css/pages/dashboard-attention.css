@@ -1,0 +1,1322 @@
+/**
+ * File: css/pages/dashboard-attention.css
+ * Role: Dashboard greeting, plus late-loaded rules (right-rail overlays, profile settings, RFI tables) that must stay after earlier stylesheets to keep the original cascade.
+ * Dependencies: Loaded by index.html as stylesheet 32 of 45. Reads colours, fonts and spacing from css/base/tokens.css (var(--...)). Cascade order matters: it overrides stylesheets listed before it.
+ */
+
+.greeting-text p .greeting-overdue { color: #FF5959; }
+
+.greeting-actions { 
+  display: flex; 
+  align-items: center; 
+  gap: 14px; 
+  flex-shrink: 0;
+  color: var(--main-bg); 
+}
+
+@media (max-width: 700px) 
+
+{ .greeting-card 
+  { flex-wrap: wrap; } 
+}
+
+@media (max-width: 700px) {
+  .app {
+    display: block;
+  }
+
+  .sidebar {
+    display: block;
+    min-width: 0;
+    padding: 12px 16px;
+  }
+
+  .brand-subtitle,
+  .collapse-btn,
+  .logout {
+    display: none;
+  }
+
+  .nav-bar {
+    flex-direction: row;
+    gap: 8px;
+    margin-top: 12px;
+    overflow-x: auto;
+  }
+
+  .nav-bar a {
+    flex: 0 0 auto;
+    padding: 9px 12px;
+    font-size: 15px;
+  }
+
+  .topbar {
+    height: auto;
+    padding: 12px 16px;
+  }
+
+  .topbar-actions {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .search {
+    width: 100%;
+  }
+
+  .topbar-right {
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .icon-set {
+    gap: 8px;
+  }
+
+  .user-info {
+    width: auto;
+  }
+
+  .greeting-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin: 16px;
+    padding: 20px;
+  }
+
+  .greeting-text h1 {
+    font-size: 22px;
+  }
+
+  .kpi-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    height: auto;
+    gap: 12px;
+    padding: 0 16px;
+  }
+
+  .kpi-card {
+    min-width: 0;
+    padding: 16px;
+  }
+
+  .kpi-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .panel {
+    margin: 16px;
+  }
+
+  .panel-header {
+    padding: 14px 16px;
+  }
+}
+
+@media (max-width: 380px) {
+  .kpi-row {
+    grid-template-columns: 1fr;
+  }
+
+  .sync {
+    font-size: 12px;
+  }
+
+  .user-info strong {
+    font-size: 13px;
+  }
+
+  .user-role svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media (max-width: 700px) {
+  .topbar-right {
+    flex-wrap: wrap;
+  }
+
+  .create-project-btn {
+    min-height: 36px;
+    padding: 0 11px;
+    font-size: 12px;
+  }
+
+  .dialog-backdrop {
+    align-items: start;
+    padding: 8px;
+  }
+
+  .project-dialog {
+    max-height: calc(100vh - 16px);
+  }
+
+  .project-dialog-header,
+  .project-form-fields {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .project-form-fields {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .form-field-wide {
+    grid-column: auto;
+  }
+
+  .project-dialog-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 12px 15px;
+  }
+
+  .dialog-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+/* Updated project form dropdowns */
+.project-dialog {
+  width: min(760px, 100%);
+}
+
+.project-dialog .team-options .colleague-search-input {
+  height: 32px;
+  font-size: 12px;
+}
+
+@media (max-width: 700px) {
+  .team-options {
+    max-height: 52vh;
+  }
+}
+
+.app.project-page-active #dashboard-rfi-panel,
+.app.project-page-active #dashboard-deliverables-panel,
+.app.library-page-active #dashboard-rfi-panel,
+.app.library-page-active #dashboard-deliverables-panel {
+  display: none;
+}
+
+.policy-search {
+  display: flex;
+  width: min(340px, 100%);
+  min-height: 36px;
+  align-items: center;
+  gap: 8px;
+  padding: 0 11px;
+  border: 1px solid #eee3dd;
+  border-radius: 9px;
+  background: #f8f5f3;
+  color: var(--grey);
+}
+
+.policy-search input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--medium-black);
+  font: 400 12px var(--font-body);
+}
+
+@media (max-width: 700px) {
+  .library-view {
+    padding: 12px;
+  }
+
+  .library-tabs {
+    gap: 4px;
+    padding: 8px;
+  }
+
+  .library-tab {
+    padding: 0 10px;
+  }
+
+  .policy-toolbar {
+    align-items: stretch;
+  }
+
+  .policy-controls {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .policy-categories {
+    border-right: 0;
+  }
+
+  .policy-search {
+    width: 100%;
+  }
+}
+
+.project-search {
+  display: flex;
+  width: min(65%, 620px);
+  min-height: 34px;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  border: 1px solid #eee4df;
+  border-radius: 8px;
+  background: #f8f5f3;
+  color: var(--grey);
+}
+
+.project-search svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+}
+
+.project-search input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--medium-black);
+  font: 400 12px var(--font-body);
+}
+
+@media (max-width: 1100px) {
+  
+  .topbar {
+    height: auto;
+  }
+
+  .topbar-actions {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .search {
+    flex: 1 1 100%;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .topbar-right {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .icon-set {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .projects-view {
+    padding: 12px;
+  }
+
+  .project-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .project-search {
+    width: 100%;
+  }
+
+  .project-toolbar-actions {
+    justify-content: space-between;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tower-star[aria-pressed="true"] svg {
+  fill: currentColor;
+}
+
+.project-nav-tab svg,
+.starred-towers-btn svg {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+}
+
+.overview-dashboard {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.04fr);
+  align-items: start;
+  gap: 18px;
+}
+
+.overview-dashboard[hidden] {
+  display: none !important;
+}
+
+.overview-dashboard-column {
+  display: grid;
+  min-width: 0;
+  gap: 18px;
+}
+
+@media (max-width: 900px) {
+  .overview-dashboard {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .overview-page {
+    padding: 12px;
+  }
+
+  .project-nav-bar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+    padding: 10px;
+  }
+
+  .project-nav-tabs {
+    width: 100%;
+    gap: 4px;
+    overflow-x: auto;
+  }
+
+  .project-nav-tab {
+    flex: 0 0 auto;
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .project-nav-filters {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .overview-panel {
+    padding: 13px 12px 10px;
+  }
+
+  .upload-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .discipline-item {
+    grid-template-columns: 22px 76px minmax(0, 1fr) 38px;
+    gap: 7px;
+  }
+
+  .milestone-item {
+    grid-template-columns: 14px minmax(0, 1fr) auto;
+    gap: 6px;
+  }
+
+  .milestone-status {
+    padding: 4px 6px;
+    font-size: 11px;
+  }
+
+  .activity-item {
+    grid-template-columns: 26px minmax(0, 1fr);
+  }
+
+  .activity-tag {
+    display: none;
+  }
+}
+
+.project-task-search {
+  display: flex;
+  width: min(240px, 30%);
+  min-width: 130px;
+  min-height: 32px;
+  align-items: center;
+  gap: 7px;
+  margin-left: auto;
+  padding: 0 9px;
+  border: 1px solid #eee3dd;
+  border-radius: 8px;
+  background: #faf6f3;
+  color: var(--grey);
+}
+
+.project-task-search svg {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+}
+
+.project-task-search input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--medium-black);
+  font: 400 12px var(--font-body);
+}
+
+@media (max-width: 700px) {
+  .project-task-toolbar {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .task-priority-filters {
+    width: 100%;
+    gap: 5px;
+  }
+
+  .task-priority-filter {
+    flex: 1;
+    padding: 0 8px;
+  }
+
+  .project-task-search {
+    order: 1;
+    width: auto;
+    flex: 1;
+  }
+
+  .project-task-add {
+    order: 2;
+  }
+
+  .task-advanced-filter-wrap {
+    order: 0;
+  }
+}
+
+.app.rail-collapsed {
+  grid-template-columns: 240px minmax(0, 1fr) 104px;
+}
+
+.app.rail-collapsed.sidebar-collapsed {
+  grid-template-columns: 88px minmax(0, 1fr) 104px;
+}
+
+.rail-collapsed .right-rail {
+  width: 104px;
+  min-width: 0;
+  padding: 16px 8px;
+}
+
+.rail-collapsed .right-rail > :not(.rail-mini) {
+  display: none;
+}
+
+.rail-collapsed .rail-mini {
+  display: flex;
+}
+
+.meeting-meta svg {
+  flex: 0 0 14px;
+  color: var(--medium-black);
+}
+
+.meeting-meta > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*RIGHT RAIL OVERLAYS*/
+.right-rail {
+  position: relative;
+  z-index: 30;
+}
+
+.rail-collapsed .right-rail {
+  overflow: visible;
+}
+
+.overlay-week span {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+}
+
+.overlay-week .is-today {
+  border-radius: 50%;
+  background: var(--dark-brown);
+  color: var(--white);
+}
+
+/*FADE PAGE WHEN RAIL OVERLAY IS OPEN*/
+.app::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 25;
+  background: rgba(28, 27, 27, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.app:has(.rail-mini-item:hover .rail-overlay)::after {
+  opacity: 1;
+}
+
+.drawer-detail span,
+.drawer-section h4 {
+  color: var(--medium-black);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.drawer-section {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--stroke);
+}
+
+.drawer-item-chip > span {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.drawer-item-chip button {
+  width: 24px;
+  height: 24px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--light-black);
+  font: 18px/1 var(--font-body);
+  cursor: pointer;
+}
+
+.drawer-item-chip button:hover {
+  background: var(--white);
+  color: var(--error);
+}
+
+.drawer-comment-form button svg {
+  width: 17px;
+  height: 17px;
+}
+
+/*TASKS & RFI TABLE ADDITIONS*/
+.dashboard-view .badge,
+#rfiTable .badge {
+  padding: 2px 8px;
+  font-size: 12px;
+}
+
+.row-subtitle svg {
+  vertical-align: -2px;
+}
+
+.app.project-page-active #dashboard-deliverables-panel {
+  display: none;
+}
+
+.badge.blocking {
+  background: var(--error-light);
+  color: var(--error);
+}
+
+/*PROJECT RFIs*/
+.project-rfis-view .project-task-search {
+  width: min(320px, 35%);
+}
+
+.rfi-table .row-subtitle svg {
+  vertical-align: -2px;
+}
+
+.badge.blocking {
+  background: var(--error-light);
+  color: var(--error);
+}
+
+.rail-mini-item[data-route] {
+  cursor: pointer;
+}
+
+.report-meter > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--success);
+}
+
+/*PROFILE & SETTINGS*/
+.profile-view .library-tabs,
+.meetings-view .library-tabs {
+  margin-bottom: 16px;
+}
+
+.profile-form .project-form-fields {
+  padding: 20px;
+}
+
+#pref-form .project-dialog-footer {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.help-form .dialog-actions {
+  justify-content: flex-end;
+}
+
+.focus-progress span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: #ffffff;
+  transition: width 0.3s ease;
+}
+
+.meeting-day-title span {
+  margin-left: 6px;
+  color: var(--grey);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.mom-table .row-subtitle {
+  max-width: 380px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.team-card-copy span {
+  color: var(--light-black);
+  font-size: 13px;
+}
+
+.action-dialog-subtitle {
+  color: var(--light-black);
+  font-size: 14px;
+}
+
+.action-dialog-subtitle[hidden],
+.action-error[hidden] {
+  display: none;
+}
+
+.action-checklist legend span {
+  color: var(--error);
+}
+
+.action-error {
+  color: var(--error);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.tracker-group-meta .report-meter {
+  width: 64px;
+}
+
+/* Rows that open a details drawer */
+.tracker-table .project-task-row,
+.transmittal-table .project-task-row,
+#project-rfi-list .project-task-row,
+[data-open-panel="rfis"] .project-task-row,
+[data-open-panel="deliverables"] .project-task-row,
+#rfiTable tbody tr,
+#deliverables-table tbody tr {
+  cursor: pointer;
+}
+
+.tracker-table tr:focus-visible,
+.transmittal-table tr:focus-visible {
+  outline: 2px solid var(--primary-action-muted);
+  outline-offset: -2px;
+}
+
+/*TEAM SECTIONS + FOLDERS*/
+.team-section[hidden] {
+  display: none;
+}
+
+.team-section + .team-section {
+  margin-top: 10px;
+}
+
+.team-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.team-section-head h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--black);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.team-search {
+  width: min(380px, 45%);
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.team-folder-head[aria-expanded="false"] .task-group-chevron::before {
+  transform: translateY(-1px) rotate(225deg);
+}
+
+.people-search {
+  min-height: 40px;
+}
+
+.task-dialog .form-field .people-search input {
+  height: 38px;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+}
+
+/* Checkboxes inside dialog fieldsets were picking up the 44px text-input height */
+.action-dialog .form-field .action-check input {
+  width: 17px;
+  height: 17px;
+  padding: 0;
+}
+
+.record-drawer .drawer-title .badge {
+  vertical-align: middle;
+  font-size: 12px;
+}
+
+/* Match the height and corners of the fields around it */
+.task-dialog .date-picker > summary {
+  min-height: 44px;
+}
+
+.notes-dialog .date-picker > summary {
+  min-height: 48px;
+  padding: 0 16px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.drawer-detail .date-picker > summary {
+  min-height: 36px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/*SHARED DROPDOWN (every <select> uses the Create Project dropdown)*/
+.ui-select > summary {
+  background: var(--white);
+  color: var(--medium-black);
+}
+
+.ui-select.opens-up[open] > summary {
+  border-radius: 0 0 9px 9px;
+}
+
+.ui-select.opens-up .ui-select-menu {
+  border-radius: 9px 9px 0 0;
+}
+
+.ui-select-option {
+  display: flex;
+  width: 100%;
+  min-height: 36px;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px;
+  border: 0;
+  background: var(--white);
+  color: var(--medium-black);
+  font: 400 13px var(--font-body);
+  text-align: left;
+}
+
+.ui-select-option:hover,
+.ui-select-option:focus-visible {
+  background: var(--main-bg);
+  outline: none;
+}
+
+.ui-select-option[aria-selected="true"] {
+  background: #f7f2ee;
+  color: var(--black);
+  font-weight: 600;
+}
+
+.ui-select-option .option-check {
+  display: none;
+  margin-left: auto;
+  color: var(--dark-brown);
+  font-size: 15px;
+}
+
+.ui-select-option[aria-selected="true"] .option-check {
+  display: block;
+}
+
+/* Match the fields around each dropdown */
+.task-dialog .ui-select > summary {
+  min-height: 44px;
+}
+
+.drawer-detail .ui-select > summary {
+  min-height: 36px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.project-status-filter .ui-select,
+.page-heading-actions .ui-select {
+  min-width: 160px;
+}
+
+.project-status-filter .ui-select > summary,
+.page-heading-actions .ui-select > summary,
+.task-advanced-filters .ui-select > summary,
+.policy-filter-menu .ui-select > summary {
+  min-height: 34px;
+  font-size: 12px;
+}
+
+.project-status-filter .ui-select > summary,
+.page-heading-actions .ui-select > summary {
+  border-color: #cbb7ad;
+}
+
+.makes-search {
+  width: min(420px, 100%);
+}
+
+.makes-group-head .task-group-chevron {
+  width: 26px;
+  height: 26px;
+  flex: 0 0 26px;
+  border-color: var(--dark-brown);
+  border-radius: 7px;
+}
+
+.makes-group-head .task-group-chevron::before {
+  top: 10px;
+  left: 9px;
+}
+
+.makes-group-head[aria-expanded="false"] .task-group-chevron::before {
+  transform: translateY(-1px) rotate(225deg);
+}
+
+.makes-table tbody tr:focus-visible {
+  outline: 2px solid var(--primary-action-muted);
+  outline-offset: -2px;
+}
+
+/*POLICY VIEWER (view only)*/
+.action-dialog.is-wide {
+  width: min(860px, 100%);
+}
+
+/*TRANSMITTALS TABLE (default + hover states from the design)*/
+.transmittal-table th,
+.transmittal-table td {
+  padding: 14px 18px;
+  font-size: 13px;
+}
+
+.transmittal-table th {
+  color: var(--black-2);
+  font-weight: 600;
+}
+
+.transmittal-table td strong {
+  margin-right: 0;
+  color: var(--black);
+  font-weight: 600;
+}
+
+.transmittal-row.is-sent td,
+.transmittal-row.is-sent td strong {
+  color: var(--light-black);
+}
+
+/* Action column appears while the pointer or keyboard focus is on the table */
+.transmittal-table .col-action {
+  display: none;
+}
+
+.transmittal-table-scroll:hover .col-action,
+.transmittal-table-scroll:focus-within .col-action {
+  display: table-cell;
+}
+
+@media (hover: none) {
+  .transmittal-table .col-action {
+    display: table-cell;
+  }
+}
+
+.transmittal-pagination {
+  padding: 14px 18px;
+  border-top: 1px solid var(--stroke);
+}
+
+.tr-chip.is-sent {
+  padding: 3px 9px;
+  background: var(--success-mid);
+  color: var(--success);
+  font-size: 12px;
+}
+
+/*TRANSMITTAL DRAWER*/
+.drawer-title .tr-chip {
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.pdf-field > span {
+  color: #797878;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.boq-sheet-scroll {
+  max-height: 56vh;
+  overflow: auto;
+  background: #ffffff;
+}
+
+/* Transmittal table default state (design): brown headers, compact columns, Sent Date takes the rest */
+.transmittal-table-scroll {
+  border-radius: 14px;
+}
+
+.transmittal-table th {
+  color: var(--dark-brown);
+  white-space: nowrap;
+}
+
+.transmittal-table th:nth-child(1) { width: 112px; }
+
+.transmittal-table th:nth-child(2) { width: 112px; }
+
+.transmittal-table th:nth-child(3) { width: 134px; }
+
+.transmittal-table th:nth-child(4) { width: 174px; }
+
+.transmittal-table th:nth-child(5) { width: 110px; }
+
+.transmittal-table th:nth-child(6) { width: 142px; }
+
+.transmittal-table th:nth-child(7) { width: 102px; }
+
+.transmittal-table td {
+  color: var(--black-2);
+  white-space: nowrap;
+}
+
+.transmittal-pagination {
+  color: var(--dark-brown);
+  font-weight: 600;
+}
+
+/*WIDER DETAILS DRAWER*/
+.task-drawer.record-drawer {
+  width: 680px;
+}
+
+.doc-view .page-heading-actions {
+  align-self: center;
+}
+
+.doc-view .doc-page {
+  width: min(840px, calc(100% - 32px));
+  max-height: none;
+  margin: 28px auto;
+  padding: 56px 64px;
+}
+
+.doc-view .boq-sheet-scroll {
+  max-height: none;
+  overflow-x: auto;
+}
+
+.doc-view .boq-sheet {
+  font-size: 14px;
+}
+
+.doc-unavailable strong {
+  color: var(--black);
+  font-size: 16px;
+}
+
+.doc-unavailable p {
+  color: var(--light-black);
+  font-size: 14px;
+}
+
+.doc-unavailable .upload-file-icon {
+  font-size: 20px;
+}
+
+/* Create Project is hidden for roles that can't start projects */
+.create-project-btn[hidden] {
+  display: none;
+}
+
+.rail-week-bar strong {
+  color: var(--medium-black);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.rail-day.is-today:not(.is-selected) .rail-day-num {
+  border-color: var(--secondary-actions);
+}
+
+.rail-day.is-selected .rail-day-num {
+  background: var(--dark-brown);
+  color: #ffffff;
+}
+
+/*TOPBAR: stays on one tidy line as space shrinks (narrow windows or browser zoom).
+  Below 1100px the stacked layout above takes over. */
+.create-project-btn > .create-project-label {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+@media (min-width: 1101px) {
+  .topbar {
+    container-type: inline-size;
+    container-name: topbar;
+    min-width: 0;
+  }
+
+  .topbar-actions {
+    min-width: 0;
+    gap: 16px;
+  }
+
+  .search {
+    flex: 1 1 260px;
+    width: auto;
+    min-width: 180px;
+    max-width: 640px;
+  }
+
+  .search input {
+    min-width: 0;
+    text-overflow: ellipsis;
+  }
+
+  .topbar-right {
+    flex: 0 0 auto;
+    min-width: 0;
+    gap: 12px;
+  }
+
+  .sync {
+    white-space: nowrap;
+  }
+
+  .user-info {
+    width: auto;
+    max-width: 174px;
+  }
+
+  .user-info .user-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Each step frees room for the search box before anything can collide */
+  @container topbar (max-width: 980px) {
+    .sync {
+      display: none;
+    }
+  }
+
+  @container topbar (max-width: 880px) {
+    .search-key {
+      display: none;
+    }
+
+    .create-project-btn {
+      width: 40px;
+      padding: 0;
+    }
+
+    .create-project-label {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    .icon-set {
+      gap: 10px;
+    }
+  }
+
+  @container topbar (max-width: 760px) {
+    .user-info .user-name {
+      display: none;
+    }
+  }
+}
+
+.daily-open-btn:focus-visible, .daily-close:focus-visible, .daily-convert:focus-visible, .daily-add-btn:focus-visible { 
+  outline: 3px solid var(--primary-actions); 
+  outline-offset: 2px; 
+}
+
+.daily-close { 
+  font-size: 28px; 
+  line-height: 1; 
+  background: none; 
+  border: 0; 
+  cursor: pointer; 
+  color: var(--medium-black); 
+  padding: 4px 8px; 
+}
+
+.daily-add input, .daily-add select { 
+  font: inherit; 
+  font-size: 15px; 
+  padding: 12px 14px; 
+  border: 1px solid var(--stroke); 
+  border-radius: 10px; 
+  background: var(--white); 
+  color: var(--black); 
+}
+
+.daily-add input { 
+  flex: 1; 
+  min-width: 0; 
+}
+
+.daily-add select { 
+  max-width: 190px; 
+}
+
+.daily-add-btn { 
+  font: inherit; 
+  font-size: 14px; 
+  font-weight: 600; 
+  color: #fff; 
+  background: var(--primary-actions); 
+  border: 0; 
+  border-radius: 10px; 
+  padding: 10px 18px; 
+  min-height: 40px; 
+  cursor: pointer; 
+  white-space: nowrap; 
+}
+
+.daily-list { 
+  list-style: none; 
+  margin: 12px 0 0; 
+  padding: 0; 
+  border: 1px solid var(--stroke); 
+  border-radius: 12px; 
+}
+
+.daily-convert { 
+  font: inherit; 
+  font-size: 14px; 
+  font-weight: 500; 
+  color: var(--primary-actions); 
+  background: none; 
+  border: 1px solid var(--primary-actions); 
+  border-radius: 8px; 
+  padding: 8px 12px; 
+  cursor: pointer; 
+  white-space: nowrap; 
+}
+
+.daily-convert:hover { 
+  background: var(--primary-actions); 
+  color: #fff; 
+}
+
+.daily-bar button:focus-visible, .daily-clear:focus-visible, .daily-remove:focus-visible { 
+  outline: 3px solid var(--primary-actions); 
+  outline-offset: 2px; 
+}
+
+@media (max-width: 700px) { .daily-add { flex-wrap: wrap; } .daily-add select { max-width: none; flex: 1; } .daily-bar { flex-wrap: wrap; } }
+
+@media (max-width: 700px) { .daily-open-btn { margin-left: 0; } }
+
+/* MAS LIBRARY */
+
+/* Daily Task List button */
+.daily-open-btn { 
+  margin-left: 0; 
+  color: #fff; 
+  background: var(--primary-actions); 
+  border-radius: 10px; 
+  padding: 12px 16px; 
+  min-height: 44px; 
+  font-size: 14px; 
+  font-weight: 700; 
+}
+
+.daily-open-btn:hover { 
+  background: var(--primary-actions); 
+  filter: brightness(1.12); 
+}
+
+.daily-close { font-size: 26px; color: var(--black); }
+
+.daily-add { align-items: center; margin-top: 20px; gap: 12px; }
+
+.daily-add-btn { font-size: 15px; font-weight: 700; padding: 10px 20px; min-height: 40px; border-radius: 8px; }
+
+.daily-bar { margin-top: 18px; padding: 0 4px; }
+
+.daily-convert { font-size: 16px; font-weight: 500; padding: 9px 14px; border-radius: 8px; }
+
+.daily-remove { font-size: 24px; color: var(--black); }
+
+.daily-clear { font-size: 18px; font-weight: 600; }
+
+/* Dashboard project filter*/
+.greeting-actions .ui-select > summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 12px 16px; 
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--dark-brown);
+  background: var(--white);
+  border: 1px solid var(--dark-brown);
+  border-radius: 10px;
+  cursor: pointer;
+}

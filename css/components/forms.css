@@ -1,0 +1,237 @@
+/**
+ * File: css/components/forms.css
+ * Role: Form fields, checkboxes, team picker, attachments and location search.
+ * Dependencies: Loaded by index.html as stylesheet 8 of 45. Reads colours, fonts and spacing from css/base/tokens.css (var(--...)). Cascade order matters: it overrides stylesheets listed before it.
+ */
+
+.custom-checkbox {
+  position: relative;
+  display: inline-flex;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.checkbox-box {
+  display: grid;
+  width: 22px;
+  height: 22px;
+  place-items: center;
+  border: 2px solid var(--secondary-actions);
+  border-radius: 4px;
+  color: var(--white);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.form-field-wide {
+  grid-column: 1 / -1;
+}
+
+.field-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.character-count {
+  color: var(--grey);
+  font-size: 12px;
+}
+
+.team-avatars {
+  display: flex;
+  align-items: center;
+  padding-left: 2px;
+}
+
+.team-avatars[hidden] {
+  display: none;
+}
+
+.team-selection-count {
+  overflow: hidden;
+  flex: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.team-options {
+  display: grid;
+  gap: 8px;
+  padding: 10px 12px;
+  border-top: 1px solid var(--stroke);
+}
+
+.team-options > label:not(.colleague-search) {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--medium-black);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.colleague-search {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 11px;
+  padding: 0 13px;
+  border: 1px solid var(--stroke);
+  border-radius: 9px;
+  background: var(--white);
+  color: var(--light-black);
+  cursor: text;
+}
+
+.colleague-search:focus-within {
+  border-color: var(--secondary-actions);
+  box-shadow: 0 0 0 3px rgba(171, 133, 118, 0.14);
+}
+
+.no-colleagues {
+  color: var(--grey);
+  font-size: 12px;
+  padding: 2px 0;
+}
+
+.attachment-dropzone {
+  display: flex;
+  min-height: 37px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1px dashed var(--secondary-actions);
+  border-radius: 8px;
+  color: var(--secondary-actions) !important;
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  text-align: center;
+  cursor: pointer;
+}
+
+.attachment-dropzone:hover,
+.attachment-dropzone.is-dragging {
+  background: var(--main-bg);
+}
+
+.attachment-filename {
+  max-width: 45%;
+  overflow: hidden;
+  color: var(--dark-brown);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.team-options-heading {
+  display: flex;
+  min-height: 43px;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--stroke);
+  font-size: 12px;
+}
+
+.team-selection-count {
+  flex: 0 0 auto;
+  color: var(--black);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.team-selection-fraction {
+  padding: 2px 6px;
+  border-radius: 10px;
+  background: var(--main-bg);
+  color: var(--grey);
+  font-size: 12px;
+}
+
+.clear-team-selection {
+  margin-left: auto;
+  border: 0;
+  background: transparent;
+  color: var(--primary-actions);
+  font: 600 12px var(--font-body);
+  cursor: pointer;
+}
+
+.member-copy {
+  display: grid;
+  gap: 2px;
+}
+
+.team-options-footer {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--grey);
+  font-size: 12px;
+}
+
+.team-done-btn {
+  min-width: 66px;
+  min-height: 32px;
+  border: 0;
+  border-radius: 7px;
+  background: var(--primary-actions);
+  color: var(--white);
+  font: 600 12px var(--font-body);
+  cursor: pointer;
+}
+
+.no-colleagues {
+  padding: 9px 5px;
+}
+
+/*PEOPLE PICKER (meeting invites)*/
+.people-field {
+  gap: 8px;
+}
+
+.people-field legend {
+  margin-bottom: 8px;
+  color: var(--black);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.people-group[hidden],
+.people-option[hidden] {
+  display: none;
+}
+
+.people-group-title {
+  padding: 10px 0 4px;
+  color: #a98c7e;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.people-option {
+  padding: 6px 0;
+}
+
+.people-count {
+  color: var(--light-black);
+  font-size: 12px;
+}
+
+.location-field {
+  position: relative;
+}
+
+.location-hint {
+  color: var(--grey);
+  font-size: 11px;
+}
+
+.location-hint:empty {
+  display: none;
+}

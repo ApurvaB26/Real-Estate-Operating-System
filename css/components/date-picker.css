@@ -1,0 +1,126 @@
+/**
+ * File: css/components/date-picker.css
+ * Role: Shared calendar date picker.
+ * Dependencies: Loaded by index.html as stylesheet 10 of 45. Reads colours, fonts and spacing from css/base/tokens.css (var(--...)). Cascade order matters: it overrides stylesheets listed before it.
+ */
+
+.date-picker {
+  position: relative;
+  min-width: 0;
+}
+
+.date-picker-value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.calendar-panel {
+  position: fixed;
+  z-index: 1100;
+  top: var(--calendar-panel-top, 12px);
+  left: var(--calendar-panel-left, 12px);
+  width: min(340px, calc(100vw - 32px));
+  max-height: calc(100vh - 24px);
+  overflow-y: auto;
+  padding: 18px 20px 16px;
+  border: 1px solid rgba(100, 66, 53, 0.16);
+  border-radius: 18px;
+  background: var(--white);
+  box-shadow: 0 20px 50px rgba(28, 27, 27, 0.2);
+}
+
+.calendar-monthbar button {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--dark-brown);
+  font: 20px/1 var(--font-body);
+  cursor: pointer;
+}
+
+.calendar-monthbar button:hover {
+  background: #f5efeb;
+}
+
+.calendar-monthbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 12px 0 9px;
+}
+
+.calendar-weekdays,
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  justify-items: center;
+}
+
+.calendar-weekdays {
+  margin-bottom: 3px;
+  color: #b18f7f;
+  font: 600 12px var(--font-body);
+  text-transform: uppercase;
+}
+
+.calendar-days {
+  row-gap: 2px;
+}
+
+.calendar-day {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  color: #3c3937;
+  font: 500 12px var(--font-body);
+  cursor: pointer;
+}
+
+.calendar-day:hover {
+  border-color: #cfb8ac;
+  background: #f7f2ee;
+}
+
+.calendar-day.outside-month {
+  color: #bcb7b3;
+}
+
+.calendar-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 11px;
+  padding-top: 2px;
+}
+
+.calendar-footer button {
+  padding: 3px 0;
+  border: 0;
+  background: transparent;
+  color: var(--primary-actions);
+  font: 600 12px var(--font-body);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+
+.calendar-footer button:hover {
+  color: #1f2d75;
+}
+
+@media (max-width: 700px) {
+  .calendar-panel {
+    left: var(--calendar-panel-left, 12px);
+    transform: none;
+  }
+}

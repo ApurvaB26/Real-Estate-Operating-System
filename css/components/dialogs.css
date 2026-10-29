@@ -1,0 +1,455 @@
+/**
+ * File: css/components/dialogs.css
+ * Role: Modal dialogs: Create Project, New Task, Minutes of Meeting, shared action dialog, toast.
+ * Dependencies: Loaded by index.html as stylesheet 11 of 45. Reads colours, fonts and spacing from css/base/tokens.css (var(--...)). Cascade order matters: it overrides stylesheets listed before it.
+ */
+
+/*CREATE TASK BUTTON*/
+.task-dialog {
+  width: min(512px, 100%);
+  max-height: calc(100vh - 10px);
+  padding: 24px 0;
+  overflow: auto;
+  border-radius: 20px;
+  background: var(--white);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+  font-family: var(--font-body);
+}
+
+.task-dialog .required-note {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.task-dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  padding: 0 32px 32px 24px;
+  border-bottom: 1px solid var(--stroke);
+}
+
+.task-dialog-header h2 {
+  margin-bottom: 4px;
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.task-form-fields {
+  display: grid;
+  gap: 18px;
+  padding: 24px;
+}
+
+.task-dialog .form-field > label {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.task-dialog .form-field input:not([type="file"]),
+.task-dialog .form-field select {
+  height: 44px;
+  font-size: 12px;
+}
+
+.task-dialog .form-field textarea {
+  height: 64px;
+  font-size: 12px;
+}
+
+.task-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.task-upload {
+  display: flex;
+  height: 44px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  border: 1px dashed var(--secondary-actions);
+  border-radius: 9px;
+  color: var(--dark-brown);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.task-upload:hover {
+  background: var(--main-bg);
+}
+
+/* The required-field star rule (.form-field > label span) must not turn the button text red */
+.task-upload .task-upload-text {
+  color: inherit;
+}
+
+.task-upload:focus-within {
+  outline: 3px solid var(--primary-actions);
+  outline-offset: 2px;
+}
+
+.assign-me {
+  align-self: flex-start;
+  border: 0;
+  background: transparent;
+  color: var(--dark-brown);
+  font: 600 12px var(--font-body);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.task-dialog-footer {
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  padding: 16px 24px 20px;
+  border-top: 1px solid var(--stroke);
+}
+
+.task-discard {
+  border: 0;
+  background: transparent;
+  color: var(--medium-black);
+  font: 600 13px var(--font-body);
+  cursor: pointer;
+}
+
+.task-checkbox {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.dialog-backdrop[hidden] {
+  display: none;
+}
+
+.dialog-backdrop {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow-y: auto;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.project-dialog {
+  width: min(680px, 100%);
+  max-height: calc(100vh - 20px);
+  overflow: auto;
+  border: 1px solid rgba(100, 66, 53, 0.12);
+  border-radius: 16px;
+  background: var(--white);
+  color: var(--black);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+  font-family: var(--font-body);
+}
+
+.project-dialog-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 17px 20px 15px;
+  border-bottom: 1px solid var(--stroke);
+}
+
+.project-dialog-header h2 {
+  margin-bottom: 3px;
+  font-family: var(--font-body);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.project-dialog-header p {
+  color: var(--light-black);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.dialog-close {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--light-black);
+  font: 24px/1 var(--font-body);
+  cursor: pointer;
+}
+
+.dialog-close:hover {
+  background: var(--main-bg);
+  color: var(--black);
+}
+
+.project-form-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px 14px;
+  padding: 17px 20px 18px;
+}
+
+.form-field {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 5px;
+  border: 0;
+  font-family: var(--font-body);
+}
+
+.form-field > label,
+.team-field legend {
+  padding: 0;
+  color: var(--black);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.team-field {
+  gap: 5px;
+}
+
+.team-options > label[hidden] {
+  display: none;
+}
+
+.project-dialog-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  min-height: 63px;
+  padding: 11px 20px;
+  border-top: 1px solid var(--stroke);
+}
+
+.required-note {
+  color: var(--error);
+  font-size: 12px;
+}
+
+.dialog-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.team-options {
+  position: absolute;
+  z-index: 35;
+  top: calc(100% - 1px);
+  right: 0;
+  left: 0;
+  display: grid;
+  gap: 0;
+  max-height: min(430px, 60vh);
+  overflow-y: auto;
+  padding: 0 10px;
+  border: 1px solid var(--stroke);
+  border-radius: 0 0 10px 10px;
+  background: var(--white);
+  box-shadow: 0 14px 30px rgba(28, 27, 27, 0.17);
+}
+
+.team-options > label.team-member-option {
+  min-height: 54px;
+  gap: 10px;
+  padding: 6px 5px;
+  border-bottom: 1px solid #f1e9e5;
+}
+
+.team-options > label.team-member-option[hidden] {
+  display: none;
+}
+
+.team-member-option input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
+  accent-color: var(--secondary-actions);
+}
+
+.rail-collapse-btn {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--dark-brown);
+  cursor: pointer;
+}
+
+.rail-collapse-btn:hover {
+  background: var(--main-bg);
+}
+
+/*MEETING NOTES MODAL*/
+.notes-dialog {
+  width: min(720px, 100%);
+  max-height: calc(100vh - 20px);
+  overflow: auto;
+  border-radius: 20px;
+  background: var(--white);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+  font-family: var(--font-body);
+}
+
+.notes-dialog-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 32px 20px;
+  border-bottom: 1px solid var(--stroke);
+}
+
+.notes-dialog-header h2 {
+  margin-bottom: 4px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.notes-dialog-header p {
+  font-size: 13px;
+  color: var(--light-black);
+}
+
+.notes-fields {
+  display: grid;
+  gap: 20px;
+  padding: 24px 32px;
+}
+
+.notes-row {
+  display: grid;
+  grid-template-columns: 1fr 190px;
+  gap: 16px;
+}
+
+.notes-generate {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.notes-option,
+.notes-upload {
+  display: flex;
+  align-items: center;
+  min-height: 76px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.notes-option {
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid var(--stroke);
+  background: var(--white);
+  color: var(--medium-black);
+  font: 500 13px var(--font-body);
+}
+
+.notes-upload {
+  justify-content: space-between;
+  padding: 0 20px;
+  border: 1px dashed var(--secondary-actions);
+  color: var(--secondary-actions);
+}
+
+.notes-ai-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.notes-ai-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 8px;
+  background: #eff0fa;
+  color: var(--primary-actions);
+  font: 700 13px var(--font-body);
+  cursor: pointer;
+}
+
+.notes-count {
+  font-size: 13px;
+  color: var(--light-black);
+}
+
+.notes-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 32px;
+  border-top: 1px solid var(--stroke);
+}
+
+.notes-meta {
+  display: grid;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--medium-black);
+}
+
+.notes-notify {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.action-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--medium-black);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.action-check input {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
+  accent-color: var(--secondary-actions);
+}
+
+.action-dialog-text {
+  color: var(--medium-black);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.action-preview {
+  width: 100%;
+  max-height: 260px;
+  border-radius: 10px;
+  background: var(--main-bg);
+  object-fit: contain;
+}
