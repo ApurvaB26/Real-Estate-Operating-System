@@ -1,7 +1,8 @@
 # REOS: a workspace for MEP design teams on real estate projects
 
 **Live demo:** https://portfolio-project1-six.vercel.app/
-**Role:** Product design (Figma) and front-end development, with Claude as an AI coding assistant
+**My role:** Solo redesign: user research, Figma design and prototypes, information architecture improvements, front-end CSS (with Claude as an AI coding assistant), plus standardising the plumbing and fire pump calculations
+**Original version:** Built by my team lead with Claude
 **Built with:** HTML, CSS, vanilla JavaScript. No framework, no build step.
 **Status:** Rolling out internally to about 100–150 people from 30 October 2026.
 
@@ -51,13 +52,15 @@ I talked to my team throughout the design. They kept describing the same frustra
 
 The redesign took about **two months**. I designed every screen in **Figma first** and built clickable **Figma prototypes** to test the flows (navigation, drawers, dialogs) before writing any code. Then I worked through the CSS myself, adjusting spacing, colours, typography and component states until the built app matched my Figma designs exactly.
 
-The first version was generated almost entirely by AI. It worked, but:
+My team lead built the first version entirely with Claude. It worked, but:
 - the code had no real structure
 - every page tried to show everything at once
 - nearly everything was clickable, so nothing stood out
 - it wasn't pleasant to use
 
-For the redesign I kept AI (Claude) as a coding assistant but took ownership of the product: I decided what each page is for, cut what didn't serve that purpose, designed and prototyped the hierarchy in Figma, defined the code structure the AI had to follow, and tuned the CSS by hand to match the design.
+I took on the redesign on my own: there was no design team and no formal approval process, so I reviewed my own work and asked colleagues at the office for informal feedback along the way. I used Claude as a coding assistant, but the product decisions were mine: what each page is for, what to cut, how screens are prioritised in Figma, and improvements to the information architecture. I also tuned the CSS by hand to match the design.
+
+Alongside the interface, I used my engineering background to **standardise the plumbing and fire pump calculations** and **update the plumbing BOQ**, so teams no longer each work out these numbers in their own format.
 
 ## Key decisions
 
@@ -74,12 +77,12 @@ Site engineers don't need trackers or BOQs; they need the current drawing and a 
 Teams already had trackers in Excel. Instead of asking them to retype everything, the deliverables tracker imports spreadsheets directly, and transmittals export to the PDF format sites expect.
 
 ### 5. No framework, but structured
-I chose plain HTML, CSS and JavaScript so the app opens anywhere with no build step. To keep about 23,000 lines manageable I:
-- split the code into `core`, `data`, `components`, `layout` and `features` folders, one file per feature, each with a header saying what it does and what it depends on
-- kept colours, fonts and spacing in one design-token file, which also makes theming possible
-- loaded heavy libraries (SheetJS for Excel, jsPDF for PDFs) only when a user first needs them
-- used one `MutationObserver` to upgrade every new select and date input to the custom controls, so feature code never has to remember to
-- escaped all user-entered text before rendering it, to prevent HTML injection
+REOS uses plain HTML, CSS and JavaScript, so it opens anywhere with no build step. During the redesign, to keep about 23,000 lines manageable, the code was:
+- split into `core`, `data`, `components`, `layout` and `features` folders, one file per feature, each with a header saying what it does and what it depends on
+- given one design-token file for colours, fonts and spacing, which also makes theming possible
+- set up to load heavy libraries (SheetJS for Excel, jsPDF for PDFs) only when a user first needs them
+- given one `MutationObserver` that upgrades every new select and date input to the custom controls, so feature code never has to remember to
+- made to escape all user-entered text before rendering it, to prevent HTML injection
 
 **Trade-off:** scripts share one global scope and depend on load order. That was quick to build but gets harder as the app grows. Moving to ES modules is the next refactor.
 
