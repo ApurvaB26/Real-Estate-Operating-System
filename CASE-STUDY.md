@@ -4,7 +4,7 @@
 **My role:** Solo redesign: user research, Figma design and prototypes, information architecture improvements, front-end CSS (with Claude as an AI coding assistant), plus standardising the plumbing and fire pump calculations
 **Original version:** Built by my team lead with Claude
 **Built with:** HTML, CSS, vanilla JavaScript. No framework, no build step.
-**Status:** Rolling out internally to about 100–150 people from 30 October 2026.
+**Status:** The company's internal tool (about 100–150 users) has started adopting this redesign, beginning with its colour system and sidebar navigation.
 
 > This is the public portfolio version. Company, project and model data have been replaced with fictional examples.
 
@@ -88,7 +88,7 @@ REOS uses plain HTML, CSS and JavaScript, so it opens anywhere with no build ste
 
 ## Results
 
-REOS goes live to about **100–150 people** on 30 October 2026. I'll update this section with real usage and feedback after the rollout.
+The internal tool went live on 30 October 2026 for about **100–150 people**, and it has already adopted parts of this redesign: the **colour system** and the **sidebar navigation**. The production app is built separately by a developer, and the rest of the redesign hasn't been implemented there yet. This portfolio version shows the full redesign as I designed and built it.
 
 ✏️ **AFTER LAUNCH, ADD:** how many people actually use it, what feedback you got, and anything that measurably improved (for example, RFIs answered on time, or no more personal deliverable sheets).
 
