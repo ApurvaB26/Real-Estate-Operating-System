@@ -88,7 +88,7 @@ REOS uses plain HTML, CSS and JavaScript, so it opens anywhere with no build ste
 
 ## Results
 
-The internal tool went live on 30 October 2026 for about **100–150 people**, and it has already adopted parts of this redesign: the **colour system** and the **sidebar navigation**. The production app is built separately by a developer, and the rest of the redesign hasn't been implemented there yet. This portfolio version shows the full redesign as I designed and built it.
+The internal tool went live on 30 October 2026 for about **100–150 people**, and it has already adopted parts of this redesign: the **colour system** and the **sidebar navigation**. The production app is built separately by a developer, and the team is still working on bringing the rest of the redesign across. This portfolio version shows the full redesign as I designed and built it.
 
 ✏️ **AFTER LAUNCH, ADD:** how many people actually use it, what feedback you got, and anything that measurably improved (for example, RFIs answered on time, or no more personal deliverable sheets).
 
